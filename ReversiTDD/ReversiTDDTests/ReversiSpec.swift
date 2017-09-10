@@ -23,7 +23,7 @@ struct Field: Equatable {
     let x: Int
     let y: Int
     let disk: Disk?
-    
+
     static func == (lhs: Field, rhs: Field) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.disk == rhs.disk
     }
@@ -34,6 +34,17 @@ class Board: Equatable {
     
     init(taken: [Field]) {
         self.taken = taken
+    }
+
+    func getField(x: Int, y: Int) -> Field? {
+
+        return taken.filter { $0.x == x && $0.y == y }.first
+    }
+
+    func replace(sourceField: Field, with targetField: Field) {
+        guard let sourceFieldIndex = taken.index(of: sourceField) else { return }
+
+        taken[sourceFieldIndex] = targetField
     }
 
     static func == (lhs: Board, rhs: Board) -> Bool {
@@ -57,20 +68,41 @@ class Reversi {
         board = Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])
     }
 
-    func move(to targetField: Field) throws {
+    public func move(to targetField: Field) throws {
         if board.taken.contains(where: { $0.x == targetField.x && $0.y == targetField.y }) {
             throw MoveError.fieldAlreadyTaken
         }
 
         board.taken.append(targetField)
+        flipNeighbouringDisks(for: targetField.x, y: targetField.y)
     }
 
-    func getNumberOfFieldsTaken(ofType type: Disk? = nil) -> Int {
+    public func getNumberOfFieldsTaken(ofType type: Disk? = nil) -> Int {
         if let type = type {
             return board.taken.filter { $0.disk == type }.count
         }
 
         return board.taken.count
+    }
+
+    fileprivate func flipNeighbouringDisks(for x: Int, y: Int) {
+        let rows = [x - 1, x, x + 1]
+        let columns = [y - 1, y, y + 1]
+
+        guard let startingField = board.getField(x: x, y: y),
+              let startingDisk = startingField.disk
+        else { return }
+
+        for row in rows {
+            for column in columns {
+                if let neighbourField = board.getField(x: row, y: column),
+                   let neighbourDisk = neighbourField.disk {
+                    if neighbourDisk != startingDisk {
+                        board.replace(sourceField: neighbourField, with: Field(x: neighbourField.x, y: neighbourField.y, disk: startingDisk))
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -106,6 +138,10 @@ class ReversiSpec: QuickSpec {
 
             it("has total of 4 black disks on board") {
                 expect(game.getNumberOfFieldsTaken(ofType: .Black)).to(equal(4))
+            }
+
+            it("has total of 1 white disks on board") {
+                expect(game.getNumberOfFieldsTaken(ofType: .White)).to(equal(1))
             }
         }
     }
