@@ -26,10 +26,14 @@ struct Field: Equatable {
 }
 
 struct Board: Equatable {
-    let taken: [Field]
+    var taken: [Field]
     
     init(taken: [Field]) {
         self.taken = taken
+    }
+    
+    mutating func add(field: Field) {
+        taken.append(field)
     }
     
     static func == (lhs: Board, rhs: Board) -> Bool {
@@ -48,6 +52,10 @@ class Reversi {
     init() {
         board = Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])
     }
+    
+    func move(field: Field) {
+        board.add(field: field)
+    }
 }
 
 class ReversiSpec: QuickSpec {
@@ -64,6 +72,17 @@ class ReversiSpec: QuickSpec {
         }
         
         describe("first move") {
+            
+            it("should add disk to game board at specified position") {
+                let game = Reversi()
+                game.move(field: Field(x: 5, y: 4, disk: .Black))
+                
+                expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
+                                                          Field(x: 3, y: 4, disk: .Black),
+                                                          Field(x: 4, y: 3, disk: .Black),
+                                                          Field(x: 4, y: 4, disk: .White),
+                                                          Field(x: 5, y: 4, disk: .Black),])))
+            }
             // HOMEWORK
         }
         
