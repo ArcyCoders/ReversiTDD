@@ -45,11 +45,6 @@ struct Board: Equatable {
     }
 }
 
-func == (tuple1:(Int, Int, Disk),tuple2:(Int, Int, Disk)) -> Bool
-{
-    return (tuple1.0 == tuple2.0) && (tuple1.1 == tuple2.1) && (tuple1.2 == tuple2.2)
-}
-
 class Reversi {
     var currentPlayer: Disk
     var board: Board
