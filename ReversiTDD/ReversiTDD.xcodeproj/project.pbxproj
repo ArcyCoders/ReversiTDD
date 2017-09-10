@@ -12,6 +12,10 @@
 		185B26611F5C6EA800B60B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185B265F1F5C6EA800B60B30 /* Main.storyboard */; };
 		185B26631F5C6EA800B60B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185B26621F5C6EA800B60B30 /* Assets.xcassets */; };
 		185B26661F5C6EA800B60B30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */; };
+		189DA4271F65A1470095E835 /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA4261F65A1470095E835 /* Reversi.swift */; };
+		189DA4291F65A1580095E835 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA4281F65A1580095E835 /* Board.swift */; };
+		189DA42B1F65A1620095E835 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA42A1F65A1620095E835 /* Field.swift */; };
+		189DA42D1F65A1800095E835 /* ReversiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA42C1F65A1800095E835 /* ReversiError.swift */; };
 		4FC6AAE0B9447DEE9882C141 /* Pods_ReversiTDD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */; };
 		60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */; };
 		7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */; };
@@ -39,6 +43,10 @@
 		185B26671F5C6EA800B60B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185B266C1F5C6EA800B60B30 /* ReversiTDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiTDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		185B26721F5C6EA800B60B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		189DA4261F65A1470095E835 /* Reversi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
+		189DA4281F65A1580095E835 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		189DA42A1F65A1620095E835 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		189DA42C1F65A1800095E835 /* ReversiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiError.swift; sourceTree = "<group>"; };
 		2B40A8D4E831095C92CB785A /* Pods-ReversiTDDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.release.xcconfig"; sourceTree = "<group>"; };
 		60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 		185B265A1F5C6EA800B60B30 /* ReversiTDD */ = {
 			isa = PBXGroup;
 			children = (
+				189DA4251F65A13B0095E835 /* Sources */,
 				185B265B1F5C6EA800B60B30 /* AppDelegate.swift */,
 				185B265D1F5C6EA800B60B30 /* ViewController.swift */,
 				185B265F1F5C6EA800B60B30 /* Main.storyboard */,
@@ -126,6 +135,17 @@
 				60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */,
 			);
 			path = ReversiTDDTests;
+			sourceTree = "<group>";
+		};
+		189DA4251F65A13B0095E835 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				189DA4261F65A1470095E835 /* Reversi.swift */,
+				189DA4281F65A1580095E835 /* Board.swift */,
+				189DA42A1F65A1620095E835 /* Field.swift */,
+				189DA42C1F65A1800095E835 /* ReversiError.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,8 +362,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189DA42B1F65A1620095E835 /* Field.swift in Sources */,
 				185B265E1F5C6EA800B60B30 /* ViewController.swift in Sources */,
 				185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */,
+				189DA4291F65A1580095E835 /* Board.swift in Sources */,
+				189DA4271F65A1470095E835 /* Reversi.swift in Sources */,
+				189DA42D1F65A1800095E835 /* ReversiError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
