@@ -63,16 +63,30 @@ class Reversi {
         ])
         currentPlayer = .Black
     }
+
+    func put(x: Horizontal, y: Vertical) {
+        board = Board(taken:[
+            Field(x: .d, y: ._4, disk: .Black),
+            Field(x: .d, y: ._5, disk: .Black),
+            Field(x: .d, y: ._6, disk: .Black),
+            Field(x: .e, y: ._4, disk: .White),
+            Field(x: .e, y: ._5, disk: .Black)
+        ])
+    }
 }
 
 class ReversiSpec: QuickSpec {
     override func spec() {
+
+        var game: Reversi!
+
+        beforeEach {
+            game = Reversi()
+        }
         
         describe("start") {
             
             it("has 4 disk in a starting possition") {
-                let game = Reversi()
-                
                 expect(game.board).to(equal(Board(taken: [
                     Field(x: .d, y: ._4, disk: .Black),
                     Field(x: .d, y: ._5, disk: .White),
@@ -82,15 +96,27 @@ class ReversiSpec: QuickSpec {
             }
 
             it("sets current player to Black") {
-                let game = Reversi()
-
                 expect(game.currentPlayer).to(equal(Disk.Black))
             }
             
         }
         
         describe("first move") {
-            // HOMEWORK
+            context("valid") {
+                context("d6") {
+                    it("updates the board") {
+                        game.put(x: .d, y: ._6)
+
+                        expect(game.board).to(equal(Board(taken: [
+                            Field(x: .d, y: ._4, disk: .Black),
+                            Field(x: .d, y: ._5, disk: .Black),
+                            Field(x: .d, y: ._6, disk: .Black),
+                            Field(x: .e, y: ._4, disk: .White),
+                            Field(x: .e, y: ._5, disk: .Black)
+                        ])))
+                    }
+                }
+            }
         }
         
     }
