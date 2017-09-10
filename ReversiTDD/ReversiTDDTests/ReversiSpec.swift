@@ -51,6 +51,7 @@ func == (tuple1:(Int, Int, Disk),tuple2:(Int, Int, Disk)) -> Bool
 }
 
 class Reversi {
+    var currentPlayer: Disk
     var board: Board
     
     init() {
@@ -60,6 +61,7 @@ class Reversi {
             Field(x: .e, y: ._4, disk: .White),
             Field(x: .e, y: ._5, disk: .Black)
         ])
+        currentPlayer = .Black
     }
 }
 
@@ -77,6 +79,12 @@ class ReversiSpec: QuickSpec {
                     Field(x: .e, y: ._4, disk: .White),
                     Field(x: .e, y: ._5, disk: .Black)
                 ])))
+            }
+
+            it("sets current player to Black") {
+                let game = Reversi()
+
+                expect(game.currentPlayer).to(equal(Disk.Black))
             }
             
         }
