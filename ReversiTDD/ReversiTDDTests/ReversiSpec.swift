@@ -14,6 +14,7 @@ enum ReversiError: Error
 {
     case positionTaken
     case incorrectDiskColor
+    case noAdjacentDisks
 }
 
 enum Disk: Int {
@@ -47,6 +48,16 @@ struct Board: Equatable {
         guard ((blackDiskCount == whiteDikCount) && field.disk == Disk.Black) ||
               ((blackDiskCount > whiteDikCount) && field.disk == Disk.White)
         else { throw ReversiError.incorrectDiskColor }
+        
+        guard !taken.filter({
+            $0.x == field.x && (($0.y == field.y + 1) || ($0.y == field.y - 1)) ||
+            $0.y == field.y && (($0.x == field.x + 1) || ($0.x == field.x - 1)) ||
+            $0.x + 1 == field.x && $0.y + 1 == field.y ||
+            $0.x + 1 == field.x && $0.y - 1 == field.y ||
+            $0.x - 1 == field.x && $0.y + 1 == field.y ||
+            $0.x - 1 == field.x && $0.y - 1 == field.y
+        }).isEmpty
+        else { throw ReversiError.noAdjacentDisks }
         
         taken.append(field)
     }
@@ -121,6 +132,13 @@ class ReversiSpec: QuickSpec {
                     let game = Reversi()
                     expect { try game.move(field: Field(x: 5, y: 4, disk: .White))}
                         .to(throwError(ReversiError.incorrectDiskColor))
+                }
+                
+                it("should throw an error when attmpt to add disk at position with no adjacent disks")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 1, y: 1, disk: .Black))}
+                        .to(throwError(ReversiError.noAdjacentDisks))
                 }
             }
         }
