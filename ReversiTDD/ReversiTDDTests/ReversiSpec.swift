@@ -18,7 +18,7 @@ enum Horizontal: Int {
     case a, b, c, d, e, f, g, h
 }
 
-enum Disk: Int {
+enum Player: Int {
     case White
     case Black
 }
@@ -26,10 +26,10 @@ enum Disk: Int {
 struct Field: Equatable {
     let x: Horizontal
     let y: Vertical
-    let disk: Disk?
+    let takenBy: Player?
     
     static func == (lhs: Field, rhs: Field) -> Bool {
-        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.disk == rhs.disk
+        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.takenBy == rhs.takenBy
     }
 }
 
@@ -46,26 +46,26 @@ struct Board: Equatable {
 }
 
 class Reversi {
-    var currentPlayer: Disk
+    var currentPlayer: Player
     var board: Board
     
     init() {
         board = Board(taken: [
-            Field(x: .d, y: ._4, disk: .Black),
-            Field(x: .d, y: ._5, disk: .White),
-            Field(x: .e, y: ._4, disk: .White),
-            Field(x: .e, y: ._5, disk: .Black)
+            Field(x: .d, y: ._4, takenBy: .Black),
+            Field(x: .d, y: ._5, takenBy: .White),
+            Field(x: .e, y: ._4, takenBy: .White),
+            Field(x: .e, y: ._5, takenBy: .Black)
         ])
         currentPlayer = .Black
     }
 
     func put(x: Horizontal, y: Vertical) {
         board = Board(taken:[
-            Field(x: .d, y: ._4, disk: .Black),
-            Field(x: .d, y: ._5, disk: .Black),
-            Field(x: .d, y: ._6, disk: .Black),
-            Field(x: .e, y: ._4, disk: .White),
-            Field(x: .e, y: ._5, disk: .Black)
+            Field(x: .d, y: ._4, takenBy: .Black),
+            Field(x: .d, y: ._5, takenBy: .Black),
+            Field(x: .d, y: ._6, takenBy: .Black),
+            Field(x: .e, y: ._4, takenBy: .White),
+            Field(x: .e, y: ._5, takenBy: .Black)
         ])
         currentPlayer = .White
     }
@@ -84,15 +84,15 @@ class ReversiSpec: QuickSpec {
             
             it("has 4 disk in a starting possition") {
                 expect(game.board).to(equal(Board(taken: [
-                    Field(x: .d, y: ._4, disk: .Black),
-                    Field(x: .d, y: ._5, disk: .White),
-                    Field(x: .e, y: ._4, disk: .White),
-                    Field(x: .e, y: ._5, disk: .Black)
+                    Field(x: .d, y: ._4, takenBy: .Black),
+                    Field(x: .d, y: ._5, takenBy: .White),
+                    Field(x: .e, y: ._4, takenBy: .White),
+                    Field(x: .e, y: ._5, takenBy: .Black)
                 ])))
             }
 
             it("sets current player to Black") {
-                expect(game.currentPlayer).to(equal(Disk.Black))
+                expect(game.currentPlayer).to(equal(Player.Black))
             }
             
         }
@@ -104,18 +104,18 @@ class ReversiSpec: QuickSpec {
                         game.put(x: .d, y: ._6)
 
                         expect(game.board).to(equal(Board(taken: [
-                            Field(x: .d, y: ._4, disk: .Black),
-                            Field(x: .d, y: ._5, disk: .Black),
-                            Field(x: .d, y: ._6, disk: .Black),
-                            Field(x: .e, y: ._4, disk: .White),
-                            Field(x: .e, y: ._5, disk: .Black)
+                            Field(x: .d, y: ._4, takenBy: .Black),
+                            Field(x: .d, y: ._5, takenBy: .Black),
+                            Field(x: .d, y: ._6, takenBy: .Black),
+                            Field(x: .e, y: ._4, takenBy: .White),
+                            Field(x: .e, y: ._5, takenBy: .Black)
                         ])))
                     }
 
                     it("changes current player to white") {
                         game.put(x: .d, y: ._6)
 
-                        expect(game.currentPlayer).to(equal(Disk.White))
+                        expect(game.currentPlayer).to(equal(Player.White))
                     }
                 }
             }
