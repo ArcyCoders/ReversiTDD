@@ -10,6 +10,12 @@ import Foundation
 import Quick
 import Nimble
 
+enum ReversiError: Error
+{
+    case positionTaken
+    case incorrectDiskColor
+}
+
 enum Disk: Int {
     case White
     case Black
@@ -32,7 +38,16 @@ struct Board: Equatable {
         self.taken = taken
     }
     
-    mutating func add(field: Field) {
+    mutating func add(field: Field) throws {
+        guard taken.filter({ $0.x == field.x && $0.y == field.y }).isEmpty
+        else { throw ReversiError.positionTaken }
+        
+        let blackDiskCount = taken.filter({ $0.disk == Disk.Black }).count
+        let whiteDikCount = taken.filter({ $0.disk == Disk.White }).count
+        guard ((blackDiskCount == whiteDikCount) && field.disk == Disk.Black) ||
+              ((blackDiskCount > whiteDikCount) && field.disk == Disk.White)
+        else { throw ReversiError.incorrectDiskColor }
+        
         taken.append(field)
     }
     
@@ -53,8 +68,14 @@ class Reversi {
         board = Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])
     }
     
-    func move(field: Field) {
-        board.add(field: field)
+    func move(field: Field) throws {
+        do {
+            try board.add(field: field)
+        }
+        catch let err
+        {
+            throw err
+        }
     }
 }
 
@@ -73,17 +94,35 @@ class ReversiSpec: QuickSpec {
         
         describe("first move") {
             
-            it("should add disk to game board at specified position") {
-                let game = Reversi()
-                game.move(field: Field(x: 5, y: 4, disk: .Black))
-                
-                expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
-                                                          Field(x: 3, y: 4, disk: .Black),
-                                                          Field(x: 4, y: 3, disk: .Black),
-                                                          Field(x: 4, y: 4, disk: .White),
-                                                          Field(x: 5, y: 4, disk: .Black),])))
+            context("valid move")
+            {
+                it("should add disk to game board at specified position") {
+                    let game = Reversi()
+                    try! game.move(field: Field(x: 5, y: 4, disk: .Black))
+                    
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
+                                                              Field(x: 3, y: 4, disk: .Black),
+                                                              Field(x: 4, y: 3, disk: .Black),
+                                                              Field(x: 4, y: 4, disk: .White),
+                                                              Field(x: 5, y: 4, disk: .Black),])))
+                }
             }
-            // HOMEWORK
+            context("invalid move")
+            {
+                it("should throw error when attempt to add disk at taken position")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 4, y: 4, disk: .Black))}
+                        .to(throwError(ReversiError.positionTaken))
+                }
+                
+                it("should throw error when attempt to add white disk")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 5, y: 4, disk: .White))}
+                        .to(throwError(ReversiError.incorrectDiskColor))
+                }
+            }
         }
         
     }
