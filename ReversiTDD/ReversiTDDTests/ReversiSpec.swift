@@ -72,6 +72,7 @@ class Reversi {
             Field(x: .e, y: ._4, disk: .White),
             Field(x: .e, y: ._5, disk: .Black)
         ])
+        currentPlayer = .White
     }
 }
 
@@ -114,6 +115,12 @@ class ReversiSpec: QuickSpec {
                             Field(x: .e, y: ._4, disk: .White),
                             Field(x: .e, y: ._5, disk: .Black)
                         ])))
+                    }
+
+                    it("changes current player to white") {
+                        game.put(x: .d, y: ._6)
+
+                        expect(game.currentPlayer).to(equal(Disk.White))
                     }
                 }
             }
