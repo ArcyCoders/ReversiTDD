@@ -10,14 +10,22 @@ import Foundation
 import Quick
 import Nimble
 
+enum Vertical: Int {
+    case _1, _2, _3, _4, _5, _6, _7, _8
+}
+
+enum Horizontal: Int {
+    case a, b, c, d, e, f, g, h
+}
+
 enum Disk: Int {
     case White
     case Black
 }
 
 struct Field: Equatable {
-    let x: Int
-    let y: Int
+    let x: Horizontal
+    let y: Vertical
     let disk: Disk?
     
     static func == (lhs: Field, rhs: Field) -> Bool {
@@ -46,7 +54,12 @@ class Reversi {
     var board: Board
     
     init() {
-        board = Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])
+        board = Board(taken: [
+            Field(x: .d, y: ._4, disk: .Black),
+            Field(x: .d, y: ._5, disk: .White),
+            Field(x: .e, y: ._4, disk: .White),
+            Field(x: .e, y: ._5, disk: .Black)
+        ])
     }
 }
 
@@ -58,7 +71,12 @@ class ReversiSpec: QuickSpec {
             it("has 4 disk in a starting possition") {
                 let game = Reversi()
                 
-                expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])))
+                expect(game.board).to(equal(Board(taken: [
+                    Field(x: .d, y: ._4, disk: .Black),
+                    Field(x: .d, y: ._5, disk: .White),
+                    Field(x: .e, y: ._4, disk: .White),
+                    Field(x: .e, y: ._5, disk: .Black)
+                ])))
             }
             
         }
