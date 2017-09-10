@@ -14,6 +14,8 @@ import Foundation
 import Quick
 import Nimble
 
+// TODO: - handle move error
+
 enum Disk: Int {
     case White
     case Black
@@ -126,6 +128,10 @@ class ReversiSpec: QuickSpec {
         // 1. performed by dark
         // 2. must c4, d3, e6, f5
         // 3. must flip white disk between dark ones
+        // Result:
+        // 1. 5 total disks on board
+        // 2. 4 black disks on board
+        // 3. 1 white disk on board
         describe("first move") {
             beforeEach {
                 try? game.move(to: Field(x: 2, y: 3, disk: .Black))
