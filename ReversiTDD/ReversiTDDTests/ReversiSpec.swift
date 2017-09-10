@@ -15,6 +15,7 @@ enum ReversiError: Error
     case positionTaken
     case incorrectDiskColor
     case noAdjacentDisks
+    case noDisksToTurn
 }
 
 enum Disk: Int {
@@ -59,11 +60,56 @@ struct Board: Equatable {
         }).isEmpty
         else { throw ReversiError.noAdjacentDisks }
         
+        guard !detectDisksToRotate(field: field).isEmpty
+        else { throw ReversiError.noDisksToTurn }
+    
         taken.append(field)
     }
     
     static func == (lhs: Board, rhs: Board) -> Bool {
         return lhs.taken == rhs.taken
+    }
+    
+    func detectDisksToRotate(field: Field) -> Array<Field>
+    {
+        let adjacentDisks = taken.filter({
+            $0.x == field.x && (($0.y == field.y + 1) || ($0.y == field.y - 1)) ||
+            $0.y == field.y && (($0.x == field.x + 1) || ($0.x == field.x - 1)) ||
+            $0.x + 1 == field.x && $0.y + 1 == field.y ||
+            $0.x + 1 == field.x && $0.y - 1 == field.y ||
+            $0.x - 1 == field.x && $0.y + 1 == field.y ||
+            $0.x - 1 == field.x && $0.y - 1 == field.y
+        })
+        
+        var disksToRotate = Array<Field>()
+        let oppositeAdjacentDisks = adjacentDisks.filter({ $0.disk != field.disk })
+        oppositeAdjacentDisks.forEach
+        {
+            let delta = (x: $0.x - field.x, y: $0.y - field.y)
+            
+            var disks = Array<Field>()
+            var nextDisk: Field? = $0
+            while true
+            {
+                guard let d = nextDisk else { break }
+                disks.append(d)
+                nextDisk = fieldAt(x: d.x + delta.x, y: d.y + delta.y)
+                
+                if nextDisk == nil { break }
+                if nextDisk?.disk == field.disk
+                {
+                    disksToRotate.append(contentsOf: disks)
+                    break
+                }
+            }
+        }
+        
+        return disksToRotate
+    }
+    
+    func fieldAt(x: Int, y: Int) -> Field?
+    {
+        return taken.filter({ $0.x == x && $0.y == y}).first
     }
 }
 
@@ -109,7 +155,8 @@ class ReversiSpec: QuickSpec {
             {
                 it("should add disk to game board at specified position") {
                     let game = Reversi()
-                    try! game.move(field: Field(x: 5, y: 4, disk: .Black))
+                    
+                    expect { try game.move(field: Field(x: 5, y: 4, disk: .Black)) }.notTo(throwError())
                     
                     expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
                                                               Field(x: 3, y: 4, disk: .Black),
@@ -134,11 +181,29 @@ class ReversiSpec: QuickSpec {
                         .to(throwError(ReversiError.incorrectDiskColor))
                 }
                 
-                it("should throw an error when attmpt to add disk at position with no adjacent disks")
+                it("should throw an error when attempt to add disk at position with no adjacent disks")
                 {
                     let game = Reversi()
                     expect { try game.move(field: Field(x: 1, y: 1, disk: .Black))}
                         .to(throwError(ReversiError.noAdjacentDisks))
+                }
+                
+                it("should throw an error when attempt to add disk at position without possibility to turn other disks")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 2, y: 4, disk: .Black))}
+                        .to(throwError(ReversiError.noDisksToTurn))
+                    expect { try game.move(field: Field(x: 2, y: 5, disk: .Black))}
+                        .to(throwError(ReversiError.noDisksToTurn))
+                    expect { try game.move(field: Field(x: 3, y: 5, disk: .Black))}
+                        .to(throwError(ReversiError.noDisksToTurn))
+                    
+                    expect { try game.move(field: Field(x: 4, y: 2, disk: .Black))}
+                        .to(throwError(ReversiError.noDisksToTurn))
+                    expect { try game.move(field: Field(x: 5, y: 2, disk: .Black))}
+                        .to(throwError(ReversiError.noDisksToTurn))
+                    expect { try game.move(field: Field(x: 5, y: 3, disk: .Black))}
+                        .to(throwError(ReversiError.noDisksToTurn))                    
                 }
             }
         }
