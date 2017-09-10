@@ -30,26 +30,10 @@ struct Field: Equatable {
 }
 
 class Board: Equatable {
-    enum ApplyMoveError: Error {
-        case fieldAlreadyTaken
-    }
-
-    fileprivate var taken: [Field]
-
-    var numberOfFieldsTaken: Int {
-        return taken.count
-    }
+    var taken: [Field]
     
     init(taken: [Field]) {
         self.taken = taken
-    }
-
-    func move(to targetField: Field) throws {
-        if taken.contains(where: { $0.x == targetField.x && $0.y == targetField.y }) {
-            throw ApplyMoveError.fieldAlreadyTaken
-        }
-
-        taken.append(targetField)
     }
 
     static func == (lhs: Board, rhs: Board) -> Bool {
@@ -63,7 +47,9 @@ func == (tuple1:(Int, Int, Disk),tuple2:(Int, Int, Disk)) -> Bool
 }
 
 class Reversi {
-    var numberOfFieldsTaken: Int { return board.numberOfFieldsTaken }
+    enum MoveError: Error {
+        case fieldAlreadyTaken
+    }
 
     fileprivate(set) var board: Board
     
@@ -72,18 +58,33 @@ class Reversi {
     }
 
     func move(to targetField: Field) throws {
-        try board.move(to: targetField)
+        if board.taken.contains(where: { $0.x == targetField.x && $0.y == targetField.y }) {
+            throw MoveError.fieldAlreadyTaken
+        }
+
+        board.taken.append(targetField)
+    }
+
+    func getNumberOfFieldsTaken(ofType type: Disk? = nil) -> Int {
+        if let type = type {
+            return board.taken.filter { $0.disk == type }.count
+        }
+
+        return board.taken.count
     }
 }
 
 class ReversiSpec: QuickSpec {
     override func spec() {
-        
+        var game: Reversi!
+
+        beforeEach {
+            game = Reversi()
+        }
+
         describe("start") {
             
             it("has 4 disk in a starting position") {
-                let game = Reversi()
-                
                 expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])))
             }
             
@@ -94,12 +95,17 @@ class ReversiSpec: QuickSpec {
         // 2. must c4, d3, e6, f5
         // 3. must flip white disk between dark ones
         describe("first move") {
+            beforeEach {
+                try? game.move(to: Field(x: 2, y: 3, disk: .Black))
+            }
 
             it("has total of 5 disks on board") {
-                let game = Reversi()
-                try? game.move(to: Field(x: 2, y: 3, disk: .Black))
 
-                expect(game.numberOfFieldsTaken).to(equal(5))
+                expect(game.getNumberOfFieldsTaken()).to(equal(5))
+            }
+
+            it("has total of 4 black disks on board") {
+                expect(game.getNumberOfFieldsTaken(ofType: .Black)).to(equal(4))
             }
         }
     }
