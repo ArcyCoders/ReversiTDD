@@ -23,13 +23,17 @@ enum Disk: Int {
     case Black
 }
 
-struct Field: Equatable {
+struct Field: Equatable, Hashable {
     let x: Int
     let y: Int
     let disk: Disk?
     
     static func == (lhs: Field, rhs: Field) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.disk == rhs.disk
+    }
+    
+    public var hashValue: Int {
+        return "x:\(x);y:\(y);disk:\(String(describing: disk))".hashValue
     }
 }
 
@@ -60,14 +64,18 @@ struct Board: Equatable {
         }).isEmpty
         else { throw ReversiError.noAdjacentDisks }
         
-        guard !detectDisksToRotate(field: field).isEmpty
+        let disksToRotate = detectDisksToRotate(field: field)
+        guard !disksToRotate.isEmpty
         else { throw ReversiError.noDisksToTurn }
     
+        taken = taken.filter { !disksToRotate.contains($0) }
+        taken.append(contentsOf: disksToRotate.map({ Field(x: $0.x, y: $0.y, disk: field.disk) }) )
+        
         taken.append(field)
     }
     
     static func == (lhs: Board, rhs: Board) -> Bool {
-        return lhs.taken == rhs.taken
+        return Set(lhs.taken) == Set(rhs.taken)
     }
     
     func detectDisksToRotate(field: Field) -> Array<Field>
@@ -156,15 +164,60 @@ class ReversiSpec: QuickSpec {
                 it("should add disk to game board at specified position") {
                     let game = Reversi()
                     
-                    expect { try game.move(field: Field(x: 5, y: 4, disk: .Black)) }.notTo(throwError())
-                    
-                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
+                    let fieldToAdd =  Field(x: 5, y: 4, disk: .Black)
+                    expect { try game.move(field: fieldToAdd) }.notTo(throwError())
+                    expect(game.board.fieldAt(x: 5, y: 4)).to(equal(fieldToAdd))
+                }
+                
+                it("should rotate disks after valid move [2,3]")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 2, y: 3, disk: .Black)) }.notTo(throwError())
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .Black),
                                                               Field(x: 3, y: 4, disk: .Black),
                                                               Field(x: 4, y: 3, disk: .Black),
                                                               Field(x: 4, y: 4, disk: .White),
+                                                              
+                                                              Field(x: 2, y: 3, disk: .Black),])))
+                }
+                
+                it("should rotate disks after valid move [3,2]")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 3, y: 2, disk: .Black)) }.notTo(throwError())
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .Black),
+                                                              Field(x: 3, y: 4, disk: .Black),
+                                                              Field(x: 4, y: 3, disk: .Black),
+                                                              Field(x: 4, y: 4, disk: .White),
+                                                              
+                                                              Field(x: 3, y: 2, disk: .Black),])))
+                }
+                
+                it("should rotate disks after valid move [5,4]")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 5, y: 4, disk: .Black)) }.notTo(throwError())
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
+                                                              Field(x: 3, y: 4, disk: .Black),
+                                                              Field(x: 4, y: 3, disk: .Black),
+                                                              Field(x: 4, y: 4, disk: .Black),
+                                                              
                                                               Field(x: 5, y: 4, disk: .Black),])))
                 }
+                
+                it("should rotate disks after valid move [4,5]")
+                {
+                    let game = Reversi()
+                    expect { try game.move(field: Field(x: 4, y: 5, disk: .Black)) }.notTo(throwError())
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
+                                                              Field(x: 3, y: 4, disk: .Black),
+                                                              Field(x: 4, y: 3, disk: .Black),
+                                                              Field(x: 4, y: 4, disk: .Black),
+                                                              
+                                                              Field(x: 4, y: 5, disk: .Black),])))
+                }
             }
+            
             context("invalid move")
             {
                 it("should throw error when attempt to add disk at taken position")
@@ -203,7 +256,7 @@ class ReversiSpec: QuickSpec {
                     expect { try game.move(field: Field(x: 5, y: 2, disk: .Black))}
                         .to(throwError(ReversiError.noDisksToTurn))
                     expect { try game.move(field: Field(x: 5, y: 3, disk: .Black))}
-                        .to(throwError(ReversiError.noDisksToTurn))                    
+                        .to(throwError(ReversiError.noDisksToTurn))
                 }
             }
         }
