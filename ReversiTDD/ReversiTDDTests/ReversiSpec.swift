@@ -18,7 +18,7 @@ enum Horizontal: Int {
     case a, b, c, d, e, f, g, h
 }
 
-enum Player: Int {
+enum Player: Int, CustomStringConvertible {
     case White
     case Black
 
@@ -27,6 +27,15 @@ enum Player: Int {
             return .Black
         } else {
             return .White
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .White:
+            return "White"
+        case .Black:
+            return "Black"
         }
     }
 }
@@ -54,7 +63,7 @@ struct Move: Equatable {
     }
 }
 
-struct Board: Equatable {
+struct Board: Equatable, CustomStringConvertible {
     private var board: [[Player?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     init(taken: [Move]) {
@@ -66,7 +75,7 @@ struct Board: Equatable {
     mutating func put(move: Move) {
         board[move.point.x.rawValue][move.point.y.rawValue] = move.takenBy
     }
-    
+
     static func == (lhs: Board, rhs: Board) -> Bool {
         for i in 0..<8 {
             for j in 0..<8 {
@@ -76,6 +85,18 @@ struct Board: Equatable {
             }
         }
         return true
+    }
+
+    var description: String {
+        return board.map { subarray in
+            return subarray.map { value in
+                if let value = value {
+                    return value.description
+                } else {
+                    return "Empty"
+                }
+            }.joined(separator: " ")
+        }.joined(separator: "\n")
     }
 }
 
