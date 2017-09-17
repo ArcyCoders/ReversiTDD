@@ -188,6 +188,24 @@ class ReversiSpec: QuickSpec {
             }
         }
 
+        describe("black player makes first move to E6") {
+            beforeEach {
+                game.move(to: Field(column: .e, row: ._6, disk: .black))
+            }
+
+            it("has 5 disks on board") {
+                expect(board.takenFieldsCount).to(equal(5))
+            }
+
+            it("has black disk on position E6") {
+                expect(board.getField(column: .e, row: ._6)?.disk).to(equal(Disk.black))
+            }
+
+            it("has black disk on position E5") {
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk.black))
+            }
+        }
+
         // player makes a move
         // empty field
         // next to field with disk of opposite player
