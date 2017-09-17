@@ -34,14 +34,27 @@ struct Field: Equatable {
 }
 
 struct Board: Equatable {
-    let taken: [Field]
+    private var board: [[Player?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     init(taken: [Field]) {
-        self.taken = taken
+        taken.forEach { field in
+            put(move: field)
+        }
+    }
+
+    mutating func put(move: Field) {
+        board[move.x.rawValue][move.y.rawValue] = move.takenBy
     }
     
     static func == (lhs: Board, rhs: Board) -> Bool {
-        return lhs.taken == rhs.taken
+        for i in 0..<8 {
+            for j in 0..<8 {
+                if lhs.board[i][j] != rhs.board[i][j] {
+                    return false
+                }
+            }
+        }
+        return true
     }
 }
 
@@ -60,13 +73,8 @@ class Reversi {
     }
 
     func put(x: Horizontal, y: Vertical) {
-        board = Board(taken:[
-            Field(x: .d, y: ._4, takenBy: .Black),
-            Field(x: .d, y: ._5, takenBy: .Black),
-            Field(x: .d, y: ._6, takenBy: .Black),
-            Field(x: .e, y: ._4, takenBy: .White),
-            Field(x: .e, y: ._5, takenBy: .Black)
-        ])
+        board.put(move: Field(x: .d, y: ._5, takenBy: currentPlayer))
+        board.put(move: Field(x: .d, y: ._6, takenBy: currentPlayer))
         currentPlayer = .White
     }
 }
