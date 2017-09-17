@@ -135,33 +135,34 @@ class ReversiSpec: QuickSpec {
         {
             typealias Scenario = (moves: Array<Field>, board: Board)
             let scenarios: Array<Scenario> = [
+                //Black[2,3]
                 ([Field(x: 2, y: 3, disk: .Black), Field(x: 2, y: 2, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 4, y: 4, disk: .White), Field(x: 2, y: 2, disk: .White),
                                                                                                    Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 2, y: 3, disk: .Black), ])),
                 ([Field(x: 2, y: 3, disk: .Black), Field(x: 2, y: 4, disk: .White)], Board(taken: [Field(x: 2, y: 4, disk: .White), Field(x: 3, y: 4, disk: .White), Field(x: 4, y: 4, disk: .White),
                                                                                                    Field(x: 3, y: 3, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 2, y: 3, disk: .Black), ])),
                 ([Field(x: 2, y: 3, disk: .Black), Field(x: 4, y: 2, disk: .White)], Board(taken: [Field(x: 4, y: 3, disk: .White), Field(x: 4, y: 4, disk: .White), Field(x: 4, y: 2, disk: .White),
                                                                                                    Field(x: 3, y: 3, disk: .Black), Field(x: 3, y: 4, disk: .Black), Field(x: 2, y: 3, disk: .Black), ])),
-                //
+                //Black[3,2]
                 ([Field(x: 3, y: 2, disk: .Black), Field(x: 2, y: 2, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 4, y: 4, disk: .White), Field(x: 2, y: 2, disk: .White),
                                                                                                    Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 3, y: 2, disk: .Black), ])),
                 ([Field(x: 3, y: 2, disk: .Black), Field(x: 2, y: 4, disk: .White)], Board(taken: [Field(x: 2, y: 4, disk: .White), Field(x: 3, y: 4, disk: .White), Field(x: 4, y: 4, disk: .White),
                                                                                                    Field(x: 3, y: 3, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 3, y: 2, disk: .Black), ])),
                 ([Field(x: 3, y: 2, disk: .Black), Field(x: 4, y: 2, disk: .White)], Board(taken: [Field(x: 4, y: 3, disk: .White), Field(x: 4, y: 4, disk: .White), Field(x: 4, y: 2, disk: .White),
                                                                                                    Field(x: 3, y: 3, disk: .Black), Field(x: 3, y: 4, disk: .Black), Field(x: 3, y: 2, disk: .Black), ])),
-                //
+                //Black[4,5]
                 ([Field(x: 4, y: 5, disk: .Black), Field(x: 3, y: 5, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .White), Field(x: 3, y: 5, disk: .White),
                                                                                                    Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .Black), Field(x: 4, y: 5, disk: .Black), ])),
                 ([Field(x: 4, y: 5, disk: .Black), Field(x: 5, y: 5, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 4, y: 4, disk: .White), Field(x: 5, y: 5, disk: .White),
                                                                                                    Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 5, disk: .Black), ])),
                 ([Field(x: 4, y: 5, disk: .Black), Field(x: 5, y: 3, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 4, y: 3, disk: .White), Field(x: 5, y: 3, disk: .White),
                                                                                                    Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 4, disk: .Black), Field(x: 4, y: 5, disk: .Black), ])),
-                //
+                //Black[5,4]
                 ([Field(x: 5, y: 4, disk: .Black), Field(x: 3, y: 5, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .White), Field(x: 3, y: 5, disk: .White),
                                                                                                    Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .Black), Field(x: 5, y: 4, disk: .Black), ])),
                 ([Field(x: 5, y: 4, disk: .Black), Field(x: 5, y: 5, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 4, y: 4, disk: .White), Field(x: 5, y: 5, disk: .White),
                                                                                                    Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 5, y: 4, disk: .Black), ])),
                 ([Field(x: 5, y: 4, disk: .Black), Field(x: 5, y: 3, disk: .White)], Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 4, y: 3, disk: .White), Field(x: 5, y: 3, disk: .White),
-                                                                                                   Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 4, disk: .Black), Field(x: 5, y: 4, disk: .Black), ])),                
+                                                                                                   Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 4, disk: .Black), Field(x: 5, y: 4, disk: .Black), ])),
             ]//End of scenarios
             
             it("should place disk in proper place")
@@ -174,7 +175,8 @@ class ReversiSpec: QuickSpec {
                     scenario.moves.forEach
                     {
                         field in
-                        expect { try game.move(field: field) }.notTo(throwError())
+                        expect { try game.move(field: field) }.notTo(throwError(), description: "Failed add field [\(field.x), \(field.y), \(String(describing: field.disk?.stringValue))]")
+                        expect(game.board.fieldAt(x: field.x, y: field.y)).to(equal(field))
                     }
                     
                     expect(game.board).to(equal(scenario.board))

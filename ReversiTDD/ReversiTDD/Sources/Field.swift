@@ -11,6 +11,14 @@ import UIKit
 enum Disk: Int {
     case White
     case Black
+    
+    var stringValue: String {
+        switch self
+        {
+            case .Black: return "Black"
+            case .White: return "White"
+        }
+    }
 }
 
 class Field: Equatable, Hashable {
