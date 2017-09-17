@@ -21,6 +21,14 @@ enum Horizontal: Int {
 enum Player: Int {
     case White
     case Black
+
+    func other() -> Player {
+        if case .White = self {
+            return .Black
+        } else {
+            return .White
+        }
+    }
 }
 
 struct Point: Equatable {
@@ -93,10 +101,12 @@ class Reversi {
             board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
         } else if case .e = x, case ._3 = y {
             board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
-        } else {
+        } else if case .f = x, case ._4 = y {
             board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
+        } else if case .e = x, case ._6 = y {
+            board.put(move: Move(x: .e, y: ._5, takenBy: currentPlayer))
         }
-        currentPlayer = .White
+        currentPlayer = currentPlayer.other()
     }
 }
 
@@ -125,90 +135,109 @@ class ReversiSpec: QuickSpec {
             }
             
         }
-        
-        describe("first move") {
-            context("valid") {
-                context("d6") {
-                    it("updates the board") {
-                        game.put(x: .d, y: ._6)
 
+        describe("valid moves") {
+            describe("d6 - Black") {
+
+                beforeEach {
+                    game.put(x: .d, y: ._6)
+                }
+
+                it("updates the board") {
+                    expect(game.board).to(equal(Board(taken: [
+                        Move(x: .d, y: ._4, takenBy: .Black),
+                        Move(x: .d, y: ._5, takenBy: .Black),
+                        Move(x: .d, y: ._6, takenBy: .Black),
+                        Move(x: .e, y: ._4, takenBy: .White),
+                        Move(x: .e, y: ._5, takenBy: .Black)
+                    ])))
+                }
+
+                it("changes current player to white") {
+                    expect(game.currentPlayer).to(equal(Player.White))
+                }
+
+                describe("e6 - White") {
+                    beforeEach {
+                        game.put(x: .e, y: ._6)
+                    }
+
+                    it("updates the board") {
                         expect(game.board).to(equal(Board(taken: [
                             Move(x: .d, y: ._4, takenBy: .Black),
                             Move(x: .d, y: ._5, takenBy: .Black),
                             Move(x: .d, y: ._6, takenBy: .Black),
                             Move(x: .e, y: ._4, takenBy: .White),
-                            Move(x: .e, y: ._5, takenBy: .Black)
+                            Move(x: .e, y: ._5, takenBy: .White),
+                            Move(x: .e, y: ._6, takenBy: .White)
                         ])))
                     }
 
-                    it("changes current player to white") {
-                        game.put(x: .d, y: ._6)
-
-                        expect(game.currentPlayer).to(equal(Player.White))
-                    }
-                }
-
-                context("c5") {
-                    it("updates the board") {
-                        game.put(x: .c, y: ._5)
-
-                        expect(game.board).to(equal(Board(taken: [
-                            Move(x: .c, y: ._5, takenBy: .Black),
-                            Move(x: .d, y: ._4, takenBy: .Black),
-                            Move(x: .d, y: ._5, takenBy: .Black),
-                            Move(x: .e, y: ._4, takenBy: .White),
-                            Move(x: .e, y: ._5, takenBy: .Black)
-                        ])))
-                    }
-
-                    it("changes current player to white") {
-                        game.put(x: .d, y: ._6)
-
-                        expect(game.currentPlayer).to(equal(Player.White))
-                    }
-                }
-
-                context("e3") {
-                    it("updates the board") {
-                        game.put(x: .e, y: ._3)
-
-                        expect(game.board).to(equal(Board(taken: [
-                            Move(x: .d, y: ._4, takenBy: .Black),
-                            Move(x: .d, y: ._5, takenBy: .White),
-                            Move(x: .e, y: ._3, takenBy: .Black),
-                            Move(x: .e, y: ._4, takenBy: .Black),
-                            Move(x: .e, y: ._5, takenBy: .Black)
-                        ])))
-                    }
-
-                    it("changes current player to white") {
-                        game.put(x: .d, y: ._6)
-
-                        expect(game.currentPlayer).to(equal(Player.White))
-                    }
-                }
-                
-                context("f4") {
-                    it("updates the board") {
-                        game.put(x: .f, y: ._4)
-
-                        expect(game.board).to(equal(Board(taken: [
-                            Move(x: .d, y: ._4, takenBy: .Black),
-                            Move(x: .d, y: ._5, takenBy: .White),
-                            Move(x: .e, y: ._4, takenBy: .Black),
-                            Move(x: .e, y: ._5, takenBy: .Black),
-                            Move(x: .f, y: ._4, takenBy: .Black)
-                        ])))
-                    }
-
-                    it("changes current player to white") {
-                        game.put(x: .d, y: ._6)
-
-                        expect(game.currentPlayer).to(equal(Player.White))
+                    it("sets the current player to black") {
+                        expect(game.currentPlayer).to(equal(Player.Black))
                     }
                 }
             }
+
+            describe("c5 - Black") {
+                it("updates the board") {
+                    game.put(x: .c, y: ._5)
+
+                    expect(game.board).to(equal(Board(taken: [
+                        Move(x: .c, y: ._5, takenBy: .Black),
+                        Move(x: .d, y: ._4, takenBy: .Black),
+                        Move(x: .d, y: ._5, takenBy: .Black),
+                        Move(x: .e, y: ._4, takenBy: .White),
+                        Move(x: .e, y: ._5, takenBy: .Black)
+                    ])))
+                }
+
+                it("changes current player to white") {
+                    game.put(x: .d, y: ._6)
+
+                    expect(game.currentPlayer).to(equal(Player.White))
+                }
+            }
+
+            describe("e3 - Black") {
+                it("updates the board") {
+                    game.put(x: .e, y: ._3)
+
+                    expect(game.board).to(equal(Board(taken: [
+                        Move(x: .d, y: ._4, takenBy: .Black),
+                        Move(x: .d, y: ._5, takenBy: .White),
+                        Move(x: .e, y: ._3, takenBy: .Black),
+                        Move(x: .e, y: ._4, takenBy: .Black),
+                        Move(x: .e, y: ._5, takenBy: .Black)
+                    ])))
+                }
+
+                it("changes current player to white") {
+                    game.put(x: .d, y: ._6)
+
+                    expect(game.currentPlayer).to(equal(Player.White))
+                }
+            }
+
+            describe("f4 - Black") {
+                it("updates the board") {
+                    game.put(x: .f, y: ._4)
+
+                    expect(game.board).to(equal(Board(taken: [
+                        Move(x: .d, y: ._4, takenBy: .Black),
+                        Move(x: .d, y: ._5, takenBy: .White),
+                        Move(x: .e, y: ._4, takenBy: .Black),
+                        Move(x: .e, y: ._5, takenBy: .Black),
+                        Move(x: .f, y: ._4, takenBy: .Black)
+                    ])))
+                }
+
+                it("changes current player to white") {
+                    game.put(x: .d, y: ._6)
+
+                    expect(game.currentPlayer).to(equal(Player.White))
+                }
+            }
         }
-        
     }
 }
