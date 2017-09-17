@@ -21,7 +21,7 @@ enum Disk: Int {
     case Black
 }
 
-struct Field: Equatable {
+struct Field: Equatable, Hashable {
     let x: Int
     let y: Int
     let disk: Disk?
@@ -29,18 +29,37 @@ struct Field: Equatable {
     static func == (lhs: Field, rhs: Field) -> Bool {
         return lhs.x == rhs.x && lhs.y == rhs.y && lhs.disk == rhs.disk
     }
+
+    public var hashValue: Int {
+        let diskValue = disk?.rawValue ?? 0
+
+        return "x:\(x)y:\(y)disk:\(diskValue)".hashValue
+    }
 }
 
 class Board: Equatable {
     var taken: [Field]
-    
-    init(taken: [Field]) {
+
+    var takenFieldsCount: Int {
+        return taken.count
+    }
+
+    init(taken: [Field] = []) {
         self.taken = taken
+    }
+
+    func add(field: Field) {
+
+        taken.append(field)
     }
 
     func getField(x: Int, y: Int) -> Field? {
 
         return taken.filter { $0.x == x && $0.y == y }.first
+    }
+
+    func clear() {
+        taken.removeAll()
     }
 
     func replace(sourceField: Field, with targetField: Field) {
@@ -64,10 +83,18 @@ class Reversi {
         case fieldAlreadyTaken
     }
 
-    fileprivate(set) var board: Board
+    fileprivate var board: Board
     
-    init() {
-        board = Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])
+    init(withBoard board: Board = Board()) {
+        self.board = board
+    }
+
+    public func start() {
+        board.clear()
+        board.add(field: Field(x: 3, y: 3, disk: .White))
+        board.add(field: Field(x: 3, y: 4, disk: .Black))
+        board.add(field: Field(x: 4, y: 3, disk: .Black))
+        board.add(field: Field(x: 4, y: 4, disk: .White))
     }
 
     public func move(to targetField: Field) throws {
@@ -110,45 +137,63 @@ class Reversi {
 
 class ReversiSpec: QuickSpec {
     override func spec() {
+        var board: Board!
         var game: Reversi!
 
         beforeEach {
-            game = Reversi()
+            board = Board()
         }
 
         describe("start") {
-            
-            it("has 4 disk in a starting position") {
-                expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])))
-            }
-            
-        }
 
-        // Rules:
-        // 1. performed by dark
-        // 2. must c4, d3, e6, f5
-        // 3. must flip white disk between dark ones
-        // Result:
-        // 1. 5 total disks on board
-        // 2. 4 black disks on board
-        // 3. 1 white disk on board
-        describe("first move") {
             beforeEach {
-                try? game.move(to: Field(x: 2, y: 3, disk: .Black))
+                game = Reversi(withBoard: board)
+                game.start()
             }
-
-            it("has total of 5 disks on board") {
-
-                expect(game.getNumberOfFieldsTaken()).to(equal(5))
-            }
-
-            it("has total of 4 black disks on board") {
-                expect(game.getNumberOfFieldsTaken(ofType: .Black)).to(equal(4))
-            }
-
-            it("has total of 1 white disks on board") {
-                expect(game.getNumberOfFieldsTaken(ofType: .White)).to(equal(1))
+            
+            it("has 4 disks in a starting position") {
+                expect(board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])))
             }
         }
+
+        describe("black player makes first move to D3") {
+
+            beforeEach {
+                game = Reversi(withBoard: board)
+                game.start()
+            }
+
+            it("has black as current player") {
+                // TODO:
+            }
+
+            it("has 5 disks on board") {
+                expect(board.takenFieldsCount).to(equal(5))
+            }
+
+            it("has black disk on position D3") {
+                expect(board.getField(x: 3, y: 2)?.disk).to(equal(Disk.Black))
+            }
+
+            it("has black disk on position D4") {
+                expect(board.getField(x: 3, y: 3)?.disk).to(equal(Disk.Black))
+            }
+        }
+
+        // player makes a move
+        // empty field
+        // next to field with disk of opposite player
+        // in vertical, horizontal
+
+
+        // start game
+        // select player
+        // if current can make move
+        //  forfeit move
+        // if no player can make move
+        //  make move
+        // else
+        //  finish game
+        // who won, who lost?
     }
 }
