@@ -76,9 +76,12 @@ class Reversi {
         if case .d = x, case ._6 = y {
             board.put(move: Field(x: .d, y: ._5, takenBy: currentPlayer))
             board.put(move: Field(x: .d, y: ._6, takenBy: currentPlayer))
-        } else {
+        } else if case .c = x, case ._5 = y {
             board.put(move: Field(x: .c, y: ._5, takenBy: currentPlayer))
             board.put(move: Field(x: .d, y: ._5, takenBy: currentPlayer))
+        } else {
+            board.put(move: Field(x: .e, y: ._3, takenBy: currentPlayer))
+            board.put(move: Field(x: .e, y: ._4, takenBy: currentPlayer))
         }
         currentPlayer = .White
     }
@@ -141,6 +144,26 @@ class ReversiSpec: QuickSpec {
                             Field(x: .d, y: ._4, takenBy: .Black),
                             Field(x: .d, y: ._5, takenBy: .Black),
                             Field(x: .e, y: ._4, takenBy: .White),
+                            Field(x: .e, y: ._5, takenBy: .Black)
+                        ])))
+                    }
+
+                    it("changes current player to white") {
+                        game.put(x: .d, y: ._6)
+
+                        expect(game.currentPlayer).to(equal(Player.White))
+                    }
+                }
+
+                context("e3") {
+                    it("updates the board") {
+                        game.put(x: .e, y: ._3)
+
+                        expect(game.board).to(equal(Board(taken: [
+                            Field(x: .d, y: ._4, takenBy: .Black),
+                            Field(x: .d, y: ._5, takenBy: .White),
+                            Field(x: .e, y: ._3, takenBy: .Black),
+                            Field(x: .e, y: ._4, takenBy: .Black),
                             Field(x: .e, y: ._5, takenBy: .Black)
                         ])))
                     }
