@@ -37,10 +37,6 @@ struct Field: Equatable, Hashable {
         return lhs.row == rhs.row && lhs.column == rhs.column && lhs.disk == rhs.disk
     }
 
-    func isOnTheSamePosition(as otherField: Field) -> Bool {
-        return row == otherField.row && column == otherField.column
-    }
-
     public var hashValue: Int {
         let diskValue = disk?.rawValue ?? 0
 
@@ -85,9 +81,6 @@ class Board: Equatable {
 }
 
 class Reversi {
-    enum MoveError: Error {
-        case fieldAlreadyTaken
-    }
 
     fileprivate var board: Board
     
@@ -103,11 +96,7 @@ class Reversi {
         board.add(field: Field(row: .e, column: ._5, disk: .white))
     }
 
-    public func move(to targetField: Field) throws {
-        if board.taken.contains(where: { $0.isOnTheSamePosition(as: targetField) }) {
-            throw MoveError.fieldAlreadyTaken
-        }
-
+    public func move(to targetField: Field) {
         board.taken.append(targetField)
 //        flipNeighbouringDisks(for: targetField.x, y: targetField.y)
     }
@@ -148,14 +137,11 @@ class ReversiSpec: QuickSpec {
 
         beforeEach {
             board = Board()
+            game = Reversi(withBoard: board)
+            game.start()
         }
 
         describe("start") {
-
-            beforeEach {
-                game = Reversi(withBoard: board)
-                game.start()
-            }
             
             it("has 4 disks in a starting position") {
                 expect(board).to(equal(Board(taken: [Field(row: .d, column: ._4, disk: .white),
@@ -168,8 +154,7 @@ class ReversiSpec: QuickSpec {
         describe("black player makes first move to D3") {
 
             beforeEach {
-                game = Reversi(withBoard: board)
-                game.start()
+                game.move(to: Field(row: .d, column: ._3, disk: .black))
             }
 
             it("has 5 disks on board") {
