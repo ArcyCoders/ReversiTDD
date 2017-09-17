@@ -224,9 +224,12 @@ class ReversiSpec: QuickSpec {
             }
 
             describe("c5 - Black") {
-                it("updates the board") {
-                    game.put(x: .c, y: ._5)
 
+                beforeEach {
+                    game.put(x: .c, y: ._5)
+                }
+
+                it("updates the board") {
                     expect(game.board).to(equal(Board(taken: [
                         Move(x: .c, y: ._5, takenBy: .Black),
                         Move(x: .d, y: ._4, takenBy: .Black),
@@ -237,9 +240,28 @@ class ReversiSpec: QuickSpec {
                 }
 
                 it("changes current player to white") {
-                    game.put(x: .d, y: ._6)
-
                     expect(game.currentPlayer).to(equal(Player.White))
+                }
+
+                describe("e6 - White") {
+                    beforeEach {
+                        game.put(x: .e, y: ._6)
+                    }
+
+                    it("updates the board") {
+                        expect(game.board).to(equal(Board(taken: [
+                            Move(x: .c, y: ._5, takenBy: .Black),
+                            Move(x: .d, y: ._4, takenBy: .Black),
+                            Move(x: .d, y: ._5, takenBy: .Black),
+                            Move(x: .e, y: ._4, takenBy: .White),
+                            Move(x: .e, y: ._5, takenBy: .White),
+                            Move(x: .e, y: ._6, takenBy: .White)
+                        ])))
+                    }
+
+                    it("sets the current player to black") {
+                        expect(game.currentPlayer).to(equal(Player.Black))
+                    }
                 }
             }
 
