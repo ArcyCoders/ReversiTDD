@@ -132,5 +132,82 @@ class ReversiSpec: QuickSpec {
             }
         }
         
+        describe("second move after placing black on [3,2] ")
+        {
+            var game: Reversi!
+            beforeEach {
+                game = Reversi()
+                expect{ try game.move(field: Field(x: 3, y: 2, disk: .Black)) }.notTo(throwError())
+            }
+            
+            it("should throw an error when attempt to add black disk")
+            {
+                expect { try game.move(field: Field(x: 2, y: 2, disk: .Black)) }
+                    .to(throwError(ReversiError.incorrectDiskColor))
+            }
+            
+            context("white move on [2,2]")
+            {
+                beforeEach {
+                    expect{ try game.move(field: Field(x: 2, y: 2, disk: .White))}.notTo(throwError())
+                }
+                
+                it("should add white disk at [2,2] on board") {
+                    expect(game.board.fieldAt(x: 2, y: 2)).to(equal(Field(x: 2, y: 2, disk: .White)))
+                }
+                
+                it("should rotate disks to white") {
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .White),
+                                                              Field(x: 3, y: 4, disk: .Black),
+                                                              Field(x: 4, y: 3, disk: .Black),
+                                                              Field(x: 4, y: 4, disk: .White),
+                                                              
+                                                              Field(x: 3, y: 2, disk: .Black),
+                                                              Field(x: 2, y: 2, disk: .White)])))
+                }
+            }
+            
+            context("white move on [2,4]")
+            {
+                beforeEach {
+                    expect{ try game.move(field: Field(x: 2, y: 4, disk: .White))}.notTo(throwError())
+                }
+                
+                it("should add white disk at [2,4] on board") {
+                    expect(game.board.fieldAt(x: 2, y: 4)).to(equal(Field(x: 2, y: 4, disk: .White)))
+                }
+                
+                it("should rotate disks to white") {
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .Black),
+                                                              Field(x: 3, y: 4, disk: .White),
+                                                              Field(x: 4, y: 3, disk: .Black),
+                                                              Field(x: 4, y: 4, disk: .White),
+                                                              
+                                                              Field(x: 3, y: 2, disk: .Black),
+                                                              Field(x: 2, y: 4, disk: .White)])))
+                }
+            }
+            
+            context("white move on [4,2]")
+            {
+                beforeEach {
+                    expect{ try game.move(field: Field(x: 4, y: 2, disk: .White))}.notTo(throwError())
+                }
+                
+                it("should add white disk at [4,2] on board") {
+                    expect(game.board.fieldAt(x: 4, y: 2)).to(equal(Field(x: 4, y: 2, disk: .White)))
+                }
+                
+                it("should rotate disks to white") {
+                    expect(game.board).to(equal(Board(taken: [Field(x: 3, y: 3, disk: .Black),
+                                                              Field(x: 3, y: 4, disk: .Black),
+                                                              Field(x: 4, y: 3, disk: .White),
+                                                              Field(x: 4, y: 4, disk: .White),
+                                                              
+                                                              Field(x: 3, y: 2, disk: .Black),
+                                                              Field(x: 4, y: 2, disk: .White)])))
+                }
+            }
+        }
     }
 }
