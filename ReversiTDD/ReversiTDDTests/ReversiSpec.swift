@@ -128,6 +128,8 @@ class Reversi {
             board.put(move: Move(x: .e, y: ._5, takenBy: currentPlayer))
         } else if case .c = x, case ._6 = y {
             board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
+        } else if case .f = x, case ._3 = y {
+            board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
         }
         currentPlayer = currentPlayer.other()
     }
@@ -287,9 +289,11 @@ class ReversiSpec: QuickSpec {
             }
 
             describe("e3 - Black") {
-                it("updates the board") {
+                beforeEach {
                     game.put(x: .e, y: ._3)
+                }
 
+                it("updates the board") {
                     expect(game.board).to(equal(Board(taken: [
                         Move(x: .d, y: ._4, takenBy: .Black),
                         Move(x: .d, y: ._5, takenBy: .White),
@@ -300,9 +304,28 @@ class ReversiSpec: QuickSpec {
                 }
 
                 it("changes current player to white") {
-                    game.put(x: .d, y: ._6)
-
                     expect(game.currentPlayer).to(equal(Player.White))
+                }
+
+                describe("f3 - White") {
+                    beforeEach {
+                        game.put(x: .f, y: ._3)
+                    }
+
+                    it("updates the board") {
+                        expect(game.board).to(equal(Board(taken: [
+                            Move(x: .d, y: ._4, takenBy: .Black),
+                            Move(x: .d, y: ._5, takenBy: .White),
+                            Move(x: .e, y: ._3, takenBy: .Black),
+                            Move(x: .e, y: ._4, takenBy: .White),
+                            Move(x: .e, y: ._5, takenBy: .Black),
+                            Move(x: .f, y: ._3, takenBy: .White),
+                        ])))
+                    }
+
+                    it("changes current player to white") {
+                        expect(game.currentPlayer).to(equal(Player.Black))
+                    }
                 }
             }
 
