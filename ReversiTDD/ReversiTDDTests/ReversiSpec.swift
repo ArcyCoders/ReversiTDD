@@ -10,51 +10,6 @@ import Foundation
 import Quick
 import Nimble
 
-enum Disk: Int {
-    case White
-    case Black
-}
-
-struct Field: Equatable {
-    let x: Int
-    let y: Int
-    let disk: Disk?
-    
-    static func == (lhs: Field, rhs: Field) -> Bool {
-        return lhs.x == rhs.x && lhs.y == rhs.y && lhs.disk == rhs.disk
-    }
-}
-
-struct Board: Equatable {
-    let taken: [Field]
-    
-    init(taken: [Field]) {
-        self.taken = taken
-    }
-    
-    static func == (lhs: Board, rhs: Board) -> Bool {
-        return lhs.taken == rhs.taken
-    }
-}
-
-func == (tuple1:(Int, Int, Disk),tuple2:(Int, Int, Disk)) -> Bool
-{
-    return (tuple1.0 == tuple2.0) && (tuple1.1 == tuple2.1) && (tuple1.2 == tuple2.2)
-}
-
-class Reversi {
-    var board: Board
-
-    func move(_ field: Field) {
-        let fields = board.taken + [field]
-        board = Board(taken: fields)
-    }
-
-    init() {
-        board = Board(taken: [Field(x: 3, y: 3, disk: .White), Field(x: 3, y: 4, disk: .Black), Field(x: 4, y: 3, disk: .Black), Field(x: 4, y: 4, disk: .White)])
-    }
-}
-
 class ReversiSpec: QuickSpec {
     override func spec() {
 

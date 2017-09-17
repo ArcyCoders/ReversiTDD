@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B265B1F5C6EA800B60B30 /* AppDelegate.swift */; };
-		185B265E1F5C6EA800B60B30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B265D1F5C6EA800B60B30 /* ViewController.swift */; };
-		185B26611F5C6EA800B60B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185B265F1F5C6EA800B60B30 /* Main.storyboard */; };
-		185B26631F5C6EA800B60B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185B26621F5C6EA800B60B30 /* Assets.xcassets */; };
-		185B26661F5C6EA800B60B30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */; };
+		440166941F6DCEEF00F433CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4401668B1F6DCEEF00F433CC /* Assets.xcassets */; };
+		440166951F6DCEEF00F433CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4401668C1F6DCEEF00F433CC /* LaunchScreen.storyboard */; };
+		440166961F6DCEEF00F433CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4401668E1F6DCEEF00F433CC /* Main.storyboard */; };
+		440166981F6DCEEF00F433CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166921F6DCEEF00F433CC /* AppDelegate.swift */; };
+		440166991F6DCEEF00F433CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166931F6DCEEF00F433CC /* ViewController.swift */; };
+		4401669C1F6DCF4B00F433CC /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669B1F6DCF4B00F433CC /* Reversi.swift */; };
+		4401669E1F6DCF5300F433CC /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669D1F6DCF5300F433CC /* Board.swift */; };
+		440166A01F6DCFB500F433CC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669F1F6DCFB500F433CC /* Field.swift */; };
+		440166A21F6DD05100F433CC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166A11F6DD05100F433CC /* Enums.swift */; };
 		4FC6AAE0B9447DEE9882C141 /* Pods_ReversiTDD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */; };
 		60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */; };
 		7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */; };
@@ -31,16 +35,20 @@
 		076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiTDD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiTDDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		185B26581F5C6EA800B60B30 /* ReversiTDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReversiTDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		185B265B1F5C6EA800B60B30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		185B265D1F5C6EA800B60B30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		185B26601F5C6EA800B60B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		185B26621F5C6EA800B60B30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		185B26651F5C6EA800B60B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		185B26671F5C6EA800B60B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185B266C1F5C6EA800B60B30 /* ReversiTDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiTDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		185B26721F5C6EA800B60B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B40A8D4E831095C92CB785A /* Pods-ReversiTDDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.release.xcconfig"; sourceTree = "<group>"; };
+		4401668B1F6DCEEF00F433CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4401668D1F6DCEEF00F433CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4401668F1F6DCEEF00F433CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		440166901F6DCEEF00F433CC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		440166921F6DCEEF00F433CC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		440166931F6DCEEF00F433CC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4401669B1F6DCF4B00F433CC /* Reversi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
+		4401669D1F6DCF5300F433CC /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		4401669F1F6DCFB500F433CC /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		440166A11F6DD05100F433CC /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
 		BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.debug.xcconfig"; sourceTree = "<group>"; };
 		C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,12 +117,8 @@
 		185B265A1F5C6EA800B60B30 /* ReversiTDD */ = {
 			isa = PBXGroup;
 			children = (
-				185B265B1F5C6EA800B60B30 /* AppDelegate.swift */,
-				185B265D1F5C6EA800B60B30 /* ViewController.swift */,
-				185B265F1F5C6EA800B60B30 /* Main.storyboard */,
-				185B26621F5C6EA800B60B30 /* Assets.xcassets */,
-				185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */,
-				185B26671F5C6EA800B60B30 /* Info.plist */,
+				4401668A1F6DCEEF00F433CC /* Resources */,
+				440166911F6DCEEF00F433CC /* Sources */,
 			);
 			path = ReversiTDD;
 			sourceTree = "<group>";
@@ -126,6 +130,38 @@
 				60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */,
 			);
 			path = ReversiTDDTests;
+			sourceTree = "<group>";
+		};
+		4401668A1F6DCEEF00F433CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4401668B1F6DCEEF00F433CC /* Assets.xcassets */,
+				4401668C1F6DCEEF00F433CC /* LaunchScreen.storyboard */,
+				4401668E1F6DCEEF00F433CC /* Main.storyboard */,
+				440166901F6DCEEF00F433CC /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		440166911F6DCEEF00F433CC /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4401669A1F6DCF2D00F433CC /* Game */,
+				440166921F6DCEEF00F433CC /* AppDelegate.swift */,
+				440166931F6DCEEF00F433CC /* ViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4401669A1F6DCF2D00F433CC /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				440166A11F6DD05100F433CC /* Enums.swift */,
+				4401669D1F6DCF5300F433CC /* Board.swift */,
+				4401669F1F6DCFB500F433CC /* Field.swift */,
+				4401669B1F6DCF4B00F433CC /* Reversi.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +254,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185B26661F5C6EA800B60B30 /* LaunchScreen.storyboard in Resources */,
-				185B26631F5C6EA800B60B30 /* Assets.xcassets in Resources */,
-				185B26611F5C6EA800B60B30 /* Main.storyboard in Resources */,
+				440166961F6DCEEF00F433CC /* Main.storyboard in Resources */,
+				440166941F6DCEEF00F433CC /* Assets.xcassets in Resources */,
+				440166951F6DCEEF00F433CC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,8 +378,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				185B265E1F5C6EA800B60B30 /* ViewController.swift in Sources */,
-				185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */,
+				440166A01F6DCFB500F433CC /* Field.swift in Sources */,
+				440166991F6DCEEF00F433CC /* ViewController.swift in Sources */,
+				440166981F6DCEEF00F433CC /* AppDelegate.swift in Sources */,
+				4401669E1F6DCF5300F433CC /* Board.swift in Sources */,
+				440166A21F6DD05100F433CC /* Enums.swift in Sources */,
+				4401669C1F6DCF4B00F433CC /* Reversi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,20 +406,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		185B265F1F5C6EA800B60B30 /* Main.storyboard */ = {
+		4401668C1F6DCEEF00F433CC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				185B26601F5C6EA800B60B30 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				185B26651F5C6EA800B60B30 /* Base */,
+				4401668D1F6DCEEF00F433CC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4401668E1F6DCEEF00F433CC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4401668F1F6DCEEF00F433CC /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -485,7 +525,7 @@
 			baseConfigurationReference = BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ReversiTDD/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ReversiTDD/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiTDD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,7 +538,7 @@
 			baseConfigurationReference = 3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ReversiTDD/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ReversiTDD/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiTDD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
