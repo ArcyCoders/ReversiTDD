@@ -16,22 +16,47 @@ import Nimble
 
 // TODO: - handle move error
 
-enum Row: Int {
+enum Column: Int, Comparable {
     case a, b, c, d, e, f, g, h
+
+    static func getValues() -> [Column] {
+        return [.a, .b, .c, .d, .e, .f, .g, .h]
+    }
 }
 
-enum Column: Int {
+enum Row: Int, Comparable {
     case _1, _2, _3, _4, _5, _6, _7, _8
+
+    static func getValues() -> [Row] {
+        return [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8]
+    }
+}
+
+func <<T: RawRepresentable where T.RawValue: Comparable>(a: T, b: T) -> Bool {
+    return a.rawValue < b.rawValue
 }
 
 enum Disk: Int {
     case white, black
 }
 
-struct Field: Equatable, Hashable {
-    let row: Row
+class Field: Equatable, Hashable {
     let column: Column
-    let disk: Disk?
+    let row: Row
+    var disk: Disk?
+
+    public init(column: Column, row: Row, disk: Disk) {
+        self.column = column
+        self.row = row
+        self.disk = disk
+    }
+
+    // TODO: handle no disk
+    func flip() {
+        if let diskToFlip = disk {
+            disk = diskToFlip == .black ? .white : .black
+        }
+    }
 
     static func == (lhs: Field, rhs: Field) -> Bool {
         return lhs.row == rhs.row && lhs.column == rhs.column && lhs.disk == rhs.disk
@@ -60,19 +85,13 @@ class Board: Equatable {
         taken.append(field)
     }
 
-    func getField(row: Row, column: Column) -> Field? {
+    func getField(column: Column, row: Row) -> Field? {
 
         return taken.filter { $0.row == row && $0.column == column }.first
     }
 
     func clear() {
         taken.removeAll()
-    }
-
-    func replace(sourceField: Field, with targetField: Field) {
-        guard let sourceFieldIndex = taken.index(of: sourceField) else { return }
-
-        taken[sourceFieldIndex] = targetField
     }
 
     static func == (lhs: Board, rhs: Board) -> Bool {
@@ -90,15 +109,34 @@ class Reversi {
 
     public func start() {
         board.clear()
-        board.add(field: Field(row: .d, column: ._4, disk: .white))
-        board.add(field: Field(row: .d, column: ._5, disk: .black))
-        board.add(field: Field(row: .e, column: ._4, disk: .black))
-        board.add(field: Field(row: .e, column: ._5, disk: .white))
+        board.add(field: Field(column: .d, row: ._4, disk: .white))
+        board.add(field: Field(column: .d, row: ._5, disk: .black))
+        board.add(field: Field(column: .e, row: ._4, disk: .black))
+        board.add(field: Field(column: .e, row: ._5, disk: .white))
     }
 
     public func move(to targetField: Field) {
         board.taken.append(targetField)
-//        flipNeighbouringDisks(for: targetField.x, y: targetField.y)
+
+        let rowsDown = Row.getValues().filter { $0 > targetField.row }
+        var opponentsFieldsDown: [Field] = []
+        var validLineDown = false
+        for currentRow in rowsDown {
+            if let field = board.getField(column: targetField.column, row: currentRow) {
+                if field.disk == targetField.disk {
+                    validLineDown = true
+                    break
+                }
+
+                opponentsFieldsDown.append(field)
+            }
+        }
+
+        if validLineDown {
+            for field in opponentsFieldsDown {
+                field.flip()
+            }
+        }
     }
 
     public func getNumberOfFieldsTaken(ofType type: Disk? = nil) -> Int {
@@ -108,26 +146,6 @@ class Reversi {
 
         return board.taken.count
     }
-
-//    fileprivate func flipNeighbouringDisks(for x: Int, y: Int) {
-//        let rows = [x - 1, x, x + 1]
-//        let columns = [y - 1, y, y + 1]
-//
-//        guard let startingField = board.getField(x: x, y: y),
-//              let startingDisk = startingField.disk
-//        else { return }
-//
-//        for row in rows {
-//            for column in columns {
-//                if let neighbourField = board.getField(x: row, y: column),
-//                   let neighbourDisk = neighbourField.disk {
-//                    if neighbourDisk != startingDisk {
-//                        board.replace(sourceField: neighbourField, with: Field(x: neighbourField.x, y: neighbourField.y, disk: startingDisk))
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
 
 class ReversiSpec: QuickSpec {
@@ -144,17 +162,17 @@ class ReversiSpec: QuickSpec {
         describe("start") {
             
             it("has 4 disks in a starting position") {
-                expect(board).to(equal(Board(taken: [Field(row: .d, column: ._4, disk: .white),
-                                                     Field(row: .d, column: ._5, disk: .black),
-                                                     Field(row: .e, column: ._4, disk: .black),
-                                                     Field(row: .e, column: ._5, disk: .white)])))
+                expect(board).to(equal(Board(taken: [Field(column: .d, row: ._4, disk: .white),
+                                                     Field(column: .d, row: ._5, disk: .black),
+                                                     Field(column: .e, row: ._4, disk: .black),
+                                                     Field(column: .e, row: ._5, disk: .white)])))
             }
         }
 
         describe("black player makes first move to D3") {
 
             beforeEach {
-                game.move(to: Field(row: .d, column: ._3, disk: .black))
+                game.move(to: Field(column: .d, row: ._3, disk: .black))
             }
 
             it("has 5 disks on board") {
@@ -162,11 +180,11 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has black disk on position D3") {
-                expect(board.getField(row: .d, column: ._3)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .d, row: ._3)?.disk).to(equal(Disk.black))
             }
 
             it("has black disk on position D4") {
-                expect(board.getField(row: .d, column: ._4)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk.black))
             }
         }
 
