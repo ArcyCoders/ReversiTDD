@@ -130,6 +130,8 @@ class Reversi {
             board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
         } else if case .f = x, case ._3 = y {
             board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
+        } else if case .c = x, case ._4 = y {
+            board.put(move: Move(x: .d, y: ._4, takenBy: currentPlayer))
         }
         currentPlayer = currentPlayer.other()
     }
@@ -221,6 +223,23 @@ class ReversiSpec: QuickSpec {
 
                     it("sets the current player to black") {
                         expect(game.currentPlayer).to(equal(Player.Black))
+                    }
+                }
+
+                describe("c4 - White") {
+                    beforeEach {
+                        game.put(x: .c, y: ._4)
+                    }
+
+                    it("updates the board") {
+                        expect(game.board).to(equal(Board(taken: [
+                            Move(x: .c, y: ._4, takenBy: .White),
+                            Move(x: .d, y: ._4, takenBy: .White),
+                            Move(x: .d, y: ._5, takenBy: .Black),
+                            Move(x: .d, y: ._6, takenBy: .Black),
+                            Move(x: .e, y: ._4, takenBy: .White),
+                            Move(x: .e, y: ._5, takenBy: .Black),
+                        ])))
                     }
                 }
             }
