@@ -52,7 +52,7 @@ class Field: Equatable, Hashable {
     }
 
     // TODO: handle no disk
-    func flip() {
+    func flipDisk() {
         if let diskToFlip = disk {
             disk = diskToFlip == .black ? .white : .black
         }
@@ -134,7 +134,27 @@ class Reversi {
 
         if validLineDown {
             for field in opponentsFieldsDown {
-                field.flip()
+                field.flipDisk()
+            }
+        }
+
+        let rowsUp = Row.getValues().filter { $0 < targetField.row }.reversed()
+        var opponentsFieldsUp: [Field] = []
+        var validLineUp = false
+        for currentRow in rowsUp {
+            if let field = board.getField(column: targetField.column, row: currentRow) {
+                if field.disk == targetField.disk {
+                    validLineUp = true
+                    break
+                }
+
+                opponentsFieldsUp.append(field)
+            }
+        }
+
+        if validLineUp {
+            for field in opponentsFieldsUp {
+                field.flipDisk()
             }
         }
     }
@@ -205,21 +225,5 @@ class ReversiSpec: QuickSpec {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk.black))
             }
         }
-
-        // player makes a move
-        // empty field
-        // next to field with disk of opposite player
-        // in vertical, horizontal
-
-
-        // start game
-        // select player
-        // if current can make move
-        //  forfeit move
-        // if no player can make move
-        //  make move
-        // else
-        //  finish game
-        // who won, who lost?
     }
 }
