@@ -19,6 +19,16 @@ import Nimble
 enum Column: Int, Comparable {
     case a, b, c, d, e, f, g, h
 
+    func nextColumn(inDirection direction: Direction) -> Column? {
+        var nextColumnOffset = 0
+
+        if direction == .left {
+            nextColumnOffset = -1
+        }
+
+        return Column(rawValue: self.rawValue + nextColumnOffset)
+    }
+
     static func getValues() -> [Column] {
         return [.a, .b, .c, .d, .e, .f, .g, .h]
     }
@@ -48,6 +58,7 @@ enum Row: Int, Comparable {
 enum Direction {
     case up
     case down
+    case left
 }
 
 func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
@@ -108,7 +119,7 @@ class Board: Equatable {
 
     func getNextFieldInDirection(previousField: Field, direction: Direction) -> Field? {
         guard let nextRow = previousField.row.nextRow(inDirection: direction) else { return nil }
-        let nextColumn = previousField.column
+        guard let nextColumn = previousField.column.nextColumn(inDirection: direction) else { return nil }
 
         return getField(column: nextColumn, row: nextRow)
     }
@@ -147,6 +158,9 @@ class Reversi {
         }
         if let flankedFieldsUp = getFlankedFields(inDirection: .up, forTargetField: targetField) {
             flankedFields.append(contentsOf: flankedFieldsUp)
+        }
+        if let flankedFieldsLeft = getFlankedFields(inDirection: .left, forTargetField: targetField) {
+            flankedFields.append(contentsOf: flankedFieldsLeft)
         }
 
         for flankedField in flankedFields {
@@ -236,6 +250,24 @@ class ReversiSpec: QuickSpec {
 
             it("has black disk on position E6") {
                 expect(board.getField(column: .e, row: ._6)?.disk).to(equal(Disk.black))
+            }
+
+            it("has black disk on position E5") {
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk.black))
+            }
+        }
+
+        describe("black player makes first move to F5") {
+            beforeEach {
+                game.move(to: Field(column: .f, row: ._5, disk: .black))
+            }
+
+            it("has 5 disks on board") {
+                expect(board.takenFieldsCount).to(equal(5))
+            }
+
+            it("has black disk on position F5") {
+                expect(board.getField(column: .f, row: ._5)?.disk).to(equal(Disk.black))
             }
 
             it("has black disk on position E5") {
