@@ -24,19 +24,65 @@ class ASCIIImporterSpec: QuickSpec
                 _ = ASCIIImporter(asciiRepresentation: "")
             }
             
-            it("should return proper board for given ascii representation")
+            context(".parse")
             {
-                let representation: String =
-                                            "........" +
-                                            "........" +
-                                            "........" +
-                                            "........" +
-                                            "........" +
-                                            "........" +
-                                            "........" +
-                                            "........"
-                let importer = ASCIIImporter(asciiRepresentation: representation)
-                expect{ try importer.parse() }.to(equal(Board(taken: [])))
+                it("should return empty board for given ascii representation")
+                {
+                    let representation: String =
+                                                "........" +
+                                                "........" +
+                                                "........" +
+                                                "........" +
+                                                "........" +
+                                                "........" +
+                                                "........" +
+                                                "........"
+                    let importer = ASCIIImporter(asciiRepresentation: representation)
+                    expect{ try importer.parse() }.to(equal(Board(taken: [])))
+                }
+                
+                it("should return starting board from given ascii representation")
+                {
+                    let representation: String =
+                                                "........" +
+                                                "........" +
+                                                "........" +
+                                                "...wb..." +
+                                                "...bw..." +
+                                                "........" +
+                                                "........" +
+                                                "........"
+                    let importer = ASCIIImporter(asciiRepresentation: representation)
+                    expect{ try importer.parse() }.to(equal(Board(taken: [ Field(x: 3, y: 3, disk: .White),
+                                                                           Field(x: 3, y: 4, disk: .Black),
+                                                                           Field(x: 4, y: 3, disk: .Black),
+                                                                           Field(x: 4, y: 4, disk: .White)])))
+                }
+                
+                fit("should return custom, impossible to achieve by normal play board from given ascii representation")
+                {
+                    let representation: String =
+                            "w......w" +
+                            "........" +
+                            "........" +
+                            "b......b" +
+                            "...bb..." +
+                            "........" +
+                            "........" +
+                            "w......w"
+                    let importer = ASCIIImporter(asciiRepresentation: representation)
+                    expect{ try importer.parse() }.to(equal(Board(taken: [ Field(x: 0, y: 0, disk: .White),
+                                                                           Field(x: 7, y: 0, disk: .White),
+                                                                           
+                                                                           Field(x: 0, y: 3, disk: .Black),
+                                                                           Field(x: 7, y: 3, disk: .Black),
+                                                                           
+                                                                           Field(x: 3, y: 4, disk: .Black),
+                                                                           Field(x: 4, y: 4, disk: .Black),
+                                                                           
+                                                                           Field(x: 0, y: 7, disk: .White),
+                                                                           Field(x: 7, y: 7, disk: .White)])))
+                }
             }
         }
     }

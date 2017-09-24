@@ -16,6 +16,7 @@ enum ASCIIImporterError: Error
 class ASCIIImporter
 {
     private let representation: String
+    
     init(asciiRepresentation representation: String)
     {
         self.representation = representation
@@ -23,6 +24,33 @@ class ASCIIImporter
     
     func parse() throws -> Board
     {
-        return Board(taken: [])
+        let whiteDiskCharacter: Character = "w"
+        let blackDiskCharacter: Character = "b"
+        let emptyFieldCharacter: Character = "."
+        
+        var x = 0
+        var y = 0
+        var fields =  Array<Field>()
+        representation.forEach()
+        {
+            
+            switch $0
+            {
+                case whiteDiskCharacter: fields.append(Field(x: x, y: y, disk: Disk.White))
+                case blackDiskCharacter: fields.append(Field(x: x, y: y, disk: Disk.Black))
+                case emptyFieldCharacter: break
+                default: break
+            }
+
+            if x < 7 {
+                x += 1
+            }
+            else {
+                x = 0
+                y += 1
+            }
+        }
+        
+        return Board(taken: fields)
     }
 }
