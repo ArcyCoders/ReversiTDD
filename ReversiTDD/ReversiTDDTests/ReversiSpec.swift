@@ -27,12 +27,30 @@ enum Column: Int, Comparable {
 enum Row: Int, Comparable {
     case _1, _2, _3, _4, _5, _6, _7, _8
 
+    func nextRow(inDirection direction: Direction) -> Row? {
+        var nextRowOffset = 0
+
+        if direction == .up {
+            nextRowOffset = -1
+        }
+        else if direction == .down {
+            nextRowOffset = 1
+        }
+
+        return Row(rawValue: self.rawValue + nextRowOffset)
+    }
+
     static func getValues() -> [Row] {
         return [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8]
     }
 }
 
-func <<T: RawRepresentable where T.RawValue: Comparable>(a: T, b: T) -> Bool {
+enum Direction {
+    case up
+    case down
+}
+
+func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
     return a.rawValue < b.rawValue
 }
 
@@ -81,13 +99,18 @@ class Board: Equatable {
     }
 
     func add(field: Field) {
-
         taken.append(field)
     }
 
     func getField(column: Column, row: Row) -> Field? {
-
         return taken.filter { $0.row == row && $0.column == column }.first
+    }
+
+    func getNextFieldInDirection(previousField: Field, direction: Direction) -> Field? {
+        guard let nextRow = previousField.row.nextRow(inDirection: direction) else { return nil }
+        let nextColumn = previousField.column
+
+        return getField(column: nextColumn, row: nextRow)
     }
 
     func clear() {
@@ -118,44 +141,16 @@ class Reversi {
     public func move(to targetField: Field) {
         board.taken.append(targetField)
 
-        let rowsDown = Row.getValues().filter { $0 > targetField.row }
-        var opponentsFieldsDown: [Field] = []
-        var validLineDown = false
-        for currentRow in rowsDown {
-            if let field = board.getField(column: targetField.column, row: currentRow) {
-                if field.disk == targetField.disk {
-                    validLineDown = true
-                    break
-                }
-
-                opponentsFieldsDown.append(field)
-            }
+        var flankedFields: [Field] = []
+        if let flankedFieldsDown = getFlankedFields(inDirection: .down, forTargetField: targetField) {
+            flankedFields.append(contentsOf: flankedFieldsDown)
+        }
+        if let flankedFieldsUp = getFlankedFields(inDirection: .up, forTargetField: targetField) {
+            flankedFields.append(contentsOf: flankedFieldsUp)
         }
 
-        if validLineDown {
-            for field in opponentsFieldsDown {
-                field.flipDisk()
-            }
-        }
-
-        let rowsUp = Row.getValues().filter { $0 < targetField.row }.reversed()
-        var opponentsFieldsUp: [Field] = []
-        var validLineUp = false
-        for currentRow in rowsUp {
-            if let field = board.getField(column: targetField.column, row: currentRow) {
-                if field.disk == targetField.disk {
-                    validLineUp = true
-                    break
-                }
-
-                opponentsFieldsUp.append(field)
-            }
-        }
-
-        if validLineUp {
-            for field in opponentsFieldsUp {
-                field.flipDisk()
-            }
+        for flankedField in flankedFields {
+            flankedField.flipDisk()
         }
     }
 
@@ -165,6 +160,28 @@ class Reversi {
         }
 
         return board.taken.count
+    }
+
+    fileprivate func getFlankedFields(inDirection direction: Direction, forTargetField targetField: Field) -> [Field]? {
+        var currentField = targetField
+        var flankedFields: [Field] = []
+        var isFlanked: Bool = false
+
+        while let nextField = board.getNextFieldInDirection(previousField: currentField, direction: direction) {
+            currentField = nextField
+            if currentField.disk == targetField.disk {
+                isFlanked = true
+                break
+            }
+
+            flankedFields.append(currentField)
+        }
+
+        if !isFlanked {
+            flankedFields.removeAll()
+        }
+
+        return flankedFields
     }
 }
 
