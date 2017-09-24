@@ -59,6 +59,10 @@ enum Direction {
     case up
     case down
     case left
+
+    static func getValues() -> [Direction] {
+        return [.up, .down, .left]
+    }
 }
 
 func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
@@ -152,20 +156,7 @@ class Reversi {
     public func move(to targetField: Field) {
         board.taken.append(targetField)
 
-        var flankedFields: [Field] = []
-        if let flankedFieldsDown = getFlankedFields(inDirection: .down, forTargetField: targetField) {
-            flankedFields.append(contentsOf: flankedFieldsDown)
-        }
-        if let flankedFieldsUp = getFlankedFields(inDirection: .up, forTargetField: targetField) {
-            flankedFields.append(contentsOf: flankedFieldsUp)
-        }
-        if let flankedFieldsLeft = getFlankedFields(inDirection: .left, forTargetField: targetField) {
-            flankedFields.append(contentsOf: flankedFieldsLeft)
-        }
-
-        for flankedField in flankedFields {
-            flankedField.flipDisk()
-        }
+        getFlankedFieldsInAllDirection(forTargetField: targetField).forEach { $0.flipDisk() }
     }
 
     public func getNumberOfFieldsTaken(ofType type: Disk? = nil) -> Int {
@@ -176,7 +167,11 @@ class Reversi {
         return board.taken.count
     }
 
-    fileprivate func getFlankedFields(inDirection direction: Direction, forTargetField targetField: Field) -> [Field]? {
+    fileprivate func getFlankedFieldsInAllDirection(forTargetField targetField: Field) -> [Field] {
+        return Direction.getValues().flatMap { getFlankedFields(inDirection: $0, forTargetField: targetField) }
+    }
+
+    fileprivate func getFlankedFields(inDirection direction: Direction, forTargetField targetField: Field) -> [Field] {
         var currentField = targetField
         var flankedFields: [Field] = []
         var isFlanked: Bool = false
