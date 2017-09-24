@@ -336,5 +336,43 @@ class ReversiSpec: QuickSpec {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(.white))
             }
         }
+
+        describe("second move down, right flanking") {
+            beforeEach {
+                game.move(to: Field(column: .e, row: ._6, disk: .black))
+                game.move(to: Field(column: .f, row: ._6, disk: .white))
+            }
+
+            it("has 6 disks on board") {
+                expect(board.takenFieldsCount).to(equal(6))
+            }
+
+            it("has white disk on position F6") {
+                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(.white))
+            }
+
+            it("has white disk on position E5") {
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(.white))
+            }
+        }
+
+        describe("second move up, left flanking") {
+            beforeEach {
+                game.move(to: Field(column: .d, row: ._3, disk: .black))
+                game.move(to: Field(column: .c, row: ._3, disk: .white))
+            }
+
+            it("has 6 disks on board") {
+                expect(board.takenFieldsCount).to(equal(6))
+            }
+
+            it("has white disk on position C3") {
+                expect(board.getField(column: .c, row: ._3)?.disk).to(equal(.white))
+            }
+
+            it("has white disk on position D4") {
+                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(.white))
+            }
+        }
     }
 }
