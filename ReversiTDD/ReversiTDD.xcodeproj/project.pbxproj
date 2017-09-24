@@ -16,6 +16,8 @@
 		189DA4291F65A1580095E835 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA4281F65A1580095E835 /* Board.swift */; };
 		189DA42B1F65A1620095E835 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA42A1F65A1620095E835 /* Field.swift */; };
 		189DA42D1F65A1800095E835 /* ReversiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DA42C1F65A1800095E835 /* ReversiError.swift */; };
+		18C2575E1F77C5F100B85EF7 /* ASCIIImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2575D1F77C5F100B85EF7 /* ASCIIImporter.swift */; };
+		18C257601F77C61100B85EF7 /* ASCIIImporterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C2575F1F77C61100B85EF7 /* ASCIIImporterSpec.swift */; };
 		4FC6AAE0B9447DEE9882C141 /* Pods_ReversiTDD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */; };
 		60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */; };
 		7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */; };
@@ -47,6 +49,8 @@
 		189DA4281F65A1580095E835 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		189DA42A1F65A1620095E835 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		189DA42C1F65A1800095E835 /* ReversiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiError.swift; sourceTree = "<group>"; };
+		18C2575D1F77C5F100B85EF7 /* ASCIIImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIImporter.swift; sourceTree = "<group>"; };
+		18C2575F1F77C61100B85EF7 /* ASCIIImporterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIImporterSpec.swift; sourceTree = "<group>"; };
 		2B40A8D4E831095C92CB785A /* Pods-ReversiTDDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.release.xcconfig"; sourceTree = "<group>"; };
 		60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			children = (
 				185B26721F5C6EA800B60B30 /* Info.plist */,
 				60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */,
+				18C2575F1F77C61100B85EF7 /* ASCIIImporterSpec.swift */,
 			);
 			path = ReversiTDDTests;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				189DA4281F65A1580095E835 /* Board.swift */,
 				189DA42A1F65A1620095E835 /* Field.swift */,
 				189DA42C1F65A1800095E835 /* ReversiError.swift */,
+				18C2575D1F77C5F100B85EF7 /* ASCIIImporter.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */,
 				189DA4291F65A1580095E835 /* Board.swift in Sources */,
 				189DA4271F65A1470095E835 /* Reversi.swift in Sources */,
+				18C2575E1F77C5F100B85EF7 /* ASCIIImporter.swift in Sources */,
 				189DA42D1F65A1800095E835 /* ReversiError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C257601F77C61100B85EF7 /* ASCIIImporterSpec.swift in Sources */,
 				60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
