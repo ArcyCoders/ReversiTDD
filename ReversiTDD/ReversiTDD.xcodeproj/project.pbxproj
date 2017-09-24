@@ -16,6 +16,9 @@
 		4401669E1F6DCF5300F433CC /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669D1F6DCF5300F433CC /* Board.swift */; };
 		440166A01F6DCFB500F433CC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669F1F6DCFB500F433CC /* Field.swift */; };
 		440166A21F6DD05100F433CC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166A11F6DD05100F433CC /* Enums.swift */; };
+		4420B8511F76E7B200885461 /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420B8501F76E7B200885461 /* BoardSpec.swift */; };
+		448F9D761F76F03F0038EB8B /* FieldSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F9D751F76F03F0038EB8B /* FieldSpec.swift */; };
+		448F9D791F76F42F0038EB8B /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F9D781F76F42F0038EB8B /* String+Subscript.swift */; };
 		4FC6AAE0B9447DEE9882C141 /* Pods_ReversiTDD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */; };
 		60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */; };
 		7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */; };
@@ -49,6 +52,9 @@
 		4401669D1F6DCF5300F433CC /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		4401669F1F6DCFB500F433CC /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		440166A11F6DD05100F433CC /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		4420B8501F76E7B200885461 /* BoardSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
+		448F9D751F76F03F0038EB8B /* FieldSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldSpec.swift; sourceTree = "<group>"; };
+		448F9D781F76F42F0038EB8B /* String+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
 		60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
 		BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.debug.xcconfig"; sourceTree = "<group>"; };
 		C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				185B26721F5C6EA800B60B30 /* Info.plist */,
+				4420B8501F76E7B200885461 /* BoardSpec.swift */,
+				448F9D751F76F03F0038EB8B /* FieldSpec.swift */,
 				60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */,
 			);
 			path = ReversiTDDTests;
@@ -147,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				4401669A1F6DCF2D00F433CC /* Game */,
+				448F9D771F76F4230038EB8B /* Utils */,
 				440166921F6DCEEF00F433CC /* AppDelegate.swift */,
 				440166931F6DCEEF00F433CC /* ViewController.swift */,
 			);
@@ -162,6 +171,14 @@
 				4401669B1F6DCF4B00F433CC /* Reversi.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		448F9D771F76F4230038EB8B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				448F9D781F76F42F0038EB8B /* String+Subscript.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +400,7 @@
 				440166981F6DCEEF00F433CC /* AppDelegate.swift in Sources */,
 				4401669E1F6DCF5300F433CC /* Board.swift in Sources */,
 				440166A21F6DD05100F433CC /* Enums.swift in Sources */,
+				448F9D791F76F42F0038EB8B /* String+Subscript.swift in Sources */,
 				4401669C1F6DCF4B00F433CC /* Reversi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +410,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */,
+				4420B8511F76E7B200885461 /* BoardSpec.swift in Sources */,
+				448F9D761F76F03F0038EB8B /* FieldSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,11 +51,34 @@ class Reversi
 
         board = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
         currentPlayer = player.next()
+
+        return nil
     }
 
     init()
     {
-        board = Board()
+        // Initial board
+        //
+        //  abcdefgh
+        // 1________
+        // 2________
+        // 3________
+        // 4___o*___
+        // 5___*o___
+        // 6________
+        // 7________
+        // 8________
+        let array = Array(0...63)
+        let emptyFields = array.flatMap { (index) -> Field? in
+            let y = index % Row.count()
+            let x = index / Column.count()
+            if (x == 3 || x == 4) && (y == 3 || y == 4) { return nil }
+            return Field(Row(rawValue: y)!, Column(rawValue: x)!)
+        }
+        let blackFields = [Field(._5, .d), Field(._4, .e)]
+        let whiteFields = [Field(._4, .d), Field(._5, .e)]
+        
+        board = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
         currentPlayer = Player.black
     }
 }
@@ -79,21 +102,21 @@ extension Reversi
     fileprivate func findFields(startField: Field, direction: DirectionType.Direction, playerFields: [Field], opponentFields: [Field]) -> [Field]
     {
         var resultFields = [Field]()
+//
+//        var x: FieldType = startField.x
+//        var y: FieldType = startField.y
+//        var nextField: Field?
 
-        var x = startField.x
-        var y = startField.y
-        var nextField: Field?
-
-        repeat
-        {
-            x += direction.vx
-            y += direction.vy
-            nextField = Field(x: x, y: y)
-            guard x >= 0 && x < 8 && y >= 0 && y < 8 else { break }
-            guard let nextField = nextField, opponentFields.contains(nextField) else { break }
-            resultFields.append(contentsOf: nextField)
-
-        } while(true)
+//        repeat
+//        {
+//            x += direction.vx
+//            y += direction.vy
+//            nextField = Field(x: x, y: y)
+//            guard x >= 0 && x < 8 && y >= 0 && y < 8 else { break }
+//            guard let nextField = nextField, opponentFields.contains(nextField) else { break }
+//            resultFields.append(nextField)
+//
+//        } while(true)
 
         return resultFields
     }

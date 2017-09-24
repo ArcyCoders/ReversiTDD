@@ -10,45 +10,91 @@ import Foundation
 
 struct Board: Equatable
 {
+    static let fieldsCount: Int = Column.count() * Row.count()
+
     let emptyFields: [Field]
     let blackFields: [Field]
     let whiteFields: [Field]
-
-    // Initial board
-    //
-    // 01234567
-    // 0________
-    // 1________
-    // 2________
-    // 3___o*___
-    // 4___*o___
-    // 5________
-    // 6________
-    // 7________
-    init()
-    {
-        let array = Array(0...63)
-        self.emptyFields = array.flatMap { (index) -> Field? in
-            let y = index % 8
-            let x = index / 8
-            if (x == 3 || x == 4) && (y == 3 || y == 4) { return nil }
-            return Field(x: x, y: y)
-        }
-        self.blackFields = [Field(x: 3, y: 3), Field(x: 4, y: 4)]
-        self.whiteFields = [Field(x: 4, y: 3), Field(x: 3, y: 4)]
-    }
-
-    // Custom board
-    init(emptyFields: [Field], blackFields: [Field], whiteFields: [Field])
-    {
-        self.emptyFields = emptyFields
-        self.blackFields = blackFields
-        self.whiteFields = whiteFields
-    }
 
     static func == (lhs: Board, rhs: Board) -> Bool
     {
         guard lhs.emptyFields.count == rhs.emptyFields.count && lhs.blackFields.count == rhs.blackFields.count && lhs.whiteFields.count == rhs.whiteFields.count else { return false }
         return lhs.emptyFields == rhs.emptyFields && lhs.blackFields == rhs.blackFields && lhs.whiteFields == rhs.whiteFields
+    }
+}
+
+extension Board
+{
+    // Board in ASCII representation:
+    //
+    // empty: "_"
+    // black: "*"
+    // white: "o"
+    init?(ascii: String)
+    {
+        guard ascii.characters.count == Board.fieldsCount else { return nil }
+
+        var emptyFields = [Field]()
+        var blackFields = [Field]()
+        var whiteFields = [Field]()
+
+        for (index, character) in ascii.characters.enumerated()
+        {
+            if let row = Row(rawValue: index / Row.count()),
+                let col = Column(rawValue: index % Column.count())
+            {
+                let field = Field(row, col)
+                switch character
+                {
+                case "*": blackFields.append(field); break
+                case "o": whiteFields.append(field); break
+                case "_": emptyFields.append(field); break
+                default:
+                    print("Unknown symbol: \(character)")
+                    return nil
+                }
+            }
+        }
+
+        self.emptyFields = emptyFields
+        self.blackFields = blackFields
+        self.whiteFields = whiteFields
+    }
+
+    func output(showCoordinates: Bool = false) -> String
+    {
+        let coordinates = "abcdefgh"
+
+        var output: String = ""
+        if showCoordinates
+        {
+            output += " " + coordinates + "\n"
+        }
+
+        let columns = Column.all()
+        let rows = Row.all()
+        for row in rows
+        {
+            var rowAscii: String = ""
+            for col in columns
+            {
+                let field = Field(row, col)
+                if emptyFields.contains(field) { rowAscii += "_" }
+                else if blackFields.contains(field) { rowAscii += "*" }
+                else if whiteFields.contains(field) { rowAscii += "o" }
+                else { rowAscii += "?" }
+            }
+
+            if showCoordinates
+            {
+                output += "\(row.rawValue + 1)" + rowAscii + "\n"
+            }
+            else
+            {
+                output += rowAscii
+            }
+        }
+
+        return output
     }
 }
