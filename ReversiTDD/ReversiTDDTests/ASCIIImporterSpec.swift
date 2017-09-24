@@ -59,29 +59,47 @@ class ASCIIImporterSpec: QuickSpec
                                                                            Field(x: 4, y: 4, disk: .White)])))
                 }
                 
-                fit("should return custom, impossible to achieve by normal play board from given ascii representation")
+                it("should return custom, impossible to achieve by normal play board from given ascii representation")
                 {
                     let representation: String =
-                            "w......w" +
-                            "........" +
-                            "........" +
-                            "b......b" +
-                            "...bb..." +
-                            "........" +
-                            "........" +
-                            "w......w"
+                                                "w......w" +
+                                                "........" +
+                                                "........" +
+                                                "b......b" +
+                                                "...bb..." +
+                                                "........" +
+                                                "........" +
+                                                "w......w"
                     let importer = ASCIIImporter(asciiRepresentation: representation)
                     expect{ try importer.parse() }.to(equal(Board(taken: [ Field(x: 0, y: 0, disk: .White),
                                                                            Field(x: 7, y: 0, disk: .White),
-                                                                           
                                                                            Field(x: 0, y: 3, disk: .Black),
                                                                            Field(x: 7, y: 3, disk: .Black),
-                                                                           
                                                                            Field(x: 3, y: 4, disk: .Black),
                                                                            Field(x: 4, y: 4, disk: .Black),
-                                                                           
                                                                            Field(x: 0, y: 7, disk: .White),
                                                                            Field(x: 7, y: 7, disk: .White)])))
+                }
+                
+                it("should throw an error, when count of characters is smaller than 64 in given ascii representation")
+                {
+                    let representation = "........"
+                    let importer = ASCIIImporter(asciiRepresentation: representation)
+                    expect{ try importer.parse() }.to(throwError( ASCIIImporterError.wrongCharactersCount ))
+                }
+                
+                it("should throw an error, when count of characters is larger than 64 in given ascii representation")
+                {
+                    let representation = "........" + "........" + "........" + "........" + "........" + "........" + "........" + "........" + "........"
+                    let importer = ASCIIImporter(asciiRepresentation: representation)
+                    expect{ try importer.parse() }.to(throwError( ASCIIImporterError.wrongCharactersCount ))
+                }
+                
+                it("should throw an error, when there is incorrect character in given ascii representation")
+                {
+                    let representation = "a_cdefgh" + "........" + "........" + "........" + "........" + "........" + "........" + "........"
+                    let importer = ASCIIImporter(asciiRepresentation: representation)
+                    expect{ try importer.parse() }.to(throwError( ASCIIImporterError.incorrectCharacterPassed ))
                 }
             }
         }

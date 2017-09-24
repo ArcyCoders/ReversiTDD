@@ -11,6 +11,7 @@ import Foundation
 enum ASCIIImporterError: Error
 {
     case wrongCharactersCount
+    case incorrectCharacterPassed
 }
 
 class ASCIIImporter
@@ -24,6 +25,8 @@ class ASCIIImporter
     
     func parse() throws -> Board
     {
+        guard representation.count == 64 else { throw ASCIIImporterError.wrongCharactersCount }
+        
         let whiteDiskCharacter: Character = "w"
         let blackDiskCharacter: Character = "b"
         let emptyFieldCharacter: Character = "."
@@ -31,15 +34,15 @@ class ASCIIImporter
         var x = 0
         var y = 0
         var fields =  Array<Field>()
-        representation.forEach()
-        {
-            
-            switch $0
+        
+        for char in representation.characters
+        {            
+            switch char
             {
                 case whiteDiskCharacter: fields.append(Field(x: x, y: y, disk: Disk.White))
                 case blackDiskCharacter: fields.append(Field(x: x, y: y, disk: Disk.Black))
                 case emptyFieldCharacter: break
-                default: break
+                default: throw ASCIIImporterError.incorrectCharacterPassed
             }
 
             if x < 7 {
