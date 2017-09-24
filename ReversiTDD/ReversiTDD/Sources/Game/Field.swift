@@ -22,7 +22,7 @@ enum Column: Int
     static func count() -> Int { return (Column.h.rawValue + 1) }
 }
 
-struct Field: Equatable
+struct Field: Equatable, Hashable
 {
     let row: Row
     let column: Column
@@ -37,21 +37,6 @@ struct Field: Equatable
     {
         return lhs.row == rhs.row && lhs.column == rhs.column
     }
-}
 
-extension Field
-{
-    static func all() -> [Field]
-    {
-        var fields = [Field]()
-        for row in Row.all()
-        {
-            for col in Column.all()
-            {
-                fields.append(Field(row, col))
-            }
-        }
-
-        return fields
-    }
+    var hashValue: Int { return 10000 * row.rawValue + column.rawValue }
 }

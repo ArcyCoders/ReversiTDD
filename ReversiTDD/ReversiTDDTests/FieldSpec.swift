@@ -11,6 +11,34 @@ import Quick
 import Nimble
 @testable import ReversiTDD
 
+class RowSpec: QuickSpec
+{
+    override func spec()
+    {
+        describe("Row.all()")
+        {
+            it("should have the same number of elements as Row.count()")
+            {
+                expect(Row.all().count) == Row.count()
+            }
+        }
+    }
+}
+
+class ColumnSpec: QuickSpec
+{
+    override func spec()
+    {
+        describe("Column.all()")
+        {
+            it("should have the same number of elements as Column.count()")
+            {
+                expect(Column.all().count) == Column.count()
+            }
+        }
+    }
+}
+
 class FieldSpec: QuickSpec
 {
     // property based testing - losowość

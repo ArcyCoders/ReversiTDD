@@ -19,7 +19,7 @@ struct Board: Equatable
     static func == (lhs: Board, rhs: Board) -> Bool
     {
         guard lhs.emptyFields.count == rhs.emptyFields.count && lhs.blackFields.count == rhs.blackFields.count && lhs.whiteFields.count == rhs.whiteFields.count else { return false }
-        return lhs.emptyFields == rhs.emptyFields && lhs.blackFields == rhs.blackFields && lhs.whiteFields == rhs.whiteFields
+        return Set<Field>(lhs.emptyFields) == Set<Field>(rhs.emptyFields) && Set<Field>(lhs.blackFields) == Set<Field>(rhs.blackFields) && Set<Field>(lhs.whiteFields) == Set<Field>(rhs.whiteFields)
     }
 }
 
@@ -63,12 +63,17 @@ extension Board
 
     func output(showCoordinates: Bool = false) -> String
     {
-        let coordinates = "abcdefgh"
-
         var output: String = ""
         if showCoordinates
         {
-            output += " " + coordinates + "\n"
+            let aScalars = "a".unicodeScalars
+            let aCode = aScalars[aScalars.startIndex].value
+            let letters: [Character] = (0..<Column.count()).flatMap {
+                guard let scalar = UnicodeScalar(aCode + UInt32($0)) else { return nil }
+                return Character(scalar)
+            }
+
+            output += " \(String(letters))\n"
         }
 
         let columns = Column.all()
