@@ -19,11 +19,14 @@ import Nimble
 enum Column: Int, Comparable {
     case a, b, c, d, e, f, g, h
 
-    func nextColumn(inDirection direction: Direction) -> Column? {
+    func nextColumn(inDirection direction: HorizontalDirection) -> Column? {
         var nextColumnOffset = 0
 
         if direction == .left {
             nextColumnOffset = -1
+        }
+        else if direction == .right {
+            nextColumnOffset = 1
         }
 
         return Column(rawValue: self.rawValue + nextColumnOffset)
@@ -37,7 +40,7 @@ enum Column: Int, Comparable {
 enum Row: Int, Comparable {
     case _1, _2, _3, _4, _5, _6, _7, _8
 
-    func nextRow(inDirection direction: Direction) -> Row? {
+    func nextRow(inDirection direction: VerticalDirection) -> Row? {
         var nextRowOffset = 0
 
         if direction == .up {
@@ -55,13 +58,40 @@ enum Row: Int, Comparable {
     }
 }
 
-enum Direction {
-    case up
-    case down
-    case left
+struct Direction {
+    let vertical: VerticalDirection
+    let horizontal: HorizontalDirection
 
     static func getValues() -> [Direction] {
-        return [.up, .down, .left]
+        var directions: [Direction] = []
+
+        for verticalDirection in VerticalDirection.getValues() {
+            for horizontalDirection in HorizontalDirection.getValues() {
+                directions.append(Direction(vertical: verticalDirection, horizontal: horizontalDirection))
+            }
+        }
+
+        return directions
+    }
+}
+
+enum VerticalDirection {
+    case up
+    case down
+    case none
+
+    static func getValues() -> [VerticalDirection] {
+        return [.up, .down, .none]
+    }
+}
+
+enum HorizontalDirection {
+    case left
+    case right
+    case none
+
+    static func getValues() -> [HorizontalDirection] {
+        return [.left, .right, .none]
     }
 }
 
@@ -122,8 +152,8 @@ class Board: Equatable {
     }
 
     func getNextFieldInDirection(previousField: Field, direction: Direction) -> Field? {
-        guard let nextRow = previousField.row.nextRow(inDirection: direction) else { return nil }
-        guard let nextColumn = previousField.column.nextColumn(inDirection: direction) else { return nil }
+        guard let nextRow = previousField.row.nextRow(inDirection: direction.vertical) else { return nil }
+        guard let nextColumn = previousField.column.nextColumn(inDirection: direction.horizontal) else { return nil }
 
         return getField(column: nextColumn, row: nextRow)
     }
@@ -267,6 +297,43 @@ class ReversiSpec: QuickSpec {
 
             it("has black disk on position E5") {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk.black))
+            }
+        }
+
+        describe("black player makes first move to C4") {
+            beforeEach {
+                game.move(to: Field(column: .c, row: ._4, disk: .black))
+            }
+
+            it("has 5 disks on board") {
+                expect(board.takenFieldsCount).to(equal(5))
+            }
+
+            it("has black disk on position C4") {
+                expect(board.getField(column: .c, row: ._4)?.disk).to(equal(Disk.black))
+            }
+
+            it("has black disk on position D4") {
+                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk.black))
+            }
+        }
+
+        describe("second move down, right flanking") {
+            beforeEach {
+                game.move(to: Field(column: .e, row: ._6, disk: .black))
+                game.move(to: Field(column: .f, row: ._6, disk: .white))
+            }
+
+            it("has 6 disks on board") {
+                expect(board.takenFieldsCount).to(equal(6))
+            }
+
+            it("has white disk on position F6") {
+                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(.white))
+            }
+
+            it("has white disk on position E5") {
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(.white))
             }
         }
     }
