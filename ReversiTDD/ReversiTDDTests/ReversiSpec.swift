@@ -99,8 +99,28 @@ func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
     return a.rawValue < b.rawValue
 }
 
-enum Disk: Int {
-    case white, black
+class Disk: Equatable {
+    enum Color: Int {
+        case white, black
+    }
+
+    fileprivate(set) var currentColor: Color
+
+    init(currentColor: Color) {
+        self.currentColor = currentColor
+    }
+
+    func turnOver() {
+        currentColor = currentColor == .white ? .black : .white
+    }
+
+    static func ==(lhs: Disk, rhs: Disk) -> Bool {
+        return lhs.currentColor == rhs.currentColor
+    }
+
+    public var hashValue: Int {
+        return "currentColor:\(currentColor)".hashValue
+    }
 }
 
 class Field: Equatable, Hashable {
@@ -114,21 +134,12 @@ class Field: Equatable, Hashable {
         self.disk = disk
     }
 
-    // TODO: handle no disk
-    func flipDisk() {
-        if let diskToFlip = disk {
-            disk = diskToFlip == .black ? .white : .black
-        }
-    }
-
-    static func == (lhs: Field, rhs: Field) -> Bool {
+    static func ==(lhs: Field, rhs: Field) -> Bool {
         return lhs.row == rhs.row && lhs.column == rhs.column && lhs.disk == rhs.disk
     }
 
     public var hashValue: Int {
-        let diskValue = disk?.rawValue ?? 0
-
-        return "\(row)\(column)disk:\(diskValue)".hashValue
+        return "\(row)\(column)disk:\(disk?.hashValue ?? 0)".hashValue
     }
 }
 
@@ -170,28 +181,35 @@ class Board: Equatable {
 class Reversi {
 
     fileprivate var board: Board
+    fileprivate var currentPlayer: Disk.Color
     
     init(withBoard board: Board = Board()) {
+        self.currentPlayer = .black
         self.board = board
     }
 
     public func start() {
         board.clear()
-        board.add(field: Field(column: .d, row: ._4, disk: .white))
-        board.add(field: Field(column: .d, row: ._5, disk: .black))
-        board.add(field: Field(column: .e, row: ._4, disk: .black))
-        board.add(field: Field(column: .e, row: ._5, disk: .white))
+        board.add(field: Field(column: .d, row: ._4, disk: Disk(currentColor: .white)))
+        board.add(field: Field(column: .d, row: ._5, disk: Disk(currentColor: .black)))
+        board.add(field: Field(column: .e, row: ._4, disk: Disk(currentColor: .black)))
+        board.add(field: Field(column: .e, row: ._5, disk: Disk(currentColor: .white)))
+
+        currentPlayer = .black
     }
 
+    // TODO: handle invalid move
     public func move(to targetField: Field) {
         board.taken.append(targetField)
 
-        getFlankedFieldsInAllDirection(forTargetField: targetField).forEach { $0.flipDisk() }
+        getFlankedFieldsInAllDirection(forTargetField: targetField).forEach { $0.disk?.turnOver() }
+
+        switchPlayer()
     }
 
-    public func getNumberOfFieldsTaken(ofType type: Disk? = nil) -> Int {
-        if let type = type {
-            return board.taken.filter { $0.disk == type }.count
+    public func getNumberOfFieldsTaken(ofColor color: Disk.Color? = nil) -> Int {
+        if let color = color {
+            return board.taken.filter { $0.disk?.currentColor == color }.count
         }
 
         return board.taken.count
@@ -222,6 +240,10 @@ class Reversi {
 
         return flankedFields
     }
+
+    fileprivate func switchPlayer() {
+        currentPlayer = currentPlayer == .white ? .black : .white
+    }
 }
 
 class ReversiSpec: QuickSpec {
@@ -238,17 +260,17 @@ class ReversiSpec: QuickSpec {
         describe("start") {
             
             it("has 4 disks in a starting position") {
-                expect(board).to(equal(Board(taken: [Field(column: .d, row: ._4, disk: .white),
-                                                     Field(column: .d, row: ._5, disk: .black),
-                                                     Field(column: .e, row: ._4, disk: .black),
-                                                     Field(column: .e, row: ._5, disk: .white)])))
+                expect(board).to(equal(Board(taken: [Field(column: .d, row: ._4, disk: Disk(currentColor: .white)),
+                                                     Field(column: .d, row: ._5, disk: Disk(currentColor: .black)),
+                                                     Field(column: .e, row: ._4, disk: Disk(currentColor: .black)),
+                                                     Field(column: .e, row: ._5, disk: Disk(currentColor: .white))])))
             }
         }
 
         describe("black player makes first move to D3") {
 
             beforeEach {
-                game.move(to: Field(column: .d, row: ._3, disk: .black))
+                game.move(to: Field(column: .d, row: ._3, disk: Disk(currentColor: .black)))
             }
 
             it("has 5 disks on board") {
@@ -256,17 +278,21 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has black disk on position D3") {
-                expect(board.getField(column: .d, row: ._3)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .d, row: ._3)?.disk).to(equal(Disk(currentColor: .black)))
             }
 
             it("has black disk on position D4") {
-                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk(currentColor: .black)))
+            }
+
+            it("switches currentPlayer to white") {
+                expect(game.currentPlayer).to(equal(Disk.Color.white))
             }
         }
 
         describe("black player makes first move to E6") {
             beforeEach {
-                game.move(to: Field(column: .e, row: ._6, disk: .black))
+                game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
             }
 
             it("has 5 disks on board") {
@@ -274,17 +300,17 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has black disk on position E6") {
-                expect(board.getField(column: .e, row: ._6)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .e, row: ._6)?.disk).to(equal(Disk(currentColor: .black)))
             }
 
             it("has black disk on position E5") {
-                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .black)))
             }
         }
 
         describe("black player makes first move to F5") {
             beforeEach {
-                game.move(to: Field(column: .f, row: ._5, disk: .black))
+                game.move(to: Field(column: .f, row: ._5, disk: Disk(currentColor: .black)))
             }
 
             it("has 5 disks on board") {
@@ -292,17 +318,17 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has black disk on position F5") {
-                expect(board.getField(column: .f, row: ._5)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .f, row: ._5)?.disk).to(equal(Disk(currentColor: .black)))
             }
 
             it("has black disk on position E5") {
-                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .black)))
             }
         }
 
         describe("black player makes first move to C4") {
             beforeEach {
-                game.move(to: Field(column: .c, row: ._4, disk: .black))
+                game.move(to: Field(column: .c, row: ._4, disk: Disk(currentColor: .black)))
             }
 
             it("has 5 disks on board") {
@@ -310,18 +336,18 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has black disk on position C4") {
-                expect(board.getField(column: .c, row: ._4)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .c, row: ._4)?.disk).to(equal(Disk(currentColor: .black)))
             }
 
             it("has black disk on position D4") {
-                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk.black))
+                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk(currentColor: .black)))
             }
         }
 
         describe("second move down, right flanking") {
             beforeEach {
-                game.move(to: Field(column: .e, row: ._6, disk: .black))
-                game.move(to: Field(column: .f, row: ._6, disk: .white))
+                game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
+                game.move(to: Field(column: .f, row: ._6, disk: Disk(currentColor: .white)))
             }
 
             it("has 6 disks on board") {
@@ -329,18 +355,18 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has white disk on position F6") {
-                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(.white))
+                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(Disk(currentColor: .white)))
             }
 
             it("has white disk on position E5") {
-                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(.white))
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .white)))
             }
         }
 
         describe("second move down, right flanking") {
             beforeEach {
-                game.move(to: Field(column: .e, row: ._6, disk: .black))
-                game.move(to: Field(column: .f, row: ._6, disk: .white))
+                game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
+                game.move(to: Field(column: .f, row: ._6, disk: Disk(currentColor: .white)))
             }
 
             it("has 6 disks on board") {
@@ -348,18 +374,18 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has white disk on position F6") {
-                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(.white))
+                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(Disk(currentColor: .white)))
             }
 
             it("has white disk on position E5") {
-                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(.white))
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .white)))
             }
         }
 
         describe("second move up, left flanking") {
             beforeEach {
-                game.move(to: Field(column: .d, row: ._3, disk: .black))
-                game.move(to: Field(column: .c, row: ._3, disk: .white))
+                game.move(to: Field(column: .d, row: ._3, disk: Disk(currentColor: .black)))
+                game.move(to: Field(column: .c, row: ._3, disk: Disk(currentColor: .white)))
             }
 
             it("has 6 disks on board") {
@@ -367,11 +393,11 @@ class ReversiSpec: QuickSpec {
             }
 
             it("has white disk on position C3") {
-                expect(board.getField(column: .c, row: ._3)?.disk).to(equal(.white))
+                expect(board.getField(column: .c, row: ._3)?.disk).to(equal(Disk(currentColor: .white)))
             }
 
             it("has white disk on position D4") {
-                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(.white))
+                expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk(currentColor: .white)))
             }
         }
     }
