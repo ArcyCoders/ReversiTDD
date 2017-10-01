@@ -306,6 +306,10 @@ class ReversiSpec: QuickSpec {
             it("has black disk on position E5") {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .black)))
             }
+
+            it("switches currentPlayer to white") {
+                expect(game.currentPlayer).to(equal(Disk.Color.white))
+            }
         }
 
         describe("black player makes first move to F5") {
@@ -323,6 +327,10 @@ class ReversiSpec: QuickSpec {
 
             it("has black disk on position E5") {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .black)))
+            }
+
+            it("switches currentPlayer to white") {
+                expect(game.currentPlayer).to(equal(Disk.Color.white))
             }
         }
 
@@ -342,9 +350,13 @@ class ReversiSpec: QuickSpec {
             it("has black disk on position D4") {
                 expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk(currentColor: .black)))
             }
+
+            it("switches currentPlayer to white") {
+                expect(game.currentPlayer).to(equal(Disk.Color.white))
+            }
         }
 
-        describe("second move down, right flanking") {
+        describe("white player makes second move down, right flanking") {
             beforeEach {
                 game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
                 game.move(to: Field(column: .f, row: ._6, disk: Disk(currentColor: .white)))
@@ -361,9 +373,13 @@ class ReversiSpec: QuickSpec {
             it("has white disk on position E5") {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .white)))
             }
+
+            it("switches currentPlayer to black") {
+                expect(game.currentPlayer).to(equal(Disk.Color.black))
+            }
         }
 
-        describe("second move down, right flanking") {
+        describe("white player makes second move down, right flanking") {
             beforeEach {
                 game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
                 game.move(to: Field(column: .f, row: ._6, disk: Disk(currentColor: .white)))
@@ -380,9 +396,13 @@ class ReversiSpec: QuickSpec {
             it("has white disk on position E5") {
                 expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .white)))
             }
+
+            it("switches currentPlayer to black") {
+                expect(game.currentPlayer).to(equal(Disk.Color.black))
+            }
         }
 
-        describe("second move up, left flanking") {
+        describe("white player makes second move up, left flanking") {
             beforeEach {
                 game.move(to: Field(column: .d, row: ._3, disk: Disk(currentColor: .black)))
                 game.move(to: Field(column: .c, row: ._3, disk: Disk(currentColor: .white)))
@@ -398,6 +418,10 @@ class ReversiSpec: QuickSpec {
 
             it("has white disk on position D4") {
                 expect(board.getField(column: .d, row: ._4)?.disk).to(equal(Disk(currentColor: .white)))
+            }
+
+            it("switches currentPlayer to black") {
+                expect(game.currentPlayer).to(equal(Disk.Color.black))
             }
         }
     }
