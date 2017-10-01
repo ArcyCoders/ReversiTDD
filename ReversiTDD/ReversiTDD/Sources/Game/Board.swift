@@ -12,14 +12,14 @@ struct Board: Equatable
 {
     static let fieldsCount: Int = Column.count() * Row.count()
 
-    let emptyFields: [Field]
-    let blackFields: [Field]
-    let whiteFields: [Field]
+    let emptyFields: Set<Field>
+    let blackFields: Set<Field>
+    let whiteFields: Set<Field>
 
     static func == (lhs: Board, rhs: Board) -> Bool
     {
         guard lhs.emptyFields.count == rhs.emptyFields.count && lhs.blackFields.count == rhs.blackFields.count && lhs.whiteFields.count == rhs.whiteFields.count else { return false }
-        return Set<Field>(lhs.emptyFields) == Set<Field>(rhs.emptyFields) && Set<Field>(lhs.blackFields) == Set<Field>(rhs.blackFields) && Set<Field>(lhs.whiteFields) == Set<Field>(rhs.whiteFields)
+        return lhs.emptyFields == rhs.emptyFields && lhs.blackFields == rhs.blackFields && lhs.whiteFields == rhs.whiteFields
     }
 }
 
@@ -34,9 +34,9 @@ extension Board
     {
         guard ascii.characters.count == Board.fieldsCount else { return nil }
 
-        var emptyFields = [Field]()
-        var blackFields = [Field]()
-        var whiteFields = [Field]()
+        var emptyFields = Set<Field>()
+        var blackFields = Set<Field>()
+        var whiteFields = Set<Field>()
 
         for (index, character) in ascii.characters.enumerated()
         {
@@ -46,12 +46,12 @@ extension Board
                 let field = Field(row, col)
                 switch character
                 {
-                case "*": blackFields.append(field); break
-                case "o": whiteFields.append(field); break
-                case "_": emptyFields.append(field); break
+                case "*": blackFields.insert(field); break
+                case "o": whiteFields.insert(field); break
+                case "_": emptyFields.insert(field); break
                 default:
                     print("Unknown symbol: \(character)")
-                    return nil
+                    emptyFields.insert(field)
                 }
             }
         }

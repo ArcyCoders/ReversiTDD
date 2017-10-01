@@ -11,49 +11,13 @@ import Foundation
 enum ErrorType
 {
     case wrongPlayer
-    case illegalMove
+    case moveIsNotAllowed
 }
 
 class Reversi
 {
     fileprivate(set) var board: Board
     fileprivate(set) var currentPlayer: Player
-
-    func move(player: Player, field: Field) -> ErrorType?
-    {
-        if player == currentPlayer
-        {
-            return .wrongPlayer
-        }
-
-        var emptyFields = board.emptyFields
-        var blackFields = board.blackFields
-        var whiteFields = board.whiteFields
-
-        guard let index = emptyFields.index(of: field) else { return .illegalMove }
-
-        emptyFields.remove(at: index)
-
-        if player == .black
-        {
-            blackFields.append(field)
-            let disksToSwap = findDisksForSwap(for: player, field: field, blackFields: blackFields, whiteFields: whiteFields)
-            blackFields.append(contentsOf: disksToSwap)
-            whiteFields = whiteFields.filter { !disksToSwap.contains($0) }
-        }
-        else
-        {
-            whiteFields.append(field)
-            let disksToSwap = findDisksForSwap(for: player, field: field, blackFields: blackFields, whiteFields: whiteFields)
-            whiteFields.append(contentsOf: disksToSwap)
-            blackFields = blackFields.filter { !disksToSwap.contains($0) }
-        }
-
-        board = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
-        currentPlayer = player.next()
-
-        return nil
-    }
 
     init()
     {
@@ -69,62 +33,126 @@ class Reversi
         // 7________
         // 8________
         let array = Array(0...63)
-        let emptyFields = array.flatMap { (index) -> Field? in
+        let emptyFields = Set<Field>(array.flatMap { (index) -> Field? in
             let y = index % Row.count()
             let x = index / Column.count()
             if (x == 3 || x == 4) && (y == 3 || y == 4) { return nil }
             return Field(Row(rawValue: y)!, Column(rawValue: x)!)
-        }
-        let blackFields = [Field(._5, .d), Field(._4, .e)]
-        let whiteFields = [Field(._4, .d), Field(._5, .e)]
+        })
+        let blackFields = Set<Field>([Field(._5, .d), Field(._4, .e)])
+        let whiteFields = Set<Field>([Field(._4, .d), Field(._5, .e)])
         
         board = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
         currentPlayer = Player.black
+    }
+
+    init(board: Board, player: Player)
+    {
+        self.board = board
+        self.currentPlayer = player
+    }
+
+    func canMove(player: Player) -> Bool { return !possibleMoves(for: player).isEmpty }
+    func getPlayerFields(_ player: Player) -> Set<Field> { return (player == .black) ? board.blackFields : board.whiteFields }
+    func getOpponentFields(_ player: Player) -> Set<Field> { return (player == .black) ? board.whiteFields : board.blackFields }
+
+    func possibleMoves(for player: Player) -> Set<Field>
+    {
+        var possibleMoves = Set<Field>()
+
+        let emptyFields = board.emptyFields
+        let playerFields = getPlayerFields(player)
+        let opponentFields = getOpponentFields(player)
+        emptyFields.forEach { (field) in
+            let disksToSwap = self.findDisksToSwap(for: player, field: field, playerFields: playerFields, opponentFields: opponentFields)
+            if !disksToSwap.isEmpty
+            {
+                possibleMoves.insert(field)
+            }
+        }
+
+        return possibleMoves
+    }
+
+    func move(player: Player, field: Field) -> ErrorType?
+    {
+        if player == currentPlayer
+        {
+            return .wrongPlayer
+        }
+
+        let emptyFields = board.emptyFields
+        guard emptyFields.contains(field) else { return .moveIsNotAllowed }
+
+        var playerFields = getPlayerFields(player)
+        var opponentFields = getOpponentFields(player)
+        let disksToSwap = findDisksToSwap(for: player, field: field, playerFields: playerFields, opponentFields: opponentFields)
+        // If there is no disks to swap then current player has no moves
+        if disksToSwap.isEmpty { return .moveIsNotAllowed }
+
+        playerFields.insert(field)
+        playerFields.formUnion(disksToSwap)
+        opponentFields.subtract(disksToSwap)
+
+        let newEmptyFields = emptyFields.subtracting(Set<Field>([field]))
+        let newBlackFields = (player == .black) ? playerFields : opponentFields
+        let newWhiteFields = (player == .black) ? opponentFields : playerFields
+
+        board = Board(emptyFields: newEmptyFields, blackFields: newBlackFields, whiteFields: newWhiteFields)
+        currentPlayer = player.next()
+
+        return nil
     }
 }
 
 extension Reversi
 {
-    fileprivate func findDisksForSwap(`for` player: Player, field: Field, blackFields: [Field], whiteFields: [Field]) -> [Field]
+    fileprivate func findDisksToSwap(`for` player: Player, field: Field, playerFields: Set<Field>, opponentFields: Set<Field>) -> Set<Field>
     {
-        var disksToSwap = [Field]()
-        let playerFields = (player == .black) ? blackFields : whiteFields
-        let opponentFields = (player == .black) ? whiteFields : blackFields
-
+        var disksToSwap = Set<Field>()
         DirectionType.all().forEach { (direction) in
             let fields = findFields(startField: field, direction: direction, playerFields: playerFields, opponentFields: opponentFields)
-            disksToSwap.append(contentsOf: fields)
+            disksToSwap.formUnion(fields)
         }
 
         return disksToSwap
     }
 
-    fileprivate func findFields(startField: Field, direction: DirectionType.Direction, playerFields: [Field], opponentFields: [Field]) -> [Field]
+    fileprivate func findFields(startField: Field, direction: DirectionType.Direction, playerFields: Set<Field>, opponentFields: Set<Field>) -> Set<Field>
     {
-        var resultFields = [Field]()
-//
-//        var x: FieldType = startField.x
-//        var y: FieldType = startField.y
-//        var nextField: Field?
+        guard !playerFields.contains(startField), !opponentFields.contains(startField) else { return Set<Field>() }
 
-//        repeat
-//        {
-//            x += direction.vx
-//            y += direction.vy
-//            nextField = Field(x: x, y: y)
-//            guard x >= 0 && x < 8 && y >= 0 && y < 8 else { break }
-//            guard let nextField = nextField, opponentFields.contains(nextField) else { break }
-//            resultFields.append(nextField)
-//
-//        } while(true)
+        var resultFields = Set<Field>()
+        var column: Column = startField.column
+        var row: Row = startField.row
+
+        repeat
+        {
+            guard let nextColumn = Column(rawValue: column.rawValue + direction.vx) else { return Set<Field>() }
+            guard let nextRow = Row(rawValue: row.rawValue + direction.vy) else { return Set<Field>() }
+
+            let nextField = Field(nextRow, nextColumn)
+            if opponentFields.contains(nextField)
+            {
+                // continue
+                resultFields.insert(nextField)
+            }
+            else if playerFields.contains(nextField)
+            {
+                // player field, break here
+                break
+            }
+            else
+            {
+                // Empty field, stop here
+                return Set<Field>()
+            }
+
+            column = nextColumn
+            row = nextRow
+
+        } while(true)
 
         return resultFields
     }
 }
-
-
-
-
-
-
-

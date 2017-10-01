@@ -11,24 +11,40 @@ import Foundation
 
 extension Board
 {
-    static func random() -> Board
+    enum FieldType: Int
     {
-        var emptyFields = [Field]()
-        var blackFields = [Field]()
-        var whiteFields = [Field]()
+        case black = 0, white, empty
+    }
+
+    static func random(allowBlackFields: Bool = true, allowWhiteFields: Bool = true, allowEmptyFields: Bool = true) -> Board
+    {
+        var fieldTypes = [FieldType]()
+        if allowBlackFields { fieldTypes.append(.black) }
+        if allowWhiteFields { fieldTypes.append(.white) }
+        if allowEmptyFields { fieldTypes.append(.empty) }
+
+        guard !fieldTypes.isEmpty else
+        {
+            return Board(emptyFields: Set<Field>(), blackFields: Set<Field>(), whiteFields: Set<Field>())
+        }
+
+        var emptyFields = Set<Field>()
+        var blackFields = Set<Field>()
+        var whiteFields = Set<Field>()
 
         let allFields = Field.all()
         allFields.forEach { (field) in
 
-            let index = Int(arc4random_uniform(3))
-            switch index
+            let index = Int(arc4random_uniform(UInt32(fieldTypes.count)))
+            let fieldType: FieldType = fieldTypes[index]
+            switch fieldType
             {
-            case 0:
-                blackFields.append(field)
-            case 1:
-                whiteFields.append(field)
-            default:
-                emptyFields.append(field)
+            case .black:
+                blackFields.insert(field)
+            case .white:
+                whiteFields.insert(field)
+            case .empty:
+                emptyFields.insert(field)
             }
         }
 

@@ -62,9 +62,9 @@ class BoardSpec: QuickSpec
                 let board1 = Board(ascii: input)
                 expect(board1).toNot(beNil())
 
-                let blackFields = [Field(._1, .d), Field(._1, .e), Field(._4, .e), Field(._5, .d), Field(._7, .b), Field(._7, .c)]
-                let whiteFields = [Field(._7, .g), Field(._4, .d), Field(._5, .e), Field(._2, .b)]
-                let emptyFields = Array<Field>(Set<Field>(Field.all()).subtracting(Set<Field>(blackFields + whiteFields)))
+                let blackFields = Set<Field>([Field(._1, .d), Field(._1, .e), Field(._4, .e), Field(._5, .d), Field(._7, .b), Field(._7, .c)])
+                let whiteFields = Set<Field>([Field(._7, .g), Field(._4, .d), Field(._5, .e), Field(._2, .b)])
+                let emptyFields = Set<Field>(Field.all()).subtracting(blackFields.union(whiteFields))
                 let board2 = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
                 expect(board1).to(equal(board2))
             }
@@ -85,9 +85,9 @@ class BoardSpec: QuickSpec
                 let board1 = Board(ascii: input)
                 expect(board1).toNot(beNil())
 
-                let whiteFields = [Field(._1, .d), Field(._1, .e), Field(._4, .e), Field(._5, .d), Field(._7, .b), Field(._7, .c)]
-                let blackFields = [Field(._7, .g), Field(._4, .d), Field(._5, .e), Field(._2, .b)]
-                let emptyFields = Array<Field>(Set<Field>(Field.all()).subtracting(Set<Field>(blackFields + whiteFields)))
+                let whiteFields = Set<Field>([Field(._1, .d), Field(._1, .e), Field(._4, .e), Field(._5, .d), Field(._7, .b), Field(._7, .c)])
+                let blackFields = Set<Field>([Field(._7, .g), Field(._4, .d), Field(._5, .e), Field(._2, .b)])
+                let emptyFields = Set<Field>(Field.all()).subtracting(blackFields.union(whiteFields))
                 let board2 = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
                 expect(board1).toNot(equal(board2))
             }
