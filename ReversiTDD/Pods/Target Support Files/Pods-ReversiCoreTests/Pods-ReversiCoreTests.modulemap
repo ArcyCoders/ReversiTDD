@@ -1,0 +1,6 @@
+framework module Pods_ReversiCoreTests {
+  umbrella header "Pods-ReversiCoreTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

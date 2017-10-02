@@ -7,77 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440166941F6DCEEF00F433CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4401668B1F6DCEEF00F433CC /* Assets.xcassets */; };
-		440166951F6DCEEF00F433CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4401668C1F6DCEEF00F433CC /* LaunchScreen.storyboard */; };
-		440166961F6DCEEF00F433CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4401668E1F6DCEEF00F433CC /* Main.storyboard */; };
-		440166981F6DCEEF00F433CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166921F6DCEEF00F433CC /* AppDelegate.swift */; };
-		440166991F6DCEEF00F433CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166931F6DCEEF00F433CC /* ViewController.swift */; };
-		4401669C1F6DCF4B00F433CC /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669B1F6DCF4B00F433CC /* Reversi.swift */; };
-		4401669E1F6DCF5300F433CC /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669D1F6DCF5300F433CC /* Board.swift */; };
-		440166A01F6DCFB500F433CC /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401669F1F6DCFB500F433CC /* Field.swift */; };
-		440166A21F6DD05100F433CC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440166A11F6DD05100F433CC /* Enums.swift */; };
-		4420B8511F76E7B200885461 /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420B8501F76E7B200885461 /* BoardSpec.swift */; };
-		448F9D761F76F03F0038EB8B /* FieldSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F9D751F76F03F0038EB8B /* FieldSpec.swift */; };
-		448F9D791F76F42F0038EB8B /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F9D781F76F42F0038EB8B /* String+Subscript.swift */; };
-		448F9D7C1F7841AB0038EB8B /* BoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F9D7B1F7841AB0038EB8B /* BoardHelper.swift */; };
-		448F9D7E1F7841BE0038EB8B /* FieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448F9D7D1F7841BE0038EB8B /* FieldHelper.swift */; };
-		4FC6AAE0B9447DEE9882C141 /* Pods_ReversiTDD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */; };
-		60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */; };
-		7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */; };
+		2FD1EACF9E65634F28D6B0CB /* Pods_ReversiCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8165BD5845FBF19E4AEA14AD /* Pods_ReversiCore.framework */; };
+		4443A8C61F82DDB0004BCC3A /* ReversiCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */; };
+		4443A8CD1F82DDB0004BCC3A /* ReversiCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4443A8BF1F82DDB0004BCC3A /* ReversiCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4443A8EA1F82DF08004BCC3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8E91F82DF08004BCC3A /* main.swift */; };
+		4443A8EF1F82E445004BCC3A /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DD1F82DEA5004BCC3A /* BoardSpec.swift */; };
+		4443A8F01F82E445004BCC3A /* FieldSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DE1F82DEA5004BCC3A /* FieldSpec.swift */; };
+		4443A8F11F82E445004BCC3A /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DF1F82DEA5004BCC3A /* ReversiSpec.swift */; };
+		4443A8F21F82E445004BCC3A /* BoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8E11F82DEA5004BCC3A /* BoardHelper.swift */; };
+		4443A8F31F82E445004BCC3A /* FieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8E21F82DEA5004BCC3A /* FieldHelper.swift */; };
+		4443A8F41F82E549004BCC3A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D61F82DDF2004BCC3A /* Board.swift */; };
+		4443A8F51F82E549004BCC3A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D71F82DDF2004BCC3A /* Enums.swift */; };
+		4443A8F61F82E549004BCC3A /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D81F82DDF2004BCC3A /* Field.swift */; };
+		4443A8F71F82E549004BCC3A /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D91F82DDF2004BCC3A /* Reversi.swift */; };
+		4443A8F81F82E549004BCC3A /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DB1F82DDF2004BCC3A /* String+Subscript.swift */; };
+		4443A8FF1F82EB1D004BCC3A /* ReversiCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4443A9031F82F309004BCC3A /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9021F82F309004BCC3A /* ConsoleIO.swift */; };
+		4443A9051F82F594004BCC3A /* Field+ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9041F82F594004BCC3A /* Field+ASCII.swift */; };
+		52C2638FFBBE416EC00BED33 /* Pods_ReversiCoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3E833413862EF87B297665 /* Pods_ReversiCoreTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		185B266D1F5C6EA800B60B30 /* PBXContainerItemProxy */ = {
+		4443A8C71F82DDB0004BCC3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 185B26501F5C6EA800B60B30 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 185B26571F5C6EA800B60B30;
-			remoteInfo = ReversiTDD;
+			remoteGlobalIDString = 4443A8BC1F82DDB0004BCC3A;
+			remoteInfo = ReversiCore;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4443A8E51F82DF08004BCC3A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4443A8FF1F82EB1D004BCC3A /* ReversiCore.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiTDD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiTDDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		185B26581F5C6EA800B60B30 /* ReversiTDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReversiTDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		185B266C1F5C6EA800B60B30 /* ReversiTDDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiTDDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		185B26721F5C6EA800B60B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B40A8D4E831095C92CB785A /* Pods-ReversiTDDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.release.xcconfig"; sourceTree = "<group>"; };
-		4401668B1F6DCEEF00F433CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4401668D1F6DCEEF00F433CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4401668F1F6DCEEF00F433CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		440166901F6DCEEF00F433CC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		440166921F6DCEEF00F433CC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		440166931F6DCEEF00F433CC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4401669B1F6DCF4B00F433CC /* Reversi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
-		4401669D1F6DCF5300F433CC /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		4401669F1F6DCFB500F433CC /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
-		440166A11F6DD05100F433CC /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		4420B8501F76E7B200885461 /* BoardSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
-		448F9D751F76F03F0038EB8B /* FieldSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldSpec.swift; sourceTree = "<group>"; };
-		448F9D781F76F42F0038EB8B /* String+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
-		448F9D7B1F7841AB0038EB8B /* BoardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardHelper.swift; sourceTree = "<group>"; };
-		448F9D7D1F7841BE0038EB8B /* FieldHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldHelper.swift; sourceTree = "<group>"; };
-		60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
-		BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.debug.xcconfig"; sourceTree = "<group>"; };
-		C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.release.xcconfig"; sourceTree = "<group>"; };
+		36C93BBBF37ABCC77139C866 /* Pods-ReversiCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCore/Pods-ReversiCore.release.xcconfig"; sourceTree = "<group>"; };
+		4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReversiCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4443A8BF1F82DDB0004BCC3A /* ReversiCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiCore.h; sourceTree = "<group>"; };
+		4443A8C01F82DDB0004BCC3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4443A8C51F82DDB0004BCC3A /* ReversiCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4443A8CC1F82DDB0004BCC3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4443A8D61F82DDF2004BCC3A /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		4443A8D71F82DDF2004BCC3A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		4443A8D81F82DDF2004BCC3A /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		4443A8D91F82DDF2004BCC3A /* Reversi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
+		4443A8DB1F82DDF2004BCC3A /* String+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
+		4443A8DD1F82DEA5004BCC3A /* BoardSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
+		4443A8DE1F82DEA5004BCC3A /* FieldSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSpec.swift; sourceTree = "<group>"; };
+		4443A8DF1F82DEA5004BCC3A /* ReversiSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
+		4443A8E11F82DEA5004BCC3A /* BoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHelper.swift; sourceTree = "<group>"; };
+		4443A8E21F82DEA5004BCC3A /* FieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldHelper.swift; sourceTree = "<group>"; };
+		4443A8E71F82DF08004BCC3A /* ReversiConsole */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReversiConsole; sourceTree = BUILT_PRODUCTS_DIR; };
+		4443A8E91F82DF08004BCC3A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4443A9021F82F309004BCC3A /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
+		4443A9041F82F594004BCC3A /* Field+ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Field+ASCII.swift"; sourceTree = "<group>"; };
+		57CB76BEDED16B214B5C777E /* Pods-ReversiCoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		72EFD53EF84FE68FDEE58A18 /* Pods-ReversiCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCore/Pods-ReversiCore.debug.xcconfig"; sourceTree = "<group>"; };
+		8165BD5845FBF19E4AEA14AD /* Pods_ReversiCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB7C063721DCA72FF9558E9 /* Pods-ReversiCoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF3E833413862EF87B297665 /* Pods_ReversiCoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiCoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		185B26551F5C6EA800B60B30 /* Frameworks */ = {
+		4443A8B91F82DDB0004BCC3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FC6AAE0B9447DEE9882C141 /* Pods_ReversiTDD.framework in Frameworks */,
+				2FD1EACF9E65634F28D6B0CB /* Pods_ReversiCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		185B26691F5C6EA800B60B30 /* Frameworks */ = {
+		4443A8C21F82DDB0004BCC3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */,
+				4443A8C61F82DDB0004BCC3A /* ReversiCore.framework in Frameworks */,
+				52C2638FFBBE416EC00BED33 /* Pods_ReversiCoreTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4443A8E41F82DF08004BCC3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,10 +111,10 @@
 		015D0E44EBDCED905227232D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */,
-				3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */,
-				2B40A8D4E831095C92CB785A /* Pods-ReversiTDDTests.debug.xcconfig */,
-				C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */,
+				72EFD53EF84FE68FDEE58A18 /* Pods-ReversiCore.debug.xcconfig */,
+				36C93BBBF37ABCC77139C866 /* Pods-ReversiCore.release.xcconfig */,
+				8DB7C063721DCA72FF9558E9 /* Pods-ReversiCoreTests.debug.xcconfig */,
+				57CB76BEDED16B214B5C777E /* Pods-ReversiCoreTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -100,6 +124,8 @@
 			children = (
 				076F0184DB0C8B553B99302D /* Pods_ReversiTDD.framework */,
 				15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */,
+				8165BD5845FBF19E4AEA14AD /* Pods_ReversiCore.framework */,
+				CF3E833413862EF87B297665 /* Pods_ReversiCoreTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,8 +133,9 @@
 		185B264F1F5C6EA800B60B30 = {
 			isa = PBXGroup;
 			children = (
-				185B265A1F5C6EA800B60B30 /* ReversiTDD */,
-				185B266F1F5C6EA800B60B30 /* ReversiTDDTests */,
+				4443A8E81F82DF08004BCC3A /* ReversiConsole */,
+				4443A8BE1F82DDB0004BCC3A /* ReversiCore */,
+				4443A8C91F82DDB0004BCC3A /* ReversiCoreTests */,
 				185B26591F5C6EA800B60B30 /* Products */,
 				015D0E44EBDCED905227232D /* Pods */,
 				07A0913BE6A26D68ED66D3AD /* Frameworks */,
@@ -118,126 +145,161 @@
 		185B26591F5C6EA800B60B30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				185B26581F5C6EA800B60B30 /* ReversiTDD.app */,
-				185B266C1F5C6EA800B60B30 /* ReversiTDDTests.xctest */,
+				4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */,
+				4443A8C51F82DDB0004BCC3A /* ReversiCoreTests.xctest */,
+				4443A8E71F82DF08004BCC3A /* ReversiConsole */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		185B265A1F5C6EA800B60B30 /* ReversiTDD */ = {
+		4443A8BE1F82DDB0004BCC3A /* ReversiCore */ = {
 			isa = PBXGroup;
 			children = (
-				4401668A1F6DCEEF00F433CC /* Resources */,
-				440166911F6DCEEF00F433CC /* Sources */,
+				4443A8D41F82DDF2004BCC3A /* Sources */,
+				4443A8BF1F82DDB0004BCC3A /* ReversiCore.h */,
+				4443A8C01F82DDB0004BCC3A /* Info.plist */,
 			);
-			path = ReversiTDD;
+			path = ReversiCore;
 			sourceTree = "<group>";
 		};
-		185B266F1F5C6EA800B60B30 /* ReversiTDDTests */ = {
+		4443A8C91F82DDB0004BCC3A /* ReversiCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				448F9D7A1F78419E0038EB8B /* Utils */,
-				185B26721F5C6EA800B60B30 /* Info.plist */,
-				4420B8501F76E7B200885461 /* BoardSpec.swift */,
-				448F9D751F76F03F0038EB8B /* FieldSpec.swift */,
-				60A4CE621F5C73C70094D2A6 /* ReversiSpec.swift */,
+				4443A8DC1F82DEA5004BCC3A /* Sources */,
+				4443A8CC1F82DDB0004BCC3A /* Info.plist */,
 			);
-			path = ReversiTDDTests;
+			path = ReversiCoreTests;
 			sourceTree = "<group>";
 		};
-		4401668A1F6DCEEF00F433CC /* Resources */ = {
+		4443A8D41F82DDF2004BCC3A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4401668B1F6DCEEF00F433CC /* Assets.xcassets */,
-				4401668C1F6DCEEF00F433CC /* LaunchScreen.storyboard */,
-				4401668E1F6DCEEF00F433CC /* Main.storyboard */,
-				440166901F6DCEEF00F433CC /* Info.plist */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		440166911F6DCEEF00F433CC /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				4401669A1F6DCF2D00F433CC /* Game */,
-				448F9D771F76F4230038EB8B /* Utils */,
-				440166921F6DCEEF00F433CC /* AppDelegate.swift */,
-				440166931F6DCEEF00F433CC /* ViewController.swift */,
+				4443A8D51F82DDF2004BCC3A /* Game */,
+				4443A8DA1F82DDF2004BCC3A /* Utils */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		4401669A1F6DCF2D00F433CC /* Game */ = {
+		4443A8D51F82DDF2004BCC3A /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				440166A11F6DD05100F433CC /* Enums.swift */,
-				4401669D1F6DCF5300F433CC /* Board.swift */,
-				4401669F1F6DCFB500F433CC /* Field.swift */,
-				4401669B1F6DCF4B00F433CC /* Reversi.swift */,
+				4443A8D61F82DDF2004BCC3A /* Board.swift */,
+				4443A8D71F82DDF2004BCC3A /* Enums.swift */,
+				4443A8D81F82DDF2004BCC3A /* Field.swift */,
+				4443A8D91F82DDF2004BCC3A /* Reversi.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
 		};
-		448F9D771F76F4230038EB8B /* Utils */ = {
+		4443A8DA1F82DDF2004BCC3A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				448F9D781F76F42F0038EB8B /* String+Subscript.swift */,
+				4443A8DB1F82DDF2004BCC3A /* String+Subscript.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		448F9D7A1F78419E0038EB8B /* Utils */ = {
+		4443A8DC1F82DEA5004BCC3A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				448F9D7B1F7841AB0038EB8B /* BoardHelper.swift */,
-				448F9D7D1F7841BE0038EB8B /* FieldHelper.swift */,
+				4443A8DD1F82DEA5004BCC3A /* BoardSpec.swift */,
+				4443A8DE1F82DEA5004BCC3A /* FieldSpec.swift */,
+				4443A8DF1F82DEA5004BCC3A /* ReversiSpec.swift */,
+				4443A8E01F82DEA5004BCC3A /* Utils */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4443A8E01F82DEA5004BCC3A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4443A8E11F82DEA5004BCC3A /* BoardHelper.swift */,
+				4443A8E21F82DEA5004BCC3A /* FieldHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		4443A8E81F82DF08004BCC3A /* ReversiConsole */ = {
+			isa = PBXGroup;
+			children = (
+				4443A9021F82F309004BCC3A /* ConsoleIO.swift */,
+				4443A9041F82F594004BCC3A /* Field+ASCII.swift */,
+				4443A8E91F82DF08004BCC3A /* main.swift */,
+			);
+			path = ReversiConsole;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		185B26571F5C6EA800B60B30 /* ReversiTDD */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 185B26751F5C6EA800B60B30 /* Build configuration list for PBXNativeTarget "ReversiTDD" */;
-			buildPhases = (
-				EC50C9640E5D09C14CC7CB7A /* [CP] Check Pods Manifest.lock */,
-				185B26541F5C6EA800B60B30 /* Sources */,
-				185B26551F5C6EA800B60B30 /* Frameworks */,
-				185B26561F5C6EA800B60B30 /* Resources */,
-				52A42C8ABDCDDB243FA68291 /* [CP] Embed Pods Frameworks */,
-				40A294E893C01B2E82DC30A0 /* [CP] Copy Pods Resources */,
+/* Begin PBXHeadersBuildPhase section */
+		4443A8BA1F82DDB0004BCC3A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4443A8CD1F82DDB0004BCC3A /* ReversiCore.h in Headers */,
 			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ReversiTDD;
-			productName = ReversiTDD;
-			productReference = 185B26581F5C6EA800B60B30 /* ReversiTDD.app */;
-			productType = "com.apple.product-type.application";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		185B266B1F5C6EA800B60B30 /* ReversiTDDTests */ = {
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4443A8BC1F82DDB0004BCC3A /* ReversiCore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 185B26781F5C6EA800B60B30 /* Build configuration list for PBXNativeTarget "ReversiTDDTests" */;
+			buildConfigurationList = 4443A8CE1F82DDB0004BCC3A /* Build configuration list for PBXNativeTarget "ReversiCore" */;
 			buildPhases = (
-				8E6A96D372AF68296C0451D7 /* [CP] Check Pods Manifest.lock */,
-				185B26681F5C6EA800B60B30 /* Sources */,
-				185B26691F5C6EA800B60B30 /* Frameworks */,
-				185B266A1F5C6EA800B60B30 /* Resources */,
-				9F7941F8FFEF026AA1E5159E /* [CP] Embed Pods Frameworks */,
-				FA3792FE32F40C51C73B8EB8 /* [CP] Copy Pods Resources */,
+				85309ADD7280EE546C62B25D /* [CP] Check Pods Manifest.lock */,
+				4443A8B81F82DDB0004BCC3A /* Sources */,
+				4443A8B91F82DDB0004BCC3A /* Frameworks */,
+				4443A8BA1F82DDB0004BCC3A /* Headers */,
+				4443A8BB1F82DDB0004BCC3A /* Resources */,
+				1EADEAF581221E8E3CC17205 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				185B266E1F5C6EA800B60B30 /* PBXTargetDependency */,
 			);
-			name = ReversiTDDTests;
-			productName = ReversiTDDTests;
-			productReference = 185B266C1F5C6EA800B60B30 /* ReversiTDDTests.xctest */;
+			name = ReversiCore;
+			productName = ReversiCore;
+			productReference = 4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4443A8C41F82DDB0004BCC3A /* ReversiCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4443A8D11F82DDB0004BCC3A /* Build configuration list for PBXNativeTarget "ReversiCoreTests" */;
+			buildPhases = (
+				B48503619A21B3A56209D614 /* [CP] Check Pods Manifest.lock */,
+				4443A8C11F82DDB0004BCC3A /* Sources */,
+				4443A8C21F82DDB0004BCC3A /* Frameworks */,
+				4443A8C31F82DDB0004BCC3A /* Resources */,
+				81673DEB2718A6BDB60BF8F3 /* [CP] Embed Pods Frameworks */,
+				37C564D1887CB36B4DDBB1F5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4443A8C81F82DDB0004BCC3A /* PBXTargetDependency */,
+			);
+			name = ReversiCoreTests;
+			productName = ReversiCoreTests;
+			productReference = 4443A8C51F82DDB0004BCC3A /* ReversiCoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4443A8E61F82DF08004BCC3A /* ReversiConsole */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4443A8EB1F82DF08004BCC3A /* Build configuration list for PBXNativeTarget "ReversiConsole" */;
+			buildPhases = (
+				4443A8E31F82DF08004BCC3A /* Sources */,
+				4443A8E41F82DF08004BCC3A /* Frameworks */,
+				4443A8E51F82DF08004BCC3A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReversiConsole;
+			productName = ReversiConsole;
+			productReference = 4443A8E71F82DF08004BCC3A /* ReversiConsole */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -245,19 +307,24 @@
 		185B26501F5C6EA800B60B30 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = ArcyCoders;
 				TargetAttributes = {
-					185B26571F5C6EA800B60B30 = {
-						CreatedOnToolsVersion = 8.3.1;
+					4443A8BC1F82DDB0004BCC3A = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = DEURTTZ5DW;
 						ProvisioningStyle = Automatic;
 					};
-					185B266B1F5C6EA800B60B30 = {
-						CreatedOnToolsVersion = 8.3.1;
-						LastSwiftMigration = 0830;
+					4443A8C41F82DDB0004BCC3A = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = DEURTTZ5DW;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 185B26571F5C6EA800B60B30;
+					};
+					4443A8E61F82DF08004BCC3A = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = DEURTTZ5DW;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -274,24 +341,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				185B26571F5C6EA800B60B30 /* ReversiTDD */,
-				185B266B1F5C6EA800B60B30 /* ReversiTDDTests */,
+				4443A8E61F82DF08004BCC3A /* ReversiConsole */,
+				4443A8BC1F82DDB0004BCC3A /* ReversiCore */,
+				4443A8C41F82DDB0004BCC3A /* ReversiCoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		185B26561F5C6EA800B60B30 /* Resources */ = {
+		4443A8BB1F82DDB0004BCC3A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440166961F6DCEEF00F433CC /* Main.storyboard in Resources */,
-				440166941F6DCEEF00F433CC /* Assets.xcassets in Resources */,
-				440166951F6DCEEF00F433CC /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		185B266A1F5C6EA800B60B30 /* Resources */ = {
+		4443A8C31F82DDB0004BCC3A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -301,7 +366,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		40A294E893C01B2E82DC30A0 /* [CP] Copy Pods Resources */ = {
+		1EADEAF581221E8E3CC17205 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,49 +378,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiCore/Pods-ReversiCore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		52A42C8ABDCDDB243FA68291 /* [CP] Embed Pods Frameworks */ = {
+		37C564D1887CB36B4DDBB1F5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8E6A96D372AF68296C0451D7 /* [CP] Check Pods Manifest.lock */ = {
+		81673DEB2718A6BDB60BF8F3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReversiTDDTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9F7941F8FFEF026AA1E5159E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -366,10 +413,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC50C9640E5D09C14CC7CB7A /* [CP] Check Pods Manifest.lock */ = {
+		85309ADD7280EE546C62B25D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,85 +427,77 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReversiTDD-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ReversiCore-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FA3792FE32F40C51C73B8EB8 /* [CP] Copy Pods Resources */ = {
+		B48503619A21B3A56209D614 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ReversiCoreTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		185B26541F5C6EA800B60B30 /* Sources */ = {
+		4443A8B81F82DDB0004BCC3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440166A01F6DCFB500F433CC /* Field.swift in Sources */,
-				440166991F6DCEEF00F433CC /* ViewController.swift in Sources */,
-				440166981F6DCEEF00F433CC /* AppDelegate.swift in Sources */,
-				4401669E1F6DCF5300F433CC /* Board.swift in Sources */,
-				440166A21F6DD05100F433CC /* Enums.swift in Sources */,
-				448F9D791F76F42F0038EB8B /* String+Subscript.swift in Sources */,
-				4401669C1F6DCF4B00F433CC /* Reversi.swift in Sources */,
+				4443A8F41F82E549004BCC3A /* Board.swift in Sources */,
+				4443A8F51F82E549004BCC3A /* Enums.swift in Sources */,
+				4443A8F61F82E549004BCC3A /* Field.swift in Sources */,
+				4443A8F71F82E549004BCC3A /* Reversi.swift in Sources */,
+				4443A8F81F82E549004BCC3A /* String+Subscript.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		185B26681F5C6EA800B60B30 /* Sources */ = {
+		4443A8C11F82DDB0004BCC3A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				448F9D7C1F7841AB0038EB8B /* BoardHelper.swift in Sources */,
-				60A4CE631F5C73C70094D2A6 /* ReversiSpec.swift in Sources */,
-				4420B8511F76E7B200885461 /* BoardSpec.swift in Sources */,
-				448F9D761F76F03F0038EB8B /* FieldSpec.swift in Sources */,
-				448F9D7E1F7841BE0038EB8B /* FieldHelper.swift in Sources */,
+				4443A8F21F82E445004BCC3A /* BoardHelper.swift in Sources */,
+				4443A8EF1F82E445004BCC3A /* BoardSpec.swift in Sources */,
+				4443A8F01F82E445004BCC3A /* FieldSpec.swift in Sources */,
+				4443A8F11F82E445004BCC3A /* ReversiSpec.swift in Sources */,
+				4443A8F31F82E445004BCC3A /* FieldHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4443A8E31F82DF08004BCC3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4443A8EA1F82DF08004BCC3A /* main.swift in Sources */,
+				4443A9031F82F309004BCC3A /* ConsoleIO.swift in Sources */,
+				4443A9051F82F594004BCC3A /* Field+ASCII.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		185B266E1F5C6EA800B60B30 /* PBXTargetDependency */ = {
+		4443A8C81F82DDB0004BCC3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 185B26571F5C6EA800B60B30 /* ReversiTDD */;
-			targetProxy = 185B266D1F5C6EA800B60B30 /* PBXContainerItemProxy */;
+			target = 4443A8BC1F82DDB0004BCC3A /* ReversiCore */;
+			targetProxy = 4443A8C71F82DDB0004BCC3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4401668C1F6DCEEF00F433CC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4401668D1F6DCEEF00F433CC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		4401668E1F6DCEEF00F433CC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4401668F1F6DCEEF00F433CC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		185B26731F5C6EA800B60B30 /* Debug */ = {
@@ -511,7 +550,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -561,69 +600,144 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		185B26761F5C6EA800B60B30 /* Debug */ = {
+		4443A8CF1F82DDB0004BCC3A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */;
+			baseConfigurationReference = 72EFD53EF84FE68FDEE58A18 /* Pods-ReversiCore.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/ReversiTDD/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiTDD;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ReversiCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = $inherited;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		185B26771F5C6EA800B60B30 /* Release */ = {
+		4443A8D01F82DDB0004BCC3A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3415A65AAFE90609438566B2 /* Pods-ReversiTDD.release.xcconfig */;
+			baseConfigurationReference = 36C93BBBF37ABCC77139C866 /* Pods-ReversiCore.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "$(SRCROOT)/ReversiTDD/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiTDD;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ReversiCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = $inherited;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		185B26791F5C6EA800B60B30 /* Debug */ = {
+		4443A8D21F82DDB0004BCC3A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B40A8D4E831095C92CB785A /* Pods-ReversiTDDTests.debug.xcconfig */;
+			baseConfigurationReference = 8DB7C063721DCA72FF9558E9 /* Pods-ReversiCoreTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = ReversiTDDTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiTDDTests;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ReversiCoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReversiTDD.app/ReversiTDD";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
-		185B267A1F5C6EA800B60B30 /* Release */ = {
+		4443A8D31F82DDB0004BCC3A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */;
+			baseConfigurationReference = 57CB76BEDED16B214B5C777E /* Pods-ReversiCoreTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = ReversiTDDTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiTDDTests;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = ReversiCoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ReversiTDD.app/ReversiTDD";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		4443A8EC1F82DF08004BCC3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		4443A8ED1F82DF08004BCC3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -639,20 +753,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		185B26751F5C6EA800B60B30 /* Build configuration list for PBXNativeTarget "ReversiTDD" */ = {
+		4443A8CE1F82DDB0004BCC3A /* Build configuration list for PBXNativeTarget "ReversiCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				185B26761F5C6EA800B60B30 /* Debug */,
-				185B26771F5C6EA800B60B30 /* Release */,
+				4443A8CF1F82DDB0004BCC3A /* Debug */,
+				4443A8D01F82DDB0004BCC3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		185B26781F5C6EA800B60B30 /* Build configuration list for PBXNativeTarget "ReversiTDDTests" */ = {
+		4443A8D11F82DDB0004BCC3A /* Build configuration list for PBXNativeTarget "ReversiCoreTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				185B26791F5C6EA800B60B30 /* Debug */,
-				185B267A1F5C6EA800B60B30 /* Release */,
+				4443A8D21F82DDB0004BCC3A /* Debug */,
+				4443A8D31F82DDB0004BCC3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4443A8EB1F82DF08004BCC3A /* Build configuration list for PBXNativeTarget "ReversiConsole" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4443A8EC1F82DF08004BCC3A /* Debug */,
+				4443A8ED1F82DF08004BCC3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

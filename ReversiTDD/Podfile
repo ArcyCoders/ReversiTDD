@@ -1,17 +1,17 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'ReversiTDD' do
+target 'ReversiCore' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for ReversiTDD
 
-  target 'ReversiTDDTests' do
+  target 'ReversiCoreTests' do
     inherit! :search_paths
         
-    pod 'Quick'
-    pod 'Nimble'
+    pod 'Quick', '~> 1.2'
+    pod 'Nimble', '~> 7.0'
   end
 
 end
