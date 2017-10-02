@@ -23,13 +23,18 @@ while reversi.isRunning
         let playerColor = (player == .white) ? "White" : "Black"
         consoleIO.writeMessage("\(playerColor) moves: ")
 
-        let move = consoleIO.getInput()
+        // Manual move
+//        let move = consoleIO.getInput()
+//        guard let field = Field(ascii: move) else
+//        {
+//            consoleIO.writeError("Unknown move")
+//            continue
+//        }
 
-        guard let field = Field(ascii: move) else
-        {
-            consoleIO.writeError("Unknown move")
-            continue
-        }
+        // Automatic move
+        let possibleFields: [Field] = Array(reversi.possibleMoves(for: player))
+        let index = Int(arc4random_uniform(UInt32(possibleFields.count)))
+        let field = possibleFields[index]
 
         if let error = reversi.move(player: player, field: field)
         {
@@ -43,4 +48,8 @@ while reversi.isRunning
     player = player.next()
 }
 
-print("Game finished.")
+consoleIO.writeMessage("Game finished:")
+consoleIO.writeMessage("black: \(reversi.board.blackFields.count)")
+consoleIO.writeMessage("white: \(reversi.board.whiteFields.count)")
+consoleIO.writeMessage("\n")
+

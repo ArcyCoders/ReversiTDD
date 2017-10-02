@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		2FD1EACF9E65634F28D6B0CB /* Pods_ReversiCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8165BD5845FBF19E4AEA14AD /* Pods_ReversiCore.framework */; };
 		4443A8C61F82DDB0004BCC3A /* ReversiCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */; };
-		4443A8CD1F82DDB0004BCC3A /* ReversiCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4443A8BF1F82DDB0004BCC3A /* ReversiCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4443A8EA1F82DF08004BCC3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8E91F82DF08004BCC3A /* main.swift */; };
-		4443A8EF1F82E445004BCC3A /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DD1F82DEA5004BCC3A /* BoardSpec.swift */; };
-		4443A8F01F82E445004BCC3A /* FieldSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DE1F82DEA5004BCC3A /* FieldSpec.swift */; };
-		4443A8F11F82E445004BCC3A /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DF1F82DEA5004BCC3A /* ReversiSpec.swift */; };
-		4443A8F21F82E445004BCC3A /* BoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8E11F82DEA5004BCC3A /* BoardHelper.swift */; };
-		4443A8F31F82E445004BCC3A /* FieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8E21F82DEA5004BCC3A /* FieldHelper.swift */; };
-		4443A8F41F82E549004BCC3A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D61F82DDF2004BCC3A /* Board.swift */; };
-		4443A8F51F82E549004BCC3A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D71F82DDF2004BCC3A /* Enums.swift */; };
-		4443A8F61F82E549004BCC3A /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D81F82DDF2004BCC3A /* Field.swift */; };
-		4443A8F71F82E549004BCC3A /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8D91F82DDF2004BCC3A /* Reversi.swift */; };
-		4443A8F81F82E549004BCC3A /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A8DB1F82DDF2004BCC3A /* String+Subscript.swift */; };
 		4443A8FF1F82EB1D004BCC3A /* ReversiCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4443A9031F82F309004BCC3A /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9021F82F309004BCC3A /* ConsoleIO.swift */; };
-		4443A9051F82F594004BCC3A /* Field+ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9041F82F594004BCC3A /* Field+ASCII.swift */; };
+		4443A9251F830167004BCC3A /* ReversiCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4443A9091F830042004BCC3A /* ReversiCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4443A9271F830206004BCC3A /* BoardSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9151F830042004BCC3A /* BoardSpec.swift */; };
+		4443A9281F830206004BCC3A /* FieldSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9161F830042004BCC3A /* FieldSpec.swift */; };
+		4443A9291F830206004BCC3A /* ReversiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9171F830042004BCC3A /* ReversiSpec.swift */; };
+		4443A92A1F830206004BCC3A /* BoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9191F830042004BCC3A /* BoardHelper.swift */; };
+		4443A92B1F830206004BCC3A /* FieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A91A1F830042004BCC3A /* FieldHelper.swift */; };
+		4443A92C1F830214004BCC3A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A90C1F830042004BCC3A /* Board.swift */; };
+		4443A92D1F830214004BCC3A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A90D1F830042004BCC3A /* Enums.swift */; };
+		4443A92E1F830214004BCC3A /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A90E1F830042004BCC3A /* Field.swift */; };
+		4443A92F1F830214004BCC3A /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A90F1F830042004BCC3A /* Reversi.swift */; };
+		4443A9301F830214004BCC3A /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9111F830042004BCC3A /* String+Subscript.swift */; };
+		4443A9361F8302C0004BCC3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9321F8302C0004BCC3A /* main.swift */; };
+		4443A9371F8302C0004BCC3A /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9341F8302C0004BCC3A /* ConsoleIO.swift */; };
+		4443A9381F8302C0004BCC3A /* Field+ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9351F8302C0004BCC3A /* Field+ASCII.swift */; };
 		52C2638FFBBE416EC00BED33 /* Pods_ReversiCoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3E833413862EF87B297665 /* Pods_ReversiCoreTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,24 +55,24 @@
 		15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiTDDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C93BBBF37ABCC77139C866 /* Pods-ReversiCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCore.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCore/Pods-ReversiCore.release.xcconfig"; sourceTree = "<group>"; };
 		4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReversiCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4443A8BF1F82DDB0004BCC3A /* ReversiCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiCore.h; sourceTree = "<group>"; };
-		4443A8C01F82DDB0004BCC3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4443A8C51F82DDB0004BCC3A /* ReversiCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4443A8CC1F82DDB0004BCC3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4443A8D61F82DDF2004BCC3A /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
-		4443A8D71F82DDF2004BCC3A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		4443A8D81F82DDF2004BCC3A /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
-		4443A8D91F82DDF2004BCC3A /* Reversi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
-		4443A8DB1F82DDF2004BCC3A /* String+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
-		4443A8DD1F82DEA5004BCC3A /* BoardSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
-		4443A8DE1F82DEA5004BCC3A /* FieldSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldSpec.swift; sourceTree = "<group>"; };
-		4443A8DF1F82DEA5004BCC3A /* ReversiSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
-		4443A8E11F82DEA5004BCC3A /* BoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHelper.swift; sourceTree = "<group>"; };
-		4443A8E21F82DEA5004BCC3A /* FieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldHelper.swift; sourceTree = "<group>"; };
 		4443A8E71F82DF08004BCC3A /* ReversiConsole */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReversiConsole; sourceTree = BUILT_PRODUCTS_DIR; };
-		4443A8E91F82DF08004BCC3A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		4443A9021F82F309004BCC3A /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
-		4443A9041F82F594004BCC3A /* Field+ASCII.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Field+ASCII.swift"; sourceTree = "<group>"; };
+		4443A9081F830042004BCC3A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4443A9091F830042004BCC3A /* ReversiCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReversiCore.h; sourceTree = "<group>"; };
+		4443A90C1F830042004BCC3A /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		4443A90D1F830042004BCC3A /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		4443A90E1F830042004BCC3A /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		4443A90F1F830042004BCC3A /* Reversi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
+		4443A9111F830042004BCC3A /* String+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
+		4443A9131F830042004BCC3A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4443A9151F830042004BCC3A /* BoardSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpec.swift; sourceTree = "<group>"; };
+		4443A9161F830042004BCC3A /* FieldSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldSpec.swift; sourceTree = "<group>"; };
+		4443A9171F830042004BCC3A /* ReversiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiSpec.swift; sourceTree = "<group>"; };
+		4443A9191F830042004BCC3A /* BoardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardHelper.swift; sourceTree = "<group>"; };
+		4443A91A1F830042004BCC3A /* FieldHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldHelper.swift; sourceTree = "<group>"; };
+		4443A9321F8302C0004BCC3A /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		4443A9341F8302C0004BCC3A /* ConsoleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
+		4443A9351F8302C0004BCC3A /* Field+ASCII.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Field+ASCII.swift"; sourceTree = "<group>"; };
 		57CB76BEDED16B214B5C777E /* Pods-ReversiCoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		72EFD53EF84FE68FDEE58A18 /* Pods-ReversiCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCore/Pods-ReversiCore.debug.xcconfig"; sourceTree = "<group>"; };
 		8165BD5845FBF19E4AEA14AD /* Pods_ReversiCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,9 +133,8 @@
 		185B264F1F5C6EA800B60B30 = {
 			isa = PBXGroup;
 			children = (
-				4443A8E81F82DF08004BCC3A /* ReversiConsole */,
-				4443A8BE1F82DDB0004BCC3A /* ReversiCore */,
-				4443A8C91F82DDB0004BCC3A /* ReversiCoreTests */,
+				4443A9311F8302C0004BCC3A /* Console */,
+				4443A9061F830042004BCC3A /* Core */,
 				185B26591F5C6EA800B60B30 /* Products */,
 				015D0E44EBDCED905227232D /* Pods */,
 				07A0913BE6A26D68ED66D3AD /* Frameworks */,
@@ -152,81 +151,98 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4443A8BE1F82DDB0004BCC3A /* ReversiCore */ = {
+		4443A9061F830042004BCC3A /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8D41F82DDF2004BCC3A /* Sources */,
-				4443A8BF1F82DDB0004BCC3A /* ReversiCore.h */,
-				4443A8C01F82DDB0004BCC3A /* Info.plist */,
+				4443A9071F830042004BCC3A /* Reversi */,
+				4443A9121F830042004BCC3A /* Tests */,
 			);
-			path = ReversiCore;
+			path = Core;
 			sourceTree = "<group>";
 		};
-		4443A8C91F82DDB0004BCC3A /* ReversiCoreTests */ = {
+		4443A9071F830042004BCC3A /* Reversi */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8DC1F82DEA5004BCC3A /* Sources */,
-				4443A8CC1F82DDB0004BCC3A /* Info.plist */,
+				4443A90A1F830042004BCC3A /* Sources */,
+				4443A9081F830042004BCC3A /* Info.plist */,
+				4443A9091F830042004BCC3A /* ReversiCore.h */,
 			);
-			path = ReversiCoreTests;
+			path = Reversi;
 			sourceTree = "<group>";
 		};
-		4443A8D41F82DDF2004BCC3A /* Sources */ = {
+		4443A90A1F830042004BCC3A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8D51F82DDF2004BCC3A /* Game */,
-				4443A8DA1F82DDF2004BCC3A /* Utils */,
+				4443A90B1F830042004BCC3A /* Game */,
+				4443A9101F830042004BCC3A /* Utils */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		4443A8D51F82DDF2004BCC3A /* Game */ = {
+		4443A90B1F830042004BCC3A /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8D61F82DDF2004BCC3A /* Board.swift */,
-				4443A8D71F82DDF2004BCC3A /* Enums.swift */,
-				4443A8D81F82DDF2004BCC3A /* Field.swift */,
-				4443A8D91F82DDF2004BCC3A /* Reversi.swift */,
+				4443A90C1F830042004BCC3A /* Board.swift */,
+				4443A90D1F830042004BCC3A /* Enums.swift */,
+				4443A90E1F830042004BCC3A /* Field.swift */,
+				4443A90F1F830042004BCC3A /* Reversi.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
 		};
-		4443A8DA1F82DDF2004BCC3A /* Utils */ = {
+		4443A9101F830042004BCC3A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8DB1F82DDF2004BCC3A /* String+Subscript.swift */,
+				4443A9111F830042004BCC3A /* String+Subscript.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		4443A8DC1F82DEA5004BCC3A /* Sources */ = {
+		4443A9121F830042004BCC3A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8DD1F82DEA5004BCC3A /* BoardSpec.swift */,
-				4443A8DE1F82DEA5004BCC3A /* FieldSpec.swift */,
-				4443A8DF1F82DEA5004BCC3A /* ReversiSpec.swift */,
-				4443A8E01F82DEA5004BCC3A /* Utils */,
+				4443A9141F830042004BCC3A /* Sources */,
+				4443A9131F830042004BCC3A /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		4443A9141F830042004BCC3A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4443A9181F830042004BCC3A /* Utils */,
+				4443A9151F830042004BCC3A /* BoardSpec.swift */,
+				4443A9161F830042004BCC3A /* FieldSpec.swift */,
+				4443A9171F830042004BCC3A /* ReversiSpec.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		4443A8E01F82DEA5004BCC3A /* Utils */ = {
+		4443A9181F830042004BCC3A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				4443A8E11F82DEA5004BCC3A /* BoardHelper.swift */,
-				4443A8E21F82DEA5004BCC3A /* FieldHelper.swift */,
+				4443A9191F830042004BCC3A /* BoardHelper.swift */,
+				4443A91A1F830042004BCC3A /* FieldHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		4443A8E81F82DF08004BCC3A /* ReversiConsole */ = {
+		4443A9311F8302C0004BCC3A /* Console */ = {
 			isa = PBXGroup;
 			children = (
-				4443A9021F82F309004BCC3A /* ConsoleIO.swift */,
-				4443A9041F82F594004BCC3A /* Field+ASCII.swift */,
-				4443A8E91F82DF08004BCC3A /* main.swift */,
+				4443A9331F8302C0004BCC3A /* Sources */,
+				4443A9321F8302C0004BCC3A /* main.swift */,
 			);
-			path = ReversiConsole;
+			path = Console;
+			sourceTree = "<group>";
+		};
+		4443A9331F8302C0004BCC3A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4443A9341F8302C0004BCC3A /* ConsoleIO.swift */,
+				4443A9351F8302C0004BCC3A /* Field+ASCII.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +252,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4443A8CD1F82DDB0004BCC3A /* ReversiCore.h in Headers */,
+				4443A9251F830167004BCC3A /* ReversiCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,11 +475,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4443A8F41F82E549004BCC3A /* Board.swift in Sources */,
-				4443A8F51F82E549004BCC3A /* Enums.swift in Sources */,
-				4443A8F61F82E549004BCC3A /* Field.swift in Sources */,
-				4443A8F71F82E549004BCC3A /* Reversi.swift in Sources */,
-				4443A8F81F82E549004BCC3A /* String+Subscript.swift in Sources */,
+				4443A92F1F830214004BCC3A /* Reversi.swift in Sources */,
+				4443A92D1F830214004BCC3A /* Enums.swift in Sources */,
+				4443A92C1F830214004BCC3A /* Board.swift in Sources */,
+				4443A9301F830214004BCC3A /* String+Subscript.swift in Sources */,
+				4443A92E1F830214004BCC3A /* Field.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,11 +487,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4443A8F21F82E445004BCC3A /* BoardHelper.swift in Sources */,
-				4443A8EF1F82E445004BCC3A /* BoardSpec.swift in Sources */,
-				4443A8F01F82E445004BCC3A /* FieldSpec.swift in Sources */,
-				4443A8F11F82E445004BCC3A /* ReversiSpec.swift in Sources */,
-				4443A8F31F82E445004BCC3A /* FieldHelper.swift in Sources */,
+				4443A92A1F830206004BCC3A /* BoardHelper.swift in Sources */,
+				4443A9271F830206004BCC3A /* BoardSpec.swift in Sources */,
+				4443A9281F830206004BCC3A /* FieldSpec.swift in Sources */,
+				4443A9291F830206004BCC3A /* ReversiSpec.swift in Sources */,
+				4443A92B1F830206004BCC3A /* FieldHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,9 +499,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4443A8EA1F82DF08004BCC3A /* main.swift in Sources */,
-				4443A9031F82F309004BCC3A /* ConsoleIO.swift in Sources */,
-				4443A9051F82F594004BCC3A /* Field+ASCII.swift in Sources */,
+				4443A9361F8302C0004BCC3A /* main.swift in Sources */,
+				4443A9371F8302C0004BCC3A /* ConsoleIO.swift in Sources */,
+				4443A9381F8302C0004BCC3A /* Field+ASCII.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +641,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ReversiCore/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Core/Reversi/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = $inherited;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -656,7 +672,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ReversiCore/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Core/Reversi/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = $inherited;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -681,7 +697,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DEURTTZ5DW;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ReversiCoreTests/Info.plist;
+				INFOPLIST_FILE = Core/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiCoreTests;
@@ -702,7 +718,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = DEURTTZ5DW;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ReversiCoreTests/Info.plist;
+				INFOPLIST_FILE = Core/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiCoreTests;
