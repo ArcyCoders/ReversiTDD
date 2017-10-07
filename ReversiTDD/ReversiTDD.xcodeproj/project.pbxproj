@@ -17,6 +17,7 @@
 		7F48D390AFC656C33AF4D365 /* Pods_ReversiTDDTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */; };
 		E61D47B81F891FCD0047B01D /* FlankedFieldsFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61D47B71F891FCD0047B01D /* FlankedFieldsFinder.swift */; };
 		E61D47BA1F89240E0047B01D /* FlankedFieldsFinderSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61D47B91F89240E0047B01D /* FlankedFieldsFinderSpec.swift */; };
+		E61D47BC1F8932D00047B01D /* BoardStringLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61D47BB1F8932D00047B01D /* BoardStringLoader.swift */; };
 		E66B8BCC1F890E11003B5EE2 /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCB1F890E11003B5EE2 /* Reversi.swift */; };
 		E66B8BCE1F890E28003B5EE2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCD1F890E28003B5EE2 /* Board.swift */; };
 		E66B8BD01F890E85003B5EE2 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCF1F890E85003B5EE2 /* Field.swift */; };
@@ -52,6 +53,7 @@
 		C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.release.xcconfig"; sourceTree = "<group>"; };
 		E61D47B71F891FCD0047B01D /* FlankedFieldsFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlankedFieldsFinder.swift; sourceTree = "<group>"; };
 		E61D47B91F89240E0047B01D /* FlankedFieldsFinderSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlankedFieldsFinderSpec.swift; sourceTree = "<group>"; };
+		E61D47BB1F8932D00047B01D /* BoardStringLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardStringLoader.swift; sourceTree = "<group>"; };
 		E66B8BCB1F890E11003B5EE2 /* Reversi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
 		E66B8BCD1F890E28003B5EE2 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E66B8BCF1F890E85003B5EE2 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				E66B8BCF1F890E85003B5EE2 /* Field.swift */,
 				E66B8BD11F890EBD003B5EE2 /* Disk.swift */,
 				E61D47B71F891FCD0047B01D /* FlankedFieldsFinder.swift */,
+				E61D47BB1F8932D00047B01D /* BoardStringLoader.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61D47BC1F8932D00047B01D /* BoardStringLoader.swift in Sources */,
 				E66B8BD21F890EBD003B5EE2 /* Disk.swift in Sources */,
 				E66B8BD01F890E85003B5EE2 /* Field.swift in Sources */,
 				185B265E1F5C6EA800B60B30 /* ViewController.swift in Sources */,
