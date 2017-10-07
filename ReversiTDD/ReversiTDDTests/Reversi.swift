@@ -8,6 +8,7 @@ import Foundation
 class Reversi {
     var currentPlayer: Player
     var board: Board
+    private let shifts: [Shift] = [.right, .left]
 
     init() {
         board = Board(taken: [
@@ -26,10 +27,11 @@ class Reversi {
 
     func put(on point: Point) {
         board.put(move: Move(point: point, takenBy: currentPlayer))
-        if board.disk(on: Point(x: .d, y: ._5)) == currentPlayer.other() {
-            board.put(move: Move(point: Point(x: .d, y: ._5), takenBy: currentPlayer))
-        } else if board.disk(on: Point(x: .b, y: ._5)) == currentPlayer.other() {
-            board.put(move: Move(point: Point(x: .b, y: ._5), takenBy: currentPlayer))
+        shifts.forEach { shift in
+            let shifted = point.shifted(to: shift)
+            if let shifted = shifted, board.disk(on: shifted) == currentPlayer.other() {
+                board.put(move: Move(point: shifted, takenBy: currentPlayer))
+            }
         }
     }
 
