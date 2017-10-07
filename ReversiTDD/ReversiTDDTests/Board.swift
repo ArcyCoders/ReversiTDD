@@ -36,6 +36,10 @@ struct Board: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
         board[move.point.y.rawValue][move.point.x.rawValue] = move.takenBy
     }
 
+    func diskOn(x: Horizontal, y: Vertical) -> Player? {
+        return board[y.rawValue][x.rawValue]
+    }
+
     static func == (lhs: Board, rhs: Board) -> Bool {
         for i in 0..<8 {
             for j in 0..<8 {

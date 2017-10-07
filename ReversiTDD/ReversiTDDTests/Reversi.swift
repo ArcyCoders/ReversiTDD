@@ -26,6 +26,10 @@ class Reversi {
 
     func put(x: Horizontal, y: Vertical) {
         board.put(move: Move(x: x, y: y, takenBy: currentPlayer))
-        board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
+        if board.diskOn(x: .d, y: ._5) == currentPlayer.other() {
+            board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
+        } else if board.diskOn(x: .b, y: ._5) == currentPlayer.other() {
+            board.put(move: Move(x: .b, y: ._5, takenBy: currentPlayer))
+        }
     }
 }

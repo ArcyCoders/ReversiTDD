@@ -35,6 +35,31 @@ class Reversi_SingleMove_Spec: QuickSpec {
                 "1        " + "\n" +
                 " abcdefgh"
         )
+
+        testMove(
+            from:
+                "8        " + "\n" +
+                "7        " + "\n" +
+                "6        " + "\n" +
+                "5bw      " + "\n" +
+                "4        " + "\n" +
+                "3        " + "\n" +
+                "2        " + "\n" +
+                "1        " + "\n" +
+                " abcdefgh",
+            currentPlayer: .Black,
+            move: (x: .c, ._5),
+            to:
+                "8        " + "\n" +
+                "7        " + "\n" +
+                "6        " + "\n" +
+                "5bbb     " + "\n" +
+                "4        " + "\n" +
+                "3        " + "\n" +
+                "2        " + "\n" +
+                "1        " + "\n" +
+                " abcdefgh"
+        )
     }
 }
 
