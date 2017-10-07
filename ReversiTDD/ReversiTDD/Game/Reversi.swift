@@ -72,7 +72,7 @@ class Reversi {
     public func move(to targetField: Field) {
         board.taken.append(targetField)
 
-        getFlankedFieldsInAllDirection(forTargetField: targetField).forEach { $0.disk?.turnOver() }
+        getFlankedFieldsInAllDirections(forTargetField: targetField).forEach { $0.disk?.turnOver() }
 
         switchPlayer()
     }
@@ -85,7 +85,7 @@ class Reversi {
         return board.taken.count
     }
 
-    fileprivate func getFlankedFieldsInAllDirection(forTargetField targetField: Field) -> [Field] {
+    fileprivate func getFlankedFieldsInAllDirections(forTargetField targetField: Field) -> [Field] {
         return Direction.getValues().flatMap { getFlankedFields(inDirection: $0, forTargetField: targetField) }
     }
 
@@ -94,7 +94,7 @@ class Reversi {
         var flankedFields: [Field] = []
         var isFlanked: Bool = false
 
-        while let nextField = board.getNextFieldInDirection(previousField: currentField, direction: direction) {
+        while let nextField = board.getNextFieldInDirection(fromPreviousField: currentField, direction: direction) {
             currentField = nextField
             if currentField.disk == targetField.disk {
                 isFlanked = true

@@ -69,7 +69,7 @@ class Board: Equatable {
         return taken.filter { $0.row == row && $0.column == column }.first
     }
 
-    func getNextFieldInDirection(previousField: Field, direction: Direction) -> Field? {
+    func getNextFieldInDirection(fromPreviousField previousField: Field, direction: Direction) -> Field? {
         guard let nextRow = previousField.row.nextRow(inDirection: direction.vertical) else { return nil }
         guard let nextColumn = previousField.column.nextColumn(inDirection: direction.horizontal) else { return nil }
 
@@ -80,7 +80,7 @@ class Board: Equatable {
         taken.removeAll()
     }
 
-    static func == (lhs: Board, rhs: Board) -> Bool {
+    static func ==(lhs: Board, rhs: Board) -> Bool {
         return lhs.taken == rhs.taken
     }
 }

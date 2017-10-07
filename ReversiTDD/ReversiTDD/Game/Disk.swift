@@ -15,19 +15,17 @@ class Disk: Equatable {
 
     fileprivate(set) var currentColor: Color
 
+    public var hashValue: Int { return "currentColor:\(currentColor)".hashValue }
+
     init(currentColor: Color) {
         self.currentColor = currentColor
     }
 
-    func turnOver() {
+    public func turnOver() {
         currentColor = currentColor == .white ? .black : .white
     }
 
     static func ==(lhs: Disk, rhs: Disk) -> Bool {
         return lhs.currentColor == rhs.currentColor
-    }
-
-    public var hashValue: Int {
-        return "currentColor:\(currentColor)".hashValue
     }
 }

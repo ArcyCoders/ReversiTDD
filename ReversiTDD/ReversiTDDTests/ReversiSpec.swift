@@ -28,7 +28,6 @@ class ReversiSpec: QuickSpec {
         }
 
         describe("start") {
-            
             it("has 4 disks in a starting position") {
                 expect(board).to(equal(Board(taken: [Field(column: .d, row: ._4, disk: Disk(currentColor: .white)),
                                                      Field(column: .d, row: ._5, disk: Disk(currentColor: .black)),
@@ -38,7 +37,6 @@ class ReversiSpec: QuickSpec {
         }
 
         describe("black player makes first move to D3") {
-
             beforeEach {
                 game.move(to: Field(column: .d, row: ._3, disk: Disk(currentColor: .black)))
             }
