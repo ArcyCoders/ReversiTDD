@@ -20,24 +20,5 @@ class Reversi {
     }
 
     func put(x: Horizontal, y: Vertical) {
-        board.put(move: Move(x: x, y: y, takenBy: currentPlayer))
-        if case .d = x, case ._6 = y {
-            board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
-        } else if case .c = x, case ._5 = y {
-            board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
-        } else if case .e = x, case ._3 = y {
-            board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
-        } else if case .f = x, case ._4 = y {
-            board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
-        } else if case .e = x, case ._6 = y {
-            board.put(move: Move(x: .e, y: ._5, takenBy: currentPlayer))
-        } else if case .c = x, case ._6 = y {
-            board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
-        } else if case .f = x, case ._3 = y {
-            board.put(move: Move(x: .e, y: ._4, takenBy: currentPlayer))
-        } else if case .c = x, case ._4 = y {
-            board.put(move: Move(x: .d, y: ._4, takenBy: currentPlayer))
-        }
-        currentPlayer = currentPlayer.other()
     }
 }
