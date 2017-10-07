@@ -74,6 +74,12 @@ class Board: Equatable {
         return fieldsToRotate
     }
     
+    func detectFieldsToPlaceDisk() -> Array<Field> {
+        var fields = Array<Field>()
+        fields.append(Field(x:0, y:0, disk: .White))
+        return fields
+    }
+    
     func fieldAt(x: Int, y: Int) -> Field?
     {
         return taken.filter({ $0.x == x && $0.y == y}).first

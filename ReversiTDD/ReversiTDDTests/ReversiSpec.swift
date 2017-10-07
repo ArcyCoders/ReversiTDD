@@ -131,6 +131,7 @@ class ReversiSpec: QuickSpec {
                 }
             }
         }
+        
         describe("second move")
         {
             typealias Scenario = (moves: Array<Field>, board: Board)
