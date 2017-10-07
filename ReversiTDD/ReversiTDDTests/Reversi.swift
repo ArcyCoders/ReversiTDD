@@ -19,6 +19,13 @@ class Reversi {
         currentPlayer = .Black
     }
 
+    init(board: Board, currentPlayer: Player) {
+        self.board = board
+        self.currentPlayer = currentPlayer
+    }
+
     func put(x: Horizontal, y: Vertical) {
+        board.put(move: Move(x: x, y: y, takenBy: currentPlayer))
+        board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
     }
 }

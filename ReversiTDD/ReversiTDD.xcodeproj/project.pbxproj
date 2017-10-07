@@ -16,6 +16,7 @@
 		619EE298BC40BE13794E1B09 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EEA0032599E6CE12C77E6 /* Board.swift */; };
 		619EE5B664E00542F8F539F6 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EE0B8632AF3C5DBA0B8DE /* Axis.swift */; };
 		619EE74BE52F962FCE236470 /* Reversi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EEC24415CE4DA7435C171 /* Reversi.swift */; };
+		619EE74FCC8BA8CF7C7B7494 /* Reversi_SingleMove_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EEE68557AF7CB23CCE6AA /* Reversi_SingleMove_Spec.swift */; };
 		619EE88BCF6EFDF2D852DA7C /* Board_InitFromString_Spec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EE6039A0A02DACB983606 /* Board_InitFromString_Spec.swift */; };
 		619EEAD4C63380BD6ED63D82 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EEFBA5E407282AE4115E3 /* Move.swift */; };
 		619EEB36CBFDD305EB73A88F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619EE1E08E97E74F04550384 /* Player.swift */; };
@@ -55,6 +56,7 @@
 		619EE6039A0A02DACB983606 /* Board_InitFromString_Spec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board_InitFromString_Spec.swift; sourceTree = "<group>"; };
 		619EEA0032599E6CE12C77E6 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		619EEC24415CE4DA7435C171 /* Reversi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reversi.swift; sourceTree = "<group>"; };
+		619EEE68557AF7CB23CCE6AA /* Reversi_SingleMove_Spec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reversi_SingleMove_Spec.swift; sourceTree = "<group>"; };
 		619EEFBA5E407282AE4115E3 /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		BB631622A8C25587E3AA25D4 /* Pods-ReversiTDD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDD/Pods-ReversiTDD.debug.xcconfig"; sourceTree = "<group>"; };
 		C0D18E215B8CFC4011338196 /* Pods-ReversiTDDTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiTDDTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiTDDTests/Pods-ReversiTDDTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				619EEC24415CE4DA7435C171 /* Reversi.swift */,
 				619EE3C9A72BCB9E532BB338 /* Reversi_Init_Spec.swift */,
 				619EE6039A0A02DACB983606 /* Board_InitFromString_Spec.swift */,
+				619EEE68557AF7CB23CCE6AA /* Reversi_SingleMove_Spec.swift */,
 			);
 			path = ReversiTDDTests;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				619EE74BE52F962FCE236470 /* Reversi.swift in Sources */,
 				619EED60643C88AD1EA796AE /* Reversi_Init_Spec.swift in Sources */,
 				619EE88BCF6EFDF2D852DA7C /* Board_InitFromString_Spec.swift in Sources */,
+				619EE74FCC8BA8CF7C7B7494 /* Reversi_SingleMove_Spec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
