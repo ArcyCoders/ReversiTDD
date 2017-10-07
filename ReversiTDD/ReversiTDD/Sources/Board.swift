@@ -20,12 +20,6 @@ class Board: Equatable {
         guard fieldAt(x: field.x, y: field.y) == nil
         else { throw ReversiError.positionTaken }
         
-        let blackDiskCount = taken.filter({ $0.disk == Disk.Black }).count
-        let whiteDikCount = taken.filter({ $0.disk == Disk.White }).count
-        guard ((blackDiskCount == whiteDikCount) && field.disk == Disk.Black) ||
-            ((blackDiskCount > whiteDikCount) && field.disk == Disk.White)
-            else { throw ReversiError.incorrectDiskColor }
-        
         guard !adjacentFields(toField: field).isEmpty
         else { throw ReversiError.noAdjacentDisks }
         

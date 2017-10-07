@@ -101,7 +101,7 @@ class ReversiSpec: QuickSpec {
                 it("should throw error when attempt to add white disk")
                 {
                     let game = Reversi()
-                    expect { try game.move(field: Field(x: 5, y: 4, disk: .White))}
+                    expect { try game.move(field: Field(x: 4, y: 2, disk: .White))}
                         .to(throwError(ReversiError.incorrectDiskColor))
                 }
                 
