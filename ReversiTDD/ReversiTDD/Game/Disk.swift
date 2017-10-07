@@ -8,16 +8,16 @@
 
 import Foundation
 
-class Disk: Equatable {
-    enum Color: Int {
+public class Disk: Equatable {
+    public enum Color: Int {
         case white, black
     }
 
-    fileprivate(set) var currentColor: Color
+    private(set) var currentColor: Color
 
     public var hashValue: Int { return "currentColor:\(currentColor)".hashValue }
 
-    init(currentColor: Color) {
+    public init(currentColor: Color) {
         self.currentColor = currentColor
     }
 
@@ -25,7 +25,7 @@ class Disk: Equatable {
         currentColor = currentColor == .white ? .black : .white
     }
 
-    static func ==(lhs: Disk, rhs: Disk) -> Bool {
+    public static func ==(lhs: Disk, rhs: Disk) -> Bool {
         return lhs.currentColor == rhs.currentColor
     }
 }

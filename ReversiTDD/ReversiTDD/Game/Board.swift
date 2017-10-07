@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum Column: Int, Comparable {
+public enum Column: Int, Comparable {
     case a, b, c, d, e, f, g, h
 
-    func nextColumn(inDirection direction: HorizontalDirection) -> Column? {
+    public func nextColumn(inDirection direction: HorizontalDirection) -> Column? {
         var nextColumnOffset = 0
 
         if direction == .left {
@@ -24,15 +24,15 @@ enum Column: Int, Comparable {
         return Column(rawValue: self.rawValue + nextColumnOffset)
     }
 
-    static func getValues() -> [Column] {
+    public static func getValues() -> [Column] {
         return [.a, .b, .c, .d, .e, .f, .g, .h]
     }
 }
 
-enum Row: Int, Comparable {
+public enum Row: Int, Comparable {
     case _1, _2, _3, _4, _5, _6, _7, _8
 
-    func nextRow(inDirection direction: VerticalDirection) -> Row? {
+    public func nextRow(inDirection direction: VerticalDirection) -> Row? {
         var nextRowOffset = 0
 
         if direction == .up {
@@ -45,42 +45,50 @@ enum Row: Int, Comparable {
         return Row(rawValue: self.rawValue + nextRowOffset)
     }
 
-    static func getValues() -> [Row] {
+    public static func getValues() -> [Row] {
         return [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8]
     }
 }
 
-class Board: Equatable {
-    var taken: [Field]
+public class Board: Equatable {
+    private var taken: [Field]
 
-    var takenFieldsCount: Int {
+    public var takenFieldsCount: Int {
         return taken.count
     }
 
-    init(taken: [Field] = []) {
+    public init(taken: [Field] = []) {
         self.taken = taken
     }
 
-    func add(field: Field) {
+    public func add(field: Field) {
         taken.append(field)
     }
 
-    func getField(column: Column, row: Row) -> Field? {
+    public func getField(column: Column, row: Row) -> Field? {
         return taken.filter { $0.row == row && $0.column == column }.first
     }
 
-    func getNextFieldInDirection(fromPreviousField previousField: Field, direction: Direction) -> Field? {
+    public func getNumberOfFieldsTaken(ofColor color: Disk.Color? = nil) -> Int {
+        if let color = color {
+            return taken.filter { $0.disk?.currentColor == color }.count
+        }
+
+        return taken.count
+    }
+
+    public func getNextFieldInDirection(fromPreviousField previousField: Field, direction: Direction) -> Field? {
         guard let nextRow = previousField.row.nextRow(inDirection: direction.vertical) else { return nil }
         guard let nextColumn = previousField.column.nextColumn(inDirection: direction.horizontal) else { return nil }
 
         return getField(column: nextColumn, row: nextRow)
     }
 
-    func clear() {
+    public func clear() {
         taken.removeAll()
     }
 
-    static func ==(lhs: Board, rhs: Board) -> Bool {
+    public static func ==(lhs: Board, rhs: Board) -> Bool {
         return lhs.taken == rhs.taken
     }
 }

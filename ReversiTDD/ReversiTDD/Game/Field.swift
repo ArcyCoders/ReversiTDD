@@ -8,10 +8,12 @@
 
 import Foundation
 
-class Field: Equatable, Hashable {
-    let column: Column
-    let row: Row
-    var disk: Disk?
+public class Field: Equatable, Hashable {
+    public let column: Column
+    public let row: Row
+    public var disk: Disk?
+
+    public var hashValue: Int { return "\(row)\(column)disk:\(disk?.hashValue ?? 0)".hashValue }
 
     public init(column: Column, row: Row, disk: Disk) {
         self.column = column
@@ -19,11 +21,7 @@ class Field: Equatable, Hashable {
         self.disk = disk
     }
 
-    static func ==(lhs: Field, rhs: Field) -> Bool {
+    public static func ==(lhs: Field, rhs: Field) -> Bool {
         return lhs.row == rhs.row && lhs.column == rhs.column && lhs.disk == rhs.disk
-    }
-
-    public var hashValue: Int {
-        return "\(row)\(column)disk:\(disk?.hashValue ?? 0)".hashValue
     }
 }

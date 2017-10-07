@@ -8,7 +8,9 @@
 
 import Foundation
 
-class FlankedFieldsFinder {
+public class FlankedFieldsFinder {
+    public init() {}
+
     public func getAllFlankedFields(byTargetField targetField: Field, onBoard board: Board) -> [Field] {
         return Direction.getValues().flatMap { getFlankedFields(inDirection: $0, forTargetField: targetField, onBoard: board) }
     }

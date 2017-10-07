@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Direction {
-    let vertical: VerticalDirection
-    let horizontal: HorizontalDirection
+public struct Direction {
+    public let vertical: VerticalDirection
+    public let horizontal: HorizontalDirection
 
-    static func getValues() -> [Direction] {
+    public static func getValues() -> [Direction] {
         var directions: [Direction] = []
 
         for verticalDirection in VerticalDirection.getValues() {
@@ -25,17 +25,17 @@ struct Direction {
     }
 }
 
-enum VerticalDirection {
+public enum VerticalDirection {
     case up
     case down
     case none
 
-    static func getValues() -> [VerticalDirection] {
+    public static func getValues() -> [VerticalDirection] {
         return [.up, .down, .none]
     }
 }
 
-enum HorizontalDirection {
+public enum HorizontalDirection {
     case left
     case right
     case none
@@ -45,16 +45,16 @@ enum HorizontalDirection {
     }
 }
 
-func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
+public func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
     return a.rawValue < b.rawValue
 }
 
-class Reversi {
-    fileprivate var board: Board
-    fileprivate let flankedFieldsFinder: FlankedFieldsFinder
-    fileprivate(set) var currentPlayer: Disk.Color
+public class Reversi {
+    private var board: Board
+    private let flankedFieldsFinder: FlankedFieldsFinder
+    private(set) var currentPlayer: Disk.Color
 
-    init(withBoard board: Board = Board(), withFlankedFieldsFinder flankedFieldsFinder: FlankedFieldsFinder = FlankedFieldsFinder()) {
+    public init(withBoard board: Board = Board(), withFlankedFieldsFinder flankedFieldsFinder: FlankedFieldsFinder = FlankedFieldsFinder()) {
         self.currentPlayer = .black
         self.board = board
         self.flankedFieldsFinder = flankedFieldsFinder
@@ -72,19 +72,11 @@ class Reversi {
 
     // TODO: handle invalid move
     public func move(to targetField: Field) {
-        board.taken.append(targetField)
+        board.add(field: targetField)
 
         flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board).forEach { $0.disk?.turnOver() }
 
         switchPlayer()
-    }
-
-    public func getNumberOfFieldsTaken(ofColor color: Disk.Color? = nil) -> Int {
-        if let color = color {
-            return board.taken.filter { $0.disk?.currentColor == color }.count
-        }
-
-        return board.taken.count
     }
 
     fileprivate func switchPlayer() {
