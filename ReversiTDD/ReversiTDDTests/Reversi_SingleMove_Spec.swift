@@ -236,6 +236,31 @@ class Reversi_SingleMove_Spec: QuickSpec {
                 "1        " + "\n" +
                 " abcdefgh"
         )
+
+        testMove(
+            from:
+                "8 b      " + "\n" +
+                "7 w      " + "\n" +
+                "6        " + "\n" +
+                "5  w     " + "\n" +
+                "4   w    " + "\n" +
+                "3    b   " + "\n" +
+                "2        " + "\n" +
+                "1        " + "\n" +
+                " abcdefgh",
+            currentPlayer: .Black,
+            move: Point(x: .b, y: ._6),
+            to:
+                "8 b      " + "\n" +
+                "7 b      " + "\n" +
+                "6 b      " + "\n" +
+                "5  b     " + "\n" +
+                "4   b    " + "\n" +
+                "3    b   " + "\n" +
+                "2        " + "\n" +
+                "1        " + "\n" +
+                " abcdefgh"
+        )
     }
 }
 
