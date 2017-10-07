@@ -51,11 +51,13 @@ func <<T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
 
 class Reversi {
     fileprivate var board: Board
+    fileprivate let flankedFieldsFinder: FlankedFieldsFinder
     fileprivate(set) var currentPlayer: Disk.Color
 
-    init(withBoard board: Board = Board()) {
+    init(withBoard board: Board = Board(), withFlankedFieldsFinder flankedFieldsFinder: FlankedFieldsFinder = FlankedFieldsFinder()) {
         self.currentPlayer = .black
         self.board = board
+        self.flankedFieldsFinder = flankedFieldsFinder
     }
 
     public func start() {
@@ -72,7 +74,7 @@ class Reversi {
     public func move(to targetField: Field) {
         board.taken.append(targetField)
 
-        getFlankedFieldsInAllDirections(forTargetField: targetField).forEach { $0.disk?.turnOver() }
+        flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board).forEach { $0.disk?.turnOver() }
 
         switchPlayer()
     }
@@ -83,32 +85,6 @@ class Reversi {
         }
 
         return board.taken.count
-    }
-
-    fileprivate func getFlankedFieldsInAllDirections(forTargetField targetField: Field) -> [Field] {
-        return Direction.getValues().flatMap { getFlankedFields(inDirection: $0, forTargetField: targetField) }
-    }
-
-    fileprivate func getFlankedFields(inDirection direction: Direction, forTargetField targetField: Field) -> [Field] {
-        var currentField = targetField
-        var flankedFields: [Field] = []
-        var isFlanked: Bool = false
-
-        while let nextField = board.getNextFieldInDirection(fromPreviousField: currentField, direction: direction) {
-            currentField = nextField
-            if currentField.disk == targetField.disk {
-                isFlanked = true
-                break
-            }
-
-            flankedFields.append(currentField)
-        }
-
-        if !isFlanked {
-            flankedFields.removeAll()
-        }
-
-        return flankedFields
     }
 
     fileprivate func switchPlayer() {
