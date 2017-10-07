@@ -8,7 +8,7 @@ import Foundation
 class Reversi {
     var currentPlayer: Player
     var board: Board
-    private let shifts: [Shift] = [.right, .left]
+    private let shifts: [Shift] = [.right, .left, .top]
 
     init() {
         board = Board(taken: [
