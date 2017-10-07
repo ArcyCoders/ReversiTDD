@@ -11,7 +11,7 @@ import Foundation
 public class BoardStringLoader {
     public init() {}
 
-    public func load(from rows: String...) -> Board {
+    public func load(_ rows: String...) -> Board {
         let defaultBoard = Board()
         let rows = rows.filter { $0.characters.count == 8 }
 

@@ -24,20 +24,84 @@ class FlankedFieldsFinderSpec: QuickSpec {
         }
 
         describe("getAllFlankedFields") {
-            it("returns single item when only one white piece on between target and other black when checking right") {
+            it("returns one item in right direction when only one white piece on between target and other black disk") {
                 targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
-                board = BoardStringLoader().load(from: "BWB-----",
-                                                       "--------",
-                                                       "--------",
-                                                       "--------",
-                                                       "--------",
-                                                       "--------",
-                                                       "--------",
-                                                       "--------"
+                board = BoardStringLoader().load("BWB-----",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------"
                 )
                 flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
 
                 expect(flankedFields.count).to(equal(1))
+            }
+
+            it("returns no items in right direction when no matching piece is found after opponent's piece") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("BW------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
+            }
+
+            it("returns six items in right direction when six white pieces are present between target and other black disk") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("BWWWWWWB",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(6))
+            }
+
+            it("returns no items in right direction when no matching piece is found after opponent's pieces") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("BWWWWWWW",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
+            }
+
+            it("returns no items in right direction when an empty field is found found before first opponent's piece") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("B-WWWWWW",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------",
+                                                 "--------"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
             }
         }
     }
