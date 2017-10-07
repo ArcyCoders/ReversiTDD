@@ -75,11 +75,30 @@ class Board: Equatable {
     }
     
     func detectFieldsToPlaceDisk() -> Array<Field> {
-        var fields = Array<Field>()
-        fields.append(Field(x:0, y:0, disk: .White))
-        return fields
+        var blackFields = Array<Field>()
+        var whiteFields = Array<Field>()
+        
+        for x in 0...7
+        {
+            for y in 0...7
+            {
+                blackFields.append( Field(x: x, y: y, disk: .Black) )
+                whiteFields.append( Field(x: x, y: y, disk: .White) )
+            }
+        }
+        
+        return (blackFields + whiteFields).filter({ isFieldValid(field: $0)})
     }
     
+    func isFieldValid(field: Field) -> Bool {
+        guard fieldAt(x: field.x, y: field.y) == nil,
+              !adjacentFields(toField: field).isEmpty,
+              !detectFieldsToRotate(field: field).isEmpty
+        else { return false }
+        return true
+    }
+    
+    // MARK: Utils
     func fieldAt(x: Int, y: Int) -> Field?
     {
         return taken.filter({ $0.x == x && $0.y == y}).first

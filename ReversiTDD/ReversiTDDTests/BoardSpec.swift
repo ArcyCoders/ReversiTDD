@@ -34,6 +34,20 @@ class BoardSpec: QuickSpec {
                         expect { try startingBoard.add(field: field) }.notTo(throwError())
                     }
                 }
+               
+                it("Should return 8 fields for starting position") {
+                    expect(startingBoard.detectFieldsToPlaceDisk()).to(haveCount(8))
+
+                }
+                it("Should return 4 black fields for starting position") {
+                    let fields = startingBoard.detectFieldsToPlaceDisk()
+                    expect(fields.filter({ $0.disk == .Black})).to(haveCount(4))
+                }
+                
+                it("Should return 4 white fields for starting position") {
+                    let fields = startingBoard.detectFieldsToPlaceDisk()
+                    expect(fields.filter({ $0.disk == .White})).to(haveCount(4))
+                }
             }
         }
     }
