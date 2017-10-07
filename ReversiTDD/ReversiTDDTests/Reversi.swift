@@ -11,10 +11,10 @@ class Reversi {
 
     init() {
         board = Board(taken: [
-            Move(x: .d, y: ._4, takenBy: .Black),
-            Move(x: .d, y: ._5, takenBy: .White),
-            Move(x: .e, y: ._4, takenBy: .White),
-            Move(x: .e, y: ._5, takenBy: .Black)
+            Move(point: Point(x: .d, y: ._4), takenBy: .Black),
+            Move(point: Point(x: .d, y: ._5), takenBy: .White),
+            Move(point: Point(x: .e, y: ._4), takenBy: .White),
+            Move(point: Point(x: .e, y: ._5), takenBy: .Black)
         ])
         currentPlayer = .Black
     }
@@ -24,12 +24,13 @@ class Reversi {
         self.currentPlayer = currentPlayer
     }
 
-    func put(x: Horizontal, y: Vertical) {
-        board.put(move: Move(x: x, y: y, takenBy: currentPlayer))
-        if board.diskOn(x: .d, y: ._5) == currentPlayer.other() {
-            board.put(move: Move(x: .d, y: ._5, takenBy: currentPlayer))
-        } else if board.diskOn(x: .b, y: ._5) == currentPlayer.other() {
-            board.put(move: Move(x: .b, y: ._5, takenBy: currentPlayer))
+    func put(on point: Point) {
+        board.put(move: Move(point: point, takenBy: currentPlayer))
+        if board.disk(on: Point(x: .d, y: ._5)) == currentPlayer.other() {
+            board.put(move: Move(point: Point(x: .d, y: ._5), takenBy: currentPlayer))
+        } else if board.disk(on: Point(x: .b, y: ._5)) == currentPlayer.other() {
+            board.put(move: Move(point: Point(x: .b, y: ._5), takenBy: currentPlayer))
         }
     }
+
 }

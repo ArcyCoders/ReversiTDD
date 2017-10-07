@@ -23,7 +23,7 @@ class Reversi_SingleMove_Spec: QuickSpec {
                 "1        " + "\n" +
                 " abcdefgh",
             currentPlayer: .Black,
-            move: (x: .c, ._5),
+            move: Point(x: .c, y: ._5),
             to:
                 "8        " + "\n" +
                 "7        " + "\n" +
@@ -48,7 +48,7 @@ class Reversi_SingleMove_Spec: QuickSpec {
                 "1        " + "\n" +
                 " abcdefgh",
             currentPlayer: .Black,
-            move: (x: .c, ._5),
+            move: Point(x: .c, y: ._5),
             to:
                 "8        " + "\n" +
                 "7        " + "\n" +
@@ -63,7 +63,7 @@ class Reversi_SingleMove_Spec: QuickSpec {
     }
 }
 
-fileprivate func testMove(from: String, currentPlayer: Player, move: (x: Horizontal, y: Vertical), to: String) {
+fileprivate func testMove(from: String, currentPlayer: Player, move: Point, to: String) {
     it("") {
         print("\n==========")
         let startingBoard = Board(from: from)
@@ -71,7 +71,7 @@ fileprivate func testMove(from: String, currentPlayer: Player, move: (x: Horizon
         print(startingBoard.description)
         let reversi = Reversi(board: startingBoard, currentPlayer: currentPlayer)
 
-        reversi.put(x: move.x, y: move.y)
+        reversi.put(on: move)
         print("ACTUAL:")
         print(reversi.board.description)
 

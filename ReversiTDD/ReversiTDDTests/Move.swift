@@ -9,8 +9,8 @@ struct Move: Equatable {
     let point: Point
     let takenBy: Player?
 
-    init(x: Horizontal, y: Vertical, takenBy: Player) {
-        self.point = Point(x: x, y: y)
+    init(point: Point, takenBy: Player) {
+        self.point = point
         self.takenBy = takenBy
     }
 

@@ -21,10 +21,10 @@ class Reversi_Init_Spec: QuickSpec {
 
             it("has 4 disk in a starting possition") {
                 expect(game.board).to(equal(Board(taken: [
-                    Move(x: .d, y: ._4, takenBy: .Black),
-                    Move(x: .d, y: ._5, takenBy: .White),
-                    Move(x: .e, y: ._4, takenBy: .White),
-                    Move(x: .e, y: ._5, takenBy: .Black)
+                    Move(point: Point(x: .d, y: ._4), takenBy: .Black),
+                    Move(point: Point(x: .d, y: ._5), takenBy: .White),
+                    Move(point: Point(x: .e, y: ._4), takenBy: .White),
+                    Move(point: Point(x: .e, y: ._5), takenBy: .Black)
                 ])))
             }
 

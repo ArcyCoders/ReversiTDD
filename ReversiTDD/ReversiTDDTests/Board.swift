@@ -23,9 +23,9 @@ struct Board: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
             for j in (0..<8) {
                 let character = line[line.index(line.startIndex, offsetBy: j+1)]
                 if character == "w" {
-                    taken.append(Move(x: Horizontal(rawValue: j)!, y: Vertical(rawValue: 7-i)!, takenBy: .White))
+                    taken.append(Move(point: Point(x: Horizontal(rawValue: j)!, y: Vertical(rawValue: 7-i)!), takenBy: .White))
                 } else if character == "b" {
-                    taken.append(Move(x: Horizontal(rawValue: j)!, y: Vertical(rawValue: 7-i)!, takenBy: .Black))
+                    taken.append(Move(point: Point(x: Horizontal(rawValue: j)!, y: Vertical(rawValue: 7-i)!), takenBy: .Black))
                 }
             }
         }
@@ -36,8 +36,8 @@ struct Board: Equatable, CustomStringConvertible, CustomDebugStringConvertible {
         board[move.point.y.rawValue][move.point.x.rawValue] = move.takenBy
     }
 
-    func diskOn(x: Horizontal, y: Vertical) -> Player? {
-        return board[y.rawValue][x.rawValue]
+    func disk(on point: Point) -> Player? {
+        return board[point.y.rawValue][point.x.rawValue]
     }
 
     static func == (lhs: Board, rhs: Board) -> Bool {
