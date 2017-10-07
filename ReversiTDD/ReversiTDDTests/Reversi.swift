@@ -31,11 +31,11 @@ class Reversi {
     func put(on point: Point) {
         board.put(move: Move(point: point, takenBy: currentPlayer))
         shifts.forEach { shift in
-            let shifted = point.shifted(to: shift)
-            if let shifted = shifted, board.disk(on: shifted) == currentPlayer.other() {
+            var movable = point
+            while let shifted = movable.shifted(to: shift), board.disk(on: shifted) == currentPlayer.other() {
                 board.put(move: Move(point: shifted, takenBy: currentPlayer))
+                movable = shifted
             }
         }
     }
-
 }
