@@ -24,6 +24,11 @@
 		4443A9361F8302C0004BCC3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9321F8302C0004BCC3A /* main.swift */; };
 		4443A9371F8302C0004BCC3A /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9341F8302C0004BCC3A /* ConsoleIO.swift */; };
 		4443A9381F8302C0004BCC3A /* Field+ASCII.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4443A9351F8302C0004BCC3A /* Field+ASCII.swift */; };
+		44E725731F8AB8140043C2ED /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E7256C1F8AB8020043C2ED /* MainMenu.xib */; };
+		44E725741F8AB8210043C2ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E725711F8AB8020043C2ED /* AppDelegate.swift */; };
+		44E725801F8ABC5E0043C2ED /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7257D1F8ABC5E0043C2ED /* BoardView.swift */; };
+		44E725811F8ABC5E0043C2ED /* ReversiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7257E1F8ABC5E0043C2ED /* ReversiViewController.swift */; };
+		44E725821F8ABC5E0043C2ED /* ReversiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E7257F1F8ABC5E0043C2ED /* ReversiViewController.xib */; };
 		52C2638FFBBE416EC00BED33 /* Pods_ReversiCoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3E833413862EF87B297665 /* Pods_ReversiCoreTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +78,15 @@
 		4443A9321F8302C0004BCC3A /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4443A9341F8302C0004BCC3A /* ConsoleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
 		4443A9351F8302C0004BCC3A /* Field+ASCII.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Field+ASCII.swift"; sourceTree = "<group>"; };
+		44E7255B1F8AB7CF0043C2ED /* ReversiWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReversiWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E7256B1F8AB8020043C2ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44E7256D1F8AB8020043C2ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		44E7256E1F8AB8020043C2ED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44E7256F1F8AB8020043C2ED /* ReversiWindow.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = ReversiWindow.entitlements; sourceTree = "<group>"; };
+		44E725711F8AB8020043C2ED /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		44E7257D1F8ABC5E0043C2ED /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		44E7257E1F8ABC5E0043C2ED /* ReversiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversiViewController.swift; sourceTree = "<group>"; };
+		44E7257F1F8ABC5E0043C2ED /* ReversiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReversiViewController.xib; sourceTree = "<group>"; };
 		57CB76BEDED16B214B5C777E /* Pods-ReversiCoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCoreTests/Pods-ReversiCoreTests.release.xcconfig"; sourceTree = "<group>"; };
 		72EFD53EF84FE68FDEE58A18 /* Pods-ReversiCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReversiCore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReversiCore/Pods-ReversiCore.debug.xcconfig"; sourceTree = "<group>"; };
 		8165BD5845FBF19E4AEA14AD /* Pods_ReversiCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +113,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4443A8E41F82DF08004BCC3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E725581F8AB7CF0043C2ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,6 +156,7 @@
 			children = (
 				4443A9311F8302C0004BCC3A /* Console */,
 				4443A9061F830042004BCC3A /* Core */,
+				44E725691F8AB8020043C2ED /* Window */,
 				185B26591F5C6EA800B60B30 /* Products */,
 				015D0E44EBDCED905227232D /* Pods */,
 				07A0913BE6A26D68ED66D3AD /* Frameworks */,
@@ -147,6 +169,7 @@
 				4443A8BD1F82DDB0004BCC3A /* ReversiCore.framework */,
 				4443A8C51F82DDB0004BCC3A /* ReversiCoreTests.xctest */,
 				4443A8E71F82DF08004BCC3A /* ReversiConsole */,
+				44E7255B1F8AB7CF0043C2ED /* ReversiWindow.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +268,45 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		44E725691F8AB8020043C2ED /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				44E7256A1F8AB8020043C2ED /* Resources */,
+				44E725701F8AB8020043C2ED /* Sources */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		44E7256A1F8AB8020043C2ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				44E7256B1F8AB8020043C2ED /* Assets.xcassets */,
+				44E7256C1F8AB8020043C2ED /* MainMenu.xib */,
+				44E7256E1F8AB8020043C2ED /* Info.plist */,
+				44E7256F1F8AB8020043C2ED /* ReversiWindow.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		44E725701F8AB8020043C2ED /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				44E7257C1F8ABC5E0043C2ED /* Reversi */,
+				44E725711F8AB8020043C2ED /* AppDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		44E7257C1F8ABC5E0043C2ED /* Reversi */ = {
+			isa = PBXGroup;
+			children = (
+				44E7257D1F8ABC5E0043C2ED /* BoardView.swift */,
+				44E7257E1F8ABC5E0043C2ED /* ReversiViewController.swift */,
+				44E7257F1F8ABC5E0043C2ED /* ReversiViewController.xib */,
+			);
+			path = Reversi;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -317,6 +379,23 @@
 			productReference = 4443A8E71F82DF08004BCC3A /* ReversiConsole */;
 			productType = "com.apple.product-type.tool";
 		};
+		44E7255A1F8AB7CF0043C2ED /* ReversiWindow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44E725681F8AB7CF0043C2ED /* Build configuration list for PBXNativeTarget "ReversiWindow" */;
+			buildPhases = (
+				44E725571F8AB7CF0043C2ED /* Sources */,
+				44E725581F8AB7CF0043C2ED /* Frameworks */,
+				44E725591F8AB7CF0043C2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReversiWindow;
+			productName = ReversiWindow;
+			productReference = 44E7255B1F8AB7CF0043C2ED /* ReversiWindow.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -342,6 +421,11 @@
 						DevelopmentTeam = DEURTTZ5DW;
 						ProvisioningStyle = Automatic;
 					};
+					44E7255A1F8AB7CF0043C2ED = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = DEURTTZ5DW;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 185B26531F5C6EA800B60B30 /* Build configuration list for PBXProject "ReversiTDD" */;
@@ -360,6 +444,7 @@
 				4443A8E61F82DF08004BCC3A /* ReversiConsole */,
 				4443A8BC1F82DDB0004BCC3A /* ReversiCore */,
 				4443A8C41F82DDB0004BCC3A /* ReversiCoreTests */,
+				44E7255A1F8AB7CF0043C2ED /* ReversiWindow */,
 			);
 		};
 /* End PBXProject section */
@@ -376,6 +461,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E725591F8AB7CF0043C2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E725731F8AB8140043C2ED /* MainMenu.xib in Resources */,
+				44E725821F8ABC5E0043C2ED /* ReversiViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +599,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44E725571F8AB7CF0043C2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E725741F8AB8210043C2ED /* AppDelegate.swift in Sources */,
+				44E725801F8ABC5E0043C2ED /* BoardView.swift in Sources */,
+				44E725811F8ABC5E0043C2ED /* ReversiViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -514,6 +618,17 @@
 			targetProxy = 4443A8C71F82DDB0004BCC3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		44E7256C1F8AB8020043C2ED /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44E7256D1F8AB8020043C2ED /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		185B26731F5C6EA800B60B30 /* Debug */ = {
@@ -757,6 +872,48 @@
 			};
 			name = Release;
 		};
+		44E725661F8AB7CF0043C2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = Window/Resources/ReversiWindow.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Window/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiWindow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		44E725671F8AB7CF0043C2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = Window/Resources/ReversiWindow.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DEURTTZ5DW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Window/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcycoders.ReversiWindow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -792,6 +949,15 @@
 			buildConfigurations = (
 				4443A8EC1F82DF08004BCC3A /* Debug */,
 				4443A8ED1F82DF08004BCC3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44E725681F8AB7CF0043C2ED /* Build configuration list for PBXNativeTarget "ReversiWindow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44E725661F8AB7CF0043C2ED /* Debug */,
+				44E725671F8AB7CF0043C2ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
