@@ -470,5 +470,105 @@ class FlankedFieldsFinderSpec: QuickSpec {
                 expect(flankedFields.count).to(equal(0))
             }
         } // END OF UP DIRECTION
+
+        context("down right direction") {
+            it ("returns six items when six white pieces are present between target and other black disk") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("B-------",
+                                                 "-W------",
+                                                 "--W-----",
+                                                 "---W----",
+                                                 "----W---",
+                                                 "-----W--",
+                                                 "------W-",
+                                                 "-------B"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(6))
+            }
+
+            it ("returns no items when no matching piece is found after opponent's pieces") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("B-------",
+                                                 "-W------",
+                                                 "--W-----",
+                                                 "---W----",
+                                                 "----W---",
+                                                 "-----W--",
+                                                 "------W-",
+                                                 "-------W"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
+            }
+
+            it ("returns no items when diagonal is offset by one") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("B-------",
+                                                 "--W-----",
+                                                 "---W----",
+                                                 "----W---",
+                                                 "-----W--",
+                                                 "------W-",
+                                                 "-------B",
+                                                 "--------"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
+            }
+        } // END OF DOWN RIGHT DIRECTION
+
+        context("up left direction") {
+            it ("returns six items when six white pieces are present between target and other black disk") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("B-------",
+                                                 "-W------",
+                                                 "--W-----",
+                                                 "---W----",
+                                                 "----W---",
+                                                 "-----W--",
+                                                 "------W-",
+                                                 "-------B"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(6))
+            }
+
+            it ("returns no items when no matching piece is found after opponent's pieces") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("W-------",
+                                                 "-W------",
+                                                 "--W-----",
+                                                 "---W----",
+                                                 "----W---",
+                                                 "-----W--",
+                                                 "------W-",
+                                                 "-------B"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
+            }
+
+            it ("returns no items when diagonal is offset by one") {
+                targetField = Field(column: .a, row: ._1, disk: Disk(currentColor: .black))
+                board = BoardStringLoader().load("B-------",
+                                                 "-W-----",
+                                                 "--W-----",
+                                                 "---W----",
+                                                 "----W---",
+                                                 "-----W-",
+                                                 "-------B",
+                                                 "--------"
+                )
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+
+                expect(flankedFields.count).to(equal(0))
+            }
+        } // END OF UP LEFT DIRECTION
     }
 }
