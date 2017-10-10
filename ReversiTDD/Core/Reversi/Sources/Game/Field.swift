@@ -8,14 +8,15 @@
 
 import Foundation
 
-public enum Row: Int
+public enum Row: Int, CustomStringConvertible
 {
     case _1 = 0, _2, _3, _4, _5, _6, _7, _8
     public static func all() -> [Row] { return [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8] }
     public static func count() -> Int { return (Row._8.rawValue + 1) }
+    public var description: String { return "\(rawValue + 1)" }
 }
 
-public enum Column: Int
+public enum Column: Int, CustomStringConvertible
 {
     case a = 0, b, c, d, e, f, g, h
     public static func all() -> [Column] { return [.a, .b, .c, .d, .e, .f, .g, .h] }
@@ -31,9 +32,10 @@ public enum Column: Int
 
         return symbols
     }
+    public var description: String { return String(Column.symbols()[rawValue]) }
 }
 
-public struct Field: Equatable, Hashable
+public struct Field: Equatable, Hashable, CustomStringConvertible
 {
     public let row: Row
     public let column: Column
@@ -50,4 +52,5 @@ public struct Field: Equatable, Hashable
     }
 
     public var hashValue: Int { return 10000 * row.rawValue + column.rawValue }
+    public var description: String { return "\(row)\(column)" }
 }

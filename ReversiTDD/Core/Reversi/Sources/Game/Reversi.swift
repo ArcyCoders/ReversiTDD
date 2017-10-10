@@ -75,6 +75,7 @@ public class Reversi
         return possibleMoves
     }
 
+    @discardableResult
     public func move(player: Player, field: Field) -> ErrorType?
     {
         let emptyFields = board.emptyFields
