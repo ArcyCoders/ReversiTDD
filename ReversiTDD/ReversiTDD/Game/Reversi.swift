@@ -8,47 +8,6 @@
 
 import Foundation
 
-public struct Direction {
-    public let vertical: VerticalDirection
-    public let horizontal: HorizontalDirection
-
-    public static func getValues() -> [Direction] {
-        var directions: [Direction] = []
-
-        for verticalDirection in VerticalDirection.getValues() {
-            for horizontalDirection in HorizontalDirection.getValues() {
-                directions.append(Direction(vertical: verticalDirection, horizontal: horizontalDirection))
-            }
-        }
-
-        return directions
-    }
-}
-
-public enum VerticalDirection: Int {
-    case up = -1
-    case down = 1
-    case none = 0
-
-    public static func getValues() -> [VerticalDirection] {
-        return [.up, .down, .none]
-    }
-}
-
-public enum HorizontalDirection: Int {
-    case left = -1
-    case right = 1
-    case none = 0
-
-    static func getValues() -> [HorizontalDirection] {
-        return [.left, .right, .none]
-    }
-}
-
-public func < <T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
-    return a.rawValue < b.rawValue
-}
-
 public class Reversi {
     private var board: Board
     private let flankedFieldsFinder: FlankedFieldsFinder

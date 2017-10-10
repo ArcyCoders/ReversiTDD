@@ -32,6 +32,54 @@ public enum Row: Int, Comparable {
     }
 }
 
+public struct Direction: Equatable {
+    public let vertical: VerticalDirection
+    public let horizontal: HorizontalDirection
+
+    public static let none: Direction = Direction(vertical: .none, horizontal: .none)
+
+    public static func getValues() -> [Direction] {
+        var directions: [Direction] = []
+
+        for verticalDirection in VerticalDirection.getValues() {
+            for horizontalDirection in HorizontalDirection.getValues() {
+                directions.append(Direction(vertical: verticalDirection, horizontal: horizontalDirection))
+            }
+        }
+
+        return directions.filter { $0 != Direction.none }
+    }
+
+    public static func ==(lhs: Direction, rhs: Direction) -> Bool {
+        return lhs.vertical == rhs.vertical
+                && lhs.horizontal == rhs.horizontal
+    }
+}
+
+public enum VerticalDirection: Int {
+    case up = -1
+    case down = 1
+    case none = 0
+
+    public static func getValues() -> [VerticalDirection] {
+        return [.up, .down, .none]
+    }
+}
+
+public enum HorizontalDirection: Int {
+    case left = -1
+    case right = 1
+    case none = 0
+
+    static func getValues() -> [HorizontalDirection] {
+        return [.left, .right, .none]
+    }
+}
+
+public func < <T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
+    return a.rawValue < b.rawValue
+}
+
 public class Board: Equatable {
     private var taken: [Field]
 
