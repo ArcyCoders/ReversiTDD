@@ -25,20 +25,20 @@ public struct Direction {
     }
 }
 
-public enum VerticalDirection {
-    case up
-    case down
-    case none
+public enum VerticalDirection: Int {
+    case up = -1
+    case down = 1
+    case none = 0
 
     public static func getValues() -> [VerticalDirection] {
         return [.up, .down, .none]
     }
 }
 
-public enum HorizontalDirection {
-    case left
-    case right
-    case none
+public enum HorizontalDirection: Int {
+    case left = -1
+    case right = 1
+    case none = 0
 
     static func getValues() -> [HorizontalDirection] {
         return [.left, .right, .none]

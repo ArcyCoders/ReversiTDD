@@ -12,16 +12,7 @@ public enum Column: Int, Comparable {
     case a, b, c, d, e, f, g, h
 
     public func nextColumn(inDirection direction: HorizontalDirection) -> Column? {
-        var nextColumnOffset = 0
-
-        if direction == .left {
-            nextColumnOffset = -1
-        }
-        else if direction == .right {
-            nextColumnOffset = 1
-        }
-
-        return Column(rawValue: self.rawValue + nextColumnOffset)
+        return Column(rawValue: self.rawValue + direction.rawValue)
     }
 
     public static func getValues() -> [Column] {
@@ -33,16 +24,7 @@ public enum Row: Int, Comparable {
     case _1, _2, _3, _4, _5, _6, _7, _8
 
     public func nextRow(inDirection direction: VerticalDirection) -> Row? {
-        var nextRowOffset = 0
-
-        if direction == .up {
-            nextRowOffset = -1
-        }
-        else if direction == .down {
-            nextRowOffset = 1
-        }
-
-        return Row(rawValue: self.rawValue + nextRowOffset)
+        return Row(rawValue: self.rawValue + direction.rawValue)
     }
 
     public static func getValues() -> [Row] {
