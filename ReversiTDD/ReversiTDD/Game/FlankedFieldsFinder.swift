@@ -20,7 +20,9 @@ public class FlankedFieldsFinder {
         var flankedFields: [Field] = []
         var isFlanked: Bool = false
 
-        while let nextField = board.getNextFieldInDirection(fromPreviousField: currentField, direction: direction) {
+        while let nextField = board.getNextFieldInDirection(fromPreviousField: currentField, direction: direction),
+              currentField.disk != nil,
+              nextField != currentField {
             currentField = nextField
             if currentField.disk == targetField.disk {
                 isFlanked = true
