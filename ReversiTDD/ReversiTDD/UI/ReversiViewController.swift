@@ -13,6 +13,10 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
     let fieldsInDirectionCount: Int = 8
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var currentPlayerColorView: UIView!
+    @IBOutlet private weak var blackScoreLabel: UILabel!
+    @IBOutlet private weak var whiteScoreLabel: UILabel!
+
     private var reversi: Reversi!
     private var board: Board!
     private var validMoves: [Field] = []
@@ -34,6 +38,7 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         reversi = Reversi(withBoard: board, withFlankedFieldsFinder: FlankedFieldsFinder())
         reversi.start()
         validMoves = reversi.getValidMovesForCurrentPlayer()
+        updateCurrentScore()
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +73,18 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: - check if valid move and if so make move to position
-        // if valid position
-        //      make move
-        //      update UI (current player and reload data)
+        if let column = Column(rawValue: indexPath.item),
+           let row = Row(rawValue: indexPath.section),
+           isValidPosition(Position(row: row, column: column)) {
+            reversi.move(to: Field(column: column, row: row, disk: nil))
+            validMoves = reversi.getValidMovesForCurrentPlayer()
+            updateCurrentScore()
+            collectionView.reloadData()
+
+            if reversi.isFinished {
+                showGameFinishedAlert()
+            }
+        }
     }
 
     // MARK: - UICollectionViewFlowLayoutDelegate
@@ -86,5 +99,21 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
 
     private func isValidPosition(_ position: Position) -> Bool {
         return validMoves.contains(where: { $0.column == position.column && $0.row == position.row })
+    }
+
+    private func showGameFinishedAlert() {
+        let results = reversi.getCurrentResults()
+        let winningScore = results.winningPlayer == .white ? results.whiteScore : results.blackScore
+        let losingScore = results.winningPlayer == .white ? results.blackScore : results.whiteScore
+
+        let alert = UIAlertController(title: "Game finished", message: "\(results.winningPlayer) has won \(winningScore) to \(losingScore)", preferredStyle: .alert)
+        present(alert, animated: true)
+    }
+
+    private func updateCurrentScore() {
+        currentPlayerColorView.backgroundColor = reversi.currentPlayer == .white ? .white : .black
+
+        whiteScoreLabel.text = "White score: \(board.getNumberOfFieldsTaken(ofColor: .white))"
+        blackScoreLabel.text = "Black score: \(board.getNumberOfFieldsTaken(ofColor: .black))"
     }
 }

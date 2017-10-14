@@ -54,6 +54,15 @@ public class Reversi {
         return getValidMoves(forPlayer: currentPlayer)
     }
 
+    public func getCurrentResults() -> (winningPlayer: Disk.Color, blackScore: Int, whiteScore: Int) {
+        let whiteScore = board.getNumberOfFieldsTaken(ofColor: .white)
+        let blackScore = board.getNumberOfFieldsTaken(ofColor: .black)
+
+        let winningPlayer: Disk.Color = whiteScore > blackScore ? .white : .black
+
+        return (winningPlayer: winningPlayer, blackScore: blackScore, whiteScore: whiteScore)
+    }
+
     private func getValidMoves(forPlayer player: Disk.Color) -> [Field] {
         let allOponentsField = board.getAllFields(containingDiskWithColor: player.oppositeColor)
         let allEmptyFieldsNeighbouringOpponentsFields = allOponentsField.flatMap { board.getNeighbouringFields(forField: $0).filter { $0.isEmpty } }

@@ -42,18 +42,20 @@ class BoardFieldCell: UICollectionViewCell {
         }
 
         if isValid {
-            UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse], animations: { [weak self] in
-                self?.backgroundColor = .green
-                self?.backgroundColor = .clear
-                }, completion: nil)
+//            UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse], animations: { [weak self] in
+//                self?.backgroundColor = .green
+//                self?.backgroundColor = .clear
+//                }, completion: nil)
+            self.backgroundColor = .green
         }
         else {
-            layer.removeAllAnimations()
+            self.backgroundColor = .lightGray
+//            layer.removeAllAnimations()
         }
     }
 
     private func commonInit() {
-        backgroundColor = UIColor.lightGray
+        backgroundColor = .lightGray
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
 
