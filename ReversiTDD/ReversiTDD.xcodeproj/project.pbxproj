@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B265B1F5C6EA800B60B30 /* AppDelegate.swift */; };
-		185B265E1F5C6EA800B60B30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B265D1F5C6EA800B60B30 /* ViewController.swift */; };
+		185B265E1F5C6EA800B60B30 /* ReversiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185B265D1F5C6EA800B60B30 /* ReversiViewController.swift */; };
 		185B26611F5C6EA800B60B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185B265F1F5C6EA800B60B30 /* Main.storyboard */; };
 		185B26631F5C6EA800B60B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185B26621F5C6EA800B60B30 /* Assets.xcassets */; };
 		185B26661F5C6EA800B60B30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */; };
@@ -22,6 +22,8 @@
 		E66B8BCE1F890E28003B5EE2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCD1F890E28003B5EE2 /* Board.swift */; };
 		E66B8BD01F890E85003B5EE2 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCF1F890E85003B5EE2 /* Field.swift */; };
 		E66B8BD21F890EBD003B5EE2 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BD11F890EBD003B5EE2 /* Disk.swift */; };
+		E66DC4731F9250D4003E2458 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66DC4721F9250D4003E2458 /* FieldView.swift */; };
+		E66DC4771F9260BF003E2458 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66DC4761F9260BF003E2458 /* BoardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 		15F33970108F5B28F5DCC072 /* Pods_ReversiTDDTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReversiTDDTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		185B26581F5C6EA800B60B30 /* ReversiTDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReversiTDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185B265B1F5C6EA800B60B30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		185B265D1F5C6EA800B60B30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		185B265D1F5C6EA800B60B30 /* ReversiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReversiViewController.swift; sourceTree = "<group>"; };
 		185B26601F5C6EA800B60B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		185B26621F5C6EA800B60B30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185B26651F5C6EA800B60B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 		E66B8BCD1F890E28003B5EE2 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E66B8BCF1F890E85003B5EE2 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		E66B8BD11F890EBD003B5EE2 /* Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
+		E66DC4721F9250D4003E2458 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		E66DC4761F9260BF003E2458 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,12 +127,10 @@
 		185B265A1F5C6EA800B60B30 /* ReversiTDD */ = {
 			isa = PBXGroup;
 			children = (
+				E66DC4741F9250DE003E2458 /* Resources */,
+				E66DC4751F9250F2003E2458 /* UI */,
 				E66B8BCA1F890DFE003B5EE2 /* Game */,
 				185B265B1F5C6EA800B60B30 /* AppDelegate.swift */,
-				185B265D1F5C6EA800B60B30 /* ViewController.swift */,
-				185B265F1F5C6EA800B60B30 /* Main.storyboard */,
-				185B26621F5C6EA800B60B30 /* Assets.xcassets */,
-				185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */,
 				185B26671F5C6EA800B60B30 /* Info.plist */,
 			);
 			path = ReversiTDD;
@@ -155,6 +157,26 @@
 				E61D47BB1F8932D00047B01D /* BoardStringLoader.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		E66DC4741F9250DE003E2458 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				185B26621F5C6EA800B60B30 /* Assets.xcassets */,
+				185B26641F5C6EA800B60B30 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E66DC4751F9250F2003E2458 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				185B265D1F5C6EA800B60B30 /* ReversiViewController.swift */,
+				185B265F1F5C6EA800B60B30 /* Main.storyboard */,
+				E66DC4721F9250D4003E2458 /* FieldView.swift */,
+				E66DC4761F9260BF003E2458 /* BoardView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,10 +396,12 @@
 				E61D47BC1F8932D00047B01D /* BoardStringLoader.swift in Sources */,
 				E66B8BD21F890EBD003B5EE2 /* Disk.swift in Sources */,
 				E66B8BD01F890E85003B5EE2 /* Field.swift in Sources */,
-				185B265E1F5C6EA800B60B30 /* ViewController.swift in Sources */,
+				185B265E1F5C6EA800B60B30 /* ReversiViewController.swift in Sources */,
 				185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */,
 				E66B8BCE1F890E28003B5EE2 /* Board.swift in Sources */,
 				E66B8BCC1F890E11003B5EE2 /* Reversi.swift in Sources */,
+				E66DC4771F9260BF003E2458 /* BoardView.swift in Sources */,
+				E66DC4731F9250D4003E2458 /* FieldView.swift in Sources */,
 				E61D47B81F891FCD0047B01D /* FlankedFieldsFinder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
