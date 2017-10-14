@@ -13,6 +13,8 @@ public class Field: Equatable, Hashable {
     public let row: Row
     public var disk: Disk?
 
+    public var isEmpty: Bool { return disk == nil }
+
     public var hashValue: Int { return "\(row)\(column)disk:\(disk?.hashValue ?? 0)".hashValue }
 
     public init(column: Column, row: Row, disk: Disk) {

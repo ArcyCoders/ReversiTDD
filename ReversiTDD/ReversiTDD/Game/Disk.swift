@@ -11,6 +11,10 @@ import Foundation
 public class Disk: Equatable {
     public enum Color: Int {
         case white, black
+
+        public var oppositeColor: Color {
+            return self == .white ? .black : .white
+        }
     }
 
     private(set) var currentColor: Color
@@ -22,7 +26,7 @@ public class Disk: Equatable {
     }
 
     public func turnOver() {
-        currentColor = currentColor == .white ? .black : .white
+        currentColor = currentColor.oppositeColor
     }
 
     public static func ==(lhs: Disk, rhs: Disk) -> Bool {

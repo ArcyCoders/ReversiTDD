@@ -114,6 +114,14 @@ public class Board: Equatable {
         return getField(column: nextColumn, row: nextRow)
     }
 
+    public func getAllFields(containingDiskWithColor diskColor: Disk.Color?) -> [Field] {
+        return taken.filter { $0.disk?.currentColor == diskColor }
+    }
+
+    public func getNeighbouringFields(forField field: Field) -> [Field] {
+        return Direction.getValues().flatMap { getNextFieldInDirection(fromPreviousField: field, direction: $0) }
+    }
+
     public func clear() {
         taken.removeAll()
     }

@@ -38,6 +38,10 @@ public class Reversi {
         switchPlayer()
     }
 
+    public func getValidMoves(forPlayer player: Disk.Color) -> [Field] {
+        return []
+    }
+
     fileprivate func switchPlayer() {
         currentPlayer = currentPlayer == .white ? .black : .white
     }

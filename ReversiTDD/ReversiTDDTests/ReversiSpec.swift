@@ -192,5 +192,11 @@ class ReversiSpec: QuickSpec {
                 expect(game.currentPlayer).to(equal(Disk.Color.black))
             }
         }
+
+        describe("getting valid moves for black player when the game starts") {
+            it("returns 4 valid moves") {
+                expect(game.getValidMoves(forPlayer: .black).count).to(equal(4))
+            }
+        }
     }
 }
