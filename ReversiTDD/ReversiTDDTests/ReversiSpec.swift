@@ -244,5 +244,25 @@ class ReversiSpec: QuickSpec {
                 expect(game.currentPlayer).to(equal(Disk.Color.black))
             }
         }
+
+        describe("when after white player's turn black player doesn't have a valid move") {
+            beforeEach {
+                let board = BoardStringLoader().load("-WWWWWWB",
+                                                     "B-------",
+                                                     "W-------",
+                                                     "--------",
+                                                     "--------",
+                                                     "--------",
+                                                     "--------",
+                                                     "--------")
+
+                game.load(currentPlayer: .white, board: board)
+                game.move(to: Field(column: .a, row: ._1, disk: nil))
+            }
+
+            it("forfeits white player's turn") {
+                expect(game.currentPlayer).to(equal(Disk.Color.white))
+            }
+        }
     }
 }

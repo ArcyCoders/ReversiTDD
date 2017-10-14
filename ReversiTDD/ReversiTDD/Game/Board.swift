@@ -142,6 +142,28 @@ public class Board: Equatable {
         }
     }
 
+    public func description() -> String {
+        var result = ""
+
+        for row in Row.getValues() {
+            for column in Column.getValues() {
+                if getField(column: column, row: row)?.disk == nil {
+                    result += " "
+                }
+                else if getField(column: column, row: row)?.disk?.currentColor == .black {
+                    result += "*"
+                }
+                else if getField(column: column, row: row)?.disk?.currentColor == .white {
+                    result += "o"
+                }
+            }
+
+            result += "\n"
+        }
+
+        return result
+    }
+
     public static func ==(lhs: Board, rhs: Board) -> Bool {
         return lhs.fields == rhs.fields
     }

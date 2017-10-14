@@ -36,7 +36,7 @@ public class Reversi {
 
     // TODO: handle invalid move
     public func move(to targetField: Field) {
-        board.set(field: targetField)
+        board.set(field: Field(column: targetField.column, row: targetField.row, disk: Disk(currentColor: currentPlayer)))
 
         flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: currentPlayer).forEach { $0.disk?.turnOver() }
 
@@ -54,6 +54,10 @@ public class Reversi {
     }
 
     fileprivate func switchPlayer() {
-        currentPlayer = currentPlayer == .white ? .black : .white
+        let nextPlayer: Disk.Color = currentPlayer == .white ? .black : .white
+
+        if !getValidMoves(forPlayer: nextPlayer).isEmpty {
+            currentPlayer = nextPlayer
+        }
     }
 }
