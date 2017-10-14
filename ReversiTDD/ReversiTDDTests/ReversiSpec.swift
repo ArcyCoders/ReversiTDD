@@ -292,7 +292,7 @@ class ReversiSpec: QuickSpec {
                 game.move(to: Field(column: .a, row: ._1, disk: nil))
             }
 
-            it("forfeits white player's turn") {
+            it("forfeits black player's turn") {
                 expect(game.currentPlayer).to(equal(Disk.Color.white))
             }
         }
@@ -309,6 +309,26 @@ class ReversiSpec: QuickSpec {
                                                      "--------")
 
                 game.load(currentPlayer: .white, board: board)
+                game.move(to: Field(column: .a, row: ._1, disk: nil))
+            }
+
+            it("reports that the game is finished") {
+                expect(game.isFinished).to(beTrue())
+            }
+        }
+
+        describe("when the board is full") {
+            beforeEach {
+                let board = BoardStringLoader().load("-WBBBBBW",
+                                                     "BBBBBBBB",
+                                                     "BBBBBBBB",
+                                                     "BBBBBBBB",
+                                                     "BBBBBBBB",
+                                                     "BBBBBBBB",
+                                                     "BBBBBBBB",
+                                                     "BBBBBBBB")
+
+                game.load(currentPlayer: .black, board: board)
                 game.move(to: Field(column: .a, row: ._1, disk: nil))
             }
 
