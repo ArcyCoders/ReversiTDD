@@ -29,6 +29,11 @@ public class Reversi {
         currentPlayer = .black
     }
 
+    public func load(currentPlayer: Disk.Color, board: Board) {
+        self.currentPlayer = currentPlayer
+        self.board = board
+    }
+
     // TODO: handle invalid move
     public func move(to targetField: Field) {
         board.set(field: targetField)
