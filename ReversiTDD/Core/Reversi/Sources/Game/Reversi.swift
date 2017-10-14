@@ -32,15 +32,23 @@ public class Reversi
         // 6________
         // 7________
         // 8________
-        let array = Array(0...63)
+        let array = Array(0...(Board.fieldsCount - 1))
+        let midX: Int = Column.count() / 2
+        let midY: Int = Row.count() / 2
         let emptyFields = Set<Field>(array.flatMap { (index) -> Field? in
             let y = index % Row.count()
             let x = index / Column.count()
-            if (x == 3 || x == 4) && (y == 3 || y == 4) { return nil }
+            if (x == midX || x == (midX - 1)) && (y == midY || y == (midY - 1)) { return nil }
             return Field(Row(rawValue: y)!, Column(rawValue: x)!)
         })
-        let blackFields = Set<Field>([Field(._5, .d), Field(._4, .e)])
-        let whiteFields = Set<Field>([Field(._4, .d), Field(._5, .e)])
+
+        // Force unwraps is safe here if columns/rows > 1
+        let midColumn1 = Column(rawValue: midX)!
+        let midColumn2 = Column(rawValue: midX - 1)!
+        let midRow1 = Row(rawValue: midY)!
+        let midRow2 = Row(rawValue: midY - 1)!
+        let blackFields = Set<Field>([Field(midRow1, midColumn2), Field(midRow2, midColumn1)])
+        let whiteFields = Set<Field>([Field(midRow2, midColumn2), Field(midRow1, midColumn1)])
         
         board = Board(emptyFields: emptyFields, blackFields: blackFields, whiteFields: whiteFields)
         currentPlayer = Player.black

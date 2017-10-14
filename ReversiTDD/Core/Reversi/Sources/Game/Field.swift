@@ -10,17 +10,17 @@ import Foundation
 
 public enum Row: Int, CustomStringConvertible
 {
-    case _1 = 0, _2, _3, _4, _5, _6, _7, _8
-    public static func all() -> [Row] { return [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8] }
-    public static func count() -> Int { return (Row._8.rawValue + 1) }
+    case _1 = 0, _2, _3, _4, _5, _6, _7, _8, _9, _10
+    public static func all() -> [Row] { return [._1, ._2, ._3, ._4, ._5, ._6, ._7, ._8, ._9, ._10] }
+    public static func count() -> Int { return (Row._10.rawValue + 1) }
     public var description: String { return "\(rawValue + 1)" }
 }
 
 public enum Column: Int, CustomStringConvertible
 {
-    case a = 0, b, c, d, e, f, g, h
-    public static func all() -> [Column] { return [.a, .b, .c, .d, .e, .f, .g, .h] }
-    public static func count() -> Int { return (Column.h.rawValue + 1) }
+    case a = 0, b, c, d, e, f, g, h, i, j
+    public static func all() -> [Column] { return [.a, .b, .c, .d, .e, .f, .g, .h, .i, .j] }
+    public static func count() -> Int { return (Column.j.rawValue + 1) }
     public static func symbols() -> [Character]
     {
         let aScalars = "a".unicodeScalars
