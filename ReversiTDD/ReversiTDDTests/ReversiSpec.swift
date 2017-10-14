@@ -197,7 +197,7 @@ class ReversiSpec: QuickSpec {
             var validMoves: [Field] = []
 
             beforeEach {
-                validMoves = game.getValidMoves(forPlayer: .black)
+                validMoves = game.getValidMoves(forPlayer: game.currentPlayer)
             }
 
             it("returns 4 valid moves") {
@@ -206,6 +206,22 @@ class ReversiSpec: QuickSpec {
                 expect(validMoves).to(contain(Field(column: .c, row: ._4, disk: nil)))
                 expect(validMoves).to(contain(Field(column: .e, row: ._6, disk: nil)))
                 expect(validMoves).to(contain(Field(column: .f, row: ._5, disk: nil)))
+            }
+        }
+
+        describe("getting valid moves for white player after black player's first move") {
+            var validMoves: [Field] = []
+
+            beforeEach {
+                game.move(to: Field(column: .d, row: ._3, disk: nil))
+                validMoves = game.getValidMoves(forPlayer: game.currentPlayer)
+            }
+
+            it("returns 3 valid moves") {
+                expect(validMoves.count).to(equal(3))
+                expect(validMoves).to(contain(Field(column: .c, row: ._3, disk: nil)))
+                expect(validMoves).to(contain(Field(column: .c, row: ._5, disk: nil)))
+                expect(validMoves).to(contain(Field(column: .e, row: ._3, disk: nil)))
             }
         }
     }

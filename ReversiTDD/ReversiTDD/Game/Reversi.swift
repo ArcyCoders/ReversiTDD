@@ -42,7 +42,10 @@ public class Reversi {
         let allOponentsField = board.getAllFields(containingDiskWithColor: player.oppositeColor)
         let allEmptyFieldsNeighbouringOpponentsFields = allOponentsField.flatMap { board.getNeighbouringFields(forField: $0).filter { $0.isEmpty } }
 
-        return allEmptyFieldsNeighbouringOpponentsFields.filter { !flankedFieldsFinder.getAllFlankedFields(byTargetField: $0, onBoard: board, forColor: player).isEmpty }
+        let validMovesWithDuplicates = allEmptyFieldsNeighbouringOpponentsFields.filter { !flankedFieldsFinder.getAllFlankedFields(byTargetField: $0, onBoard: board, forColor: player).isEmpty }
+        let validMovesWithoutDuplicates = Array(Set(validMovesWithDuplicates))
+
+        return validMovesWithoutDuplicates
     }
 
     fileprivate func switchPlayer() {
