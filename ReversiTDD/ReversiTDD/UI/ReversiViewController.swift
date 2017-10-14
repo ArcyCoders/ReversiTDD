@@ -33,6 +33,7 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         board = Board()
         reversi = Reversi(withBoard: board, withFlankedFieldsFinder: FlankedFieldsFinder())
         reversi.start()
+        validMoves = reversi.getValidMovesForCurrentPlayer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +41,7 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fieldCellId, for: indexPath)
@@ -49,7 +50,7 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
             if let column = Column(rawValue: indexPath.item),
                let row = Row(rawValue: indexPath.section),
                let field = board.getField(column: column, row: row) {
-                    cell.setup(withField: field)
+                cell.setup(withField: field, isValid: isValidPosition(Position(row: row, column: column)))
             }
         }
 
@@ -64,7 +65,7 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         return fieldsInDirectionCount
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: - check if valid move and if so make move to position
@@ -73,11 +74,17 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         //      update UI (current player and reload data)
     }
 
-    // MARK: UICollectionViewFlowLayoutDelegate
+    // MARK: - UICollectionViewFlowLayoutDelegate
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = min(view.frame.width, view.frame.height) / CGFloat(fieldsInDirectionCount)
 
         return CGSize(width: size, height: size)
+    }
+
+    // MARK: - Helpers
+
+    private func isValidPosition(_ position: Position) -> Bool {
+        return validMoves.contains(where: { $0.column == position.column && $0.row == position.row })
     }
 }
