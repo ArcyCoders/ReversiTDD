@@ -33,13 +33,16 @@ public class Reversi {
     public func move(to targetField: Field) {
         board.set(field: targetField)
 
-        flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board).forEach { $0.disk?.turnOver() }
+        flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: currentPlayer).forEach { $0.disk?.turnOver() }
 
         switchPlayer()
     }
 
     public func getValidMoves(forPlayer player: Disk.Color) -> [Field] {
-        return []
+        let allOponentsField = board.getAllFields(containingDiskWithColor: player.oppositeColor)
+        let allEmptyFieldsNeighbouringOpponentsFields = allOponentsField.flatMap { board.getNeighbouringFields(forField: $0).filter { $0.isEmpty } }
+
+        return allEmptyFieldsNeighbouringOpponentsFields.filter { !flankedFieldsFinder.getAllFlankedFields(byTargetField: $0, onBoard: board, forColor: player).isEmpty }
     }
 
     fileprivate func switchPlayer() {

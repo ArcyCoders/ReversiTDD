@@ -11,11 +11,11 @@ import Foundation
 public class FlankedFieldsFinder {
     public init() {}
 
-    public func getAllFlankedFields(byTargetField targetField: Field, onBoard board: Board) -> [Field] {
-        return Direction.getValues().flatMap { getFlankedFields(inDirection: $0, forTargetField: targetField, onBoard: board) }
+    public func getAllFlankedFields(byTargetField targetField: Field, onBoard board: Board, forColor playerColor: Disk.Color) -> [Field] {
+        return Direction.getValues().flatMap { getFlankedFields(inDirection: $0, forTargetField: targetField, onBoard: board, forColor: playerColor) }
     }
 
-    fileprivate func getFlankedFields(inDirection direction: Direction, forTargetField targetField: Field, onBoard board: Board) -> [Field] {
+    fileprivate func getFlankedFields(inDirection direction: Direction, forTargetField targetField: Field, onBoard board: Board, forColor playerColor: Disk.Color) -> [Field] {
         var currentField = targetField
         var flankedFields: [Field] = []
         var isFlanked: Bool = false
@@ -24,7 +24,7 @@ public class FlankedFieldsFinder {
               nextField != currentField,
               !nextField.isEmpty {
             currentField = nextField
-            if currentField.disk == targetField.disk {
+            if currentField.disk?.currentColor == playerColor {
                 isFlanked = true
                 break
             }

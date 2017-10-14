@@ -39,7 +39,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(1))
                 }
@@ -55,7 +55,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -71,7 +71,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(6))
                 }
@@ -87,7 +87,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -103,7 +103,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -119,7 +119,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -135,7 +135,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -154,7 +154,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(1))
                 }
@@ -170,7 +170,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -186,7 +186,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(6))
                 }
@@ -202,7 +202,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -218,7 +218,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -234,7 +234,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -250,7 +250,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(0))
                 }
@@ -269,7 +269,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                      "--------",
                                                      "--------"
                     )
-                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                    flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                     expect(flankedFields.count).to(equal(1))
                 }
@@ -286,7 +286,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "--------",
                                                  "--------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -302,7 +302,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(6))
             }
@@ -318,7 +318,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "W-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -334,7 +334,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "W-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -350,7 +350,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "W-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -366,7 +366,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "W-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -385,7 +385,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(1))
             }
@@ -401,7 +401,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -417,7 +417,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(6))
             }
@@ -433,7 +433,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -449,7 +449,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "--------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -465,7 +465,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "--------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -483,7 +483,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "------W-",
                                                  "-------B"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(6))
             }
@@ -499,7 +499,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "------W-",
                                                  "-------W"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -515,7 +515,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "-------B",
                                                  "--------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -533,7 +533,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "------W-",
                                                  "-------B"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(6))
             }
@@ -549,7 +549,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "------W-",
                                                  "-------B"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -565,7 +565,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "-------B",
                                                  "--------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -583,7 +583,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "-W------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(6))
             }
@@ -599,7 +599,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "-W------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -615,7 +615,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "--W-----",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -633,7 +633,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "-W------",
                                                  "B-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(6))
             }
@@ -649,7 +649,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "-W------",
                                                  "W-------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
@@ -665,7 +665,7 @@ class FlankedFieldsFinderSpec: QuickSpec {
                                                  "W-------",
                                                  "--------"
                 )
-                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board)
+                flankedFields = flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: .black)
 
                 expect(flankedFields.count).to(equal(0))
             }
