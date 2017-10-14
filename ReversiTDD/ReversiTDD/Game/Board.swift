@@ -32,6 +32,17 @@ public enum Row: Int, Comparable {
     }
 }
 
+public struct Position: Equatable, Hashable {
+    let row: Row
+    let column: Column
+
+    public var hashValue: Int { return "\(row)\(column)".hashValue }
+
+    public static func ==(lhs: Position, rhs: Position) -> Bool {
+        return lhs.row == rhs.row && lhs.column == rhs.column
+    }
+}
+
 public struct Direction: Equatable {
     public let vertical: VerticalDirection
     public let horizontal: HorizontalDirection

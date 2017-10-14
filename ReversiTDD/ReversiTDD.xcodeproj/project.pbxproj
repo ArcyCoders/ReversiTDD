@@ -22,8 +22,7 @@
 		E66B8BCE1F890E28003B5EE2 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCD1F890E28003B5EE2 /* Board.swift */; };
 		E66B8BD01F890E85003B5EE2 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BCF1F890E85003B5EE2 /* Field.swift */; };
 		E66B8BD21F890EBD003B5EE2 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66B8BD11F890EBD003B5EE2 /* Disk.swift */; };
-		E66DC4731F9250D4003E2458 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66DC4721F9250D4003E2458 /* FieldView.swift */; };
-		E66DC4771F9260BF003E2458 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66DC4761F9260BF003E2458 /* BoardView.swift */; };
+		E66DC4731F9250D4003E2458 /* BoardFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66DC4721F9250D4003E2458 /* BoardFieldCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +59,7 @@
 		E66B8BCD1F890E28003B5EE2 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E66B8BCF1F890E85003B5EE2 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		E66B8BD11F890EBD003B5EE2 /* Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
-		E66DC4721F9250D4003E2458 /* FieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
-		E66DC4761F9260BF003E2458 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		E66DC4721F9250D4003E2458 /* BoardFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardFieldCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +171,7 @@
 			children = (
 				185B265D1F5C6EA800B60B30 /* ReversiViewController.swift */,
 				185B265F1F5C6EA800B60B30 /* Main.storyboard */,
-				E66DC4721F9250D4003E2458 /* FieldView.swift */,
-				E66DC4761F9260BF003E2458 /* BoardView.swift */,
+				E66DC4721F9250D4003E2458 /* BoardFieldCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -400,8 +397,7 @@
 				185B265C1F5C6EA800B60B30 /* AppDelegate.swift in Sources */,
 				E66B8BCE1F890E28003B5EE2 /* Board.swift in Sources */,
 				E66B8BCC1F890E11003B5EE2 /* Reversi.swift in Sources */,
-				E66DC4771F9260BF003E2458 /* BoardView.swift in Sources */,
-				E66DC4731F9250D4003E2458 /* FieldView.swift in Sources */,
+				E66DC4731F9250D4003E2458 /* BoardFieldCell.swift in Sources */,
 				E61D47B81F891FCD0047B01D /* FlankedFieldsFinder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

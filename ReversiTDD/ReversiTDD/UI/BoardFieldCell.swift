@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 @IBDesignable
-class FieldView: UIView {
+class BoardFieldCell: UICollectionViewCell {
     private weak var diskLayer: CALayer!
 
     override init(frame: CGRect) {
@@ -33,7 +33,7 @@ class FieldView: UIView {
         diskLayer.cornerRadius = 0.5 * diskFrame.height
     }
 
-    func setup(withField field: Field) {
+    func setup(withField field: Field, isValid: Bool = false) {
         if let disk = field.disk {
             diskLayer.backgroundColor = disk.currentColor == .white ? UIColor.white.cgColor : UIColor.black.cgColor
         }
@@ -41,14 +41,15 @@ class FieldView: UIView {
             diskLayer.backgroundColor = UIColor.clear.cgColor
         }
 
-        layer.removeAllAnimations()
-    }
-
-    func markAsValidField() {
-        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse], animations: { [weak self] in
-            self?.backgroundColor = .green
-            self?.backgroundColor = .clear
-            }, completion: nil)
+        if isValid {
+            UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse], animations: { [weak self] in
+                self?.backgroundColor = .green
+                self?.backgroundColor = .clear
+                }, completion: nil)
+        }
+        else {
+            layer.removeAllAnimations()
+        }
     }
 
     private func commonInit() {
