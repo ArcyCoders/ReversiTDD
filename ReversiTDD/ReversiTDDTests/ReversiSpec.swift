@@ -34,6 +34,10 @@ class ReversiSpec: QuickSpec {
                                                      Field(column: .e, row: ._4, disk: Disk(currentColor: .black)),
                                                      Field(column: .e, row: ._5, disk: Disk(currentColor: .white))])))
             }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
+            }
         }
 
         describe("black player makes first move to D3") {
@@ -55,6 +59,10 @@ class ReversiSpec: QuickSpec {
 
             it("switches currentPlayer to white") {
                 expect(game.currentPlayer).to(equal(Disk.Color.white))
+            }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
             }
         }
 
@@ -78,6 +86,10 @@ class ReversiSpec: QuickSpec {
             it("switches currentPlayer to white") {
                 expect(game.currentPlayer).to(equal(Disk.Color.white))
             }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
+            }
         }
 
         describe("black player makes first move to F5") {
@@ -99,6 +111,10 @@ class ReversiSpec: QuickSpec {
 
             it("switches currentPlayer to white") {
                 expect(game.currentPlayer).to(equal(Disk.Color.white))
+            }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
             }
         }
 
@@ -122,28 +138,9 @@ class ReversiSpec: QuickSpec {
             it("switches currentPlayer to white") {
                 expect(game.currentPlayer).to(equal(Disk.Color.white))
             }
-        }
 
-        describe("white player makes second move down, right flanking") {
-            beforeEach {
-                game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
-                game.move(to: Field(column: .f, row: ._6, disk: Disk(currentColor: .white)))
-            }
-
-            it("has 6 disks on board") {
-                expect(board.takenFieldsCount).to(equal(6))
-            }
-
-            it("has white disk on position F6") {
-                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(Disk(currentColor: .white)))
-            }
-
-            it("has white disk on position E5") {
-                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .white)))
-            }
-
-            it("switches currentPlayer to black") {
-                expect(game.currentPlayer).to(equal(Disk.Color.black))
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
             }
         }
 
@@ -167,6 +164,37 @@ class ReversiSpec: QuickSpec {
 
             it("switches currentPlayer to black") {
                 expect(game.currentPlayer).to(equal(Disk.Color.black))
+            }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
+            }
+        }
+
+        describe("white player makes second move down, right flanking") {
+            beforeEach {
+                game.move(to: Field(column: .e, row: ._6, disk: Disk(currentColor: .black)))
+                game.move(to: Field(column: .f, row: ._6, disk: Disk(currentColor: .white)))
+            }
+
+            it("has 6 disks on board") {
+                expect(board.takenFieldsCount).to(equal(6))
+            }
+
+            it("has white disk on position F6") {
+                expect(board.getField(column: .f, row: ._6)?.disk).to(equal(Disk(currentColor: .white)))
+            }
+
+            it("has white disk on position E5") {
+                expect(board.getField(column: .e, row: ._5)?.disk).to(equal(Disk(currentColor: .white)))
+            }
+
+            it("switches currentPlayer to black") {
+                expect(game.currentPlayer).to(equal(Disk.Color.black))
+            }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
             }
         }
 
@@ -190,6 +218,10 @@ class ReversiSpec: QuickSpec {
 
             it("switches currentPlayer to black") {
                 expect(game.currentPlayer).to(equal(Disk.Color.black))
+            }
+
+            it("doesn't report that game is finished") {
+                expect(game.isFinished).to(beFalse())
             }
         }
 
@@ -280,7 +312,7 @@ class ReversiSpec: QuickSpec {
                 game.move(to: Field(column: .a, row: ._1, disk: nil))
             }
 
-            it("finishes the game") {
+            it("reports that the game is finished") {
                 expect(game.isFinished).to(beTrue())
             }
         }
