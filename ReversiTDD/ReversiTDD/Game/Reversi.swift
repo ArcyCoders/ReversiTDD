@@ -12,6 +12,7 @@ public class Reversi {
     private var board: Board
     private let flankedFieldsFinder: FlankedFieldsFinder
     private(set) var currentPlayer: Disk.Color
+    private(set) var isFinished: Bool = false
 
     public init(withBoard board: Board = Board(), withFlankedFieldsFinder flankedFieldsFinder: FlankedFieldsFinder = FlankedFieldsFinder()) {
         self.currentPlayer = .black
@@ -27,6 +28,7 @@ public class Reversi {
         board.set(field: Field(column: .e, row: ._5, disk: Disk(currentColor: .white)))
 
         currentPlayer = .black
+        isFinished = false
     }
 
     public func load(currentPlayer: Disk.Color, board: Board) {

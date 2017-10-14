@@ -227,7 +227,7 @@ class ReversiSpec: QuickSpec {
 
         describe("when after black player's turn white player doesn't have a valid move") {
             beforeEach {
-                let board = BoardStringLoader().load("-WB-----",
+                let board = BoardStringLoader().load("-WBW----",
                                                      "B-------",
                                                      "B-------",
                                                      "B-------",
@@ -250,7 +250,7 @@ class ReversiSpec: QuickSpec {
                 let board = BoardStringLoader().load("-WWWWWWB",
                                                      "B-------",
                                                      "W-------",
-                                                     "--------",
+                                                     "B-------",
                                                      "--------",
                                                      "--------",
                                                      "--------",
@@ -262,6 +262,26 @@ class ReversiSpec: QuickSpec {
 
             it("forfeits white player's turn") {
                 expect(game.currentPlayer).to(equal(Disk.Color.white))
+            }
+        }
+
+        describe("when no player has a valid move but the board is not empty") {
+            beforeEach {
+                let board = BoardStringLoader().load("-WWWWWWB",
+                                                     "B-------",
+                                                     "W-------",
+                                                     "--------",
+                                                     "--------",
+                                                     "--------",
+                                                     "--------",
+                                                     "--------")
+
+                game.load(currentPlayer: .white, board: board)
+                game.move(to: Field(column: .a, row: ._1, disk: nil))
+            }
+
+            it("finishes the game") {
+                expect(game.isFinished).to(beTrue())
             }
         }
     }
