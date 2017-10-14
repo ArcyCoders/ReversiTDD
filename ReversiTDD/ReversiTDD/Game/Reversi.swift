@@ -50,7 +50,11 @@ public class Reversi {
         switchPlayer()
     }
 
-    public func getValidMoves(forPlayer player: Disk.Color) -> [Field] {
+    public func getValidMovesForCurrentPlayer() -> [Field] {
+        return getValidMoves(forPlayer: currentPlayer)
+    }
+
+    private func getValidMoves(forPlayer player: Disk.Color) -> [Field] {
         let allOponentsField = board.getAllFields(containingDiskWithColor: player.oppositeColor)
         let allEmptyFieldsNeighbouringOpponentsFields = allOponentsField.flatMap { board.getNeighbouringFields(forField: $0).filter { $0.isEmpty } }
 
@@ -60,7 +64,7 @@ public class Reversi {
         return validMovesWithoutDuplicates
     }
 
-    fileprivate func switchPlayer() {
+    private func switchPlayer() {
         let nextPlayer: Disk.Color = currentPlayer == .white ? .black : .white
 
         if !getValidMoves(forPlayer: nextPlayer).isEmpty {

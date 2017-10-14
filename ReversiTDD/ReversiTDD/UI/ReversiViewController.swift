@@ -15,6 +15,7 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet private weak var collectionView: UICollectionView!
     private var reversi: Reversi!
     private var board: Board!
+    private var validMoves: [Field] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

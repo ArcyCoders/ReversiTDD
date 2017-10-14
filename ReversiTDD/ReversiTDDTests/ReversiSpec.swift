@@ -229,7 +229,7 @@ class ReversiSpec: QuickSpec {
             var validMoves: [Field] = []
 
             beforeEach {
-                validMoves = game.getValidMoves(forPlayer: game.currentPlayer)
+                validMoves = game.getValidMovesForCurrentPlayer()
             }
 
             it("returns 4 valid moves") {
@@ -246,7 +246,7 @@ class ReversiSpec: QuickSpec {
 
             beforeEach {
                 game.move(to: Field(column: .d, row: ._3, disk: nil))
-                validMoves = game.getValidMoves(forPlayer: game.currentPlayer)
+                validMoves = game.getValidMovesForCurrentPlayer()
             }
 
             it("returns 3 valid moves") {
