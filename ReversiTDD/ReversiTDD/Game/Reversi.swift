@@ -42,6 +42,11 @@ public class Reversi {
 
         flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board, forColor: currentPlayer).forEach { $0.disk?.turnOver() }
 
+        if ![Disk.Color.black, Disk.Color.white].contains(where: { !getValidMoves(forPlayer: $0).isEmpty }) {
+            isFinished = true
+            return
+        }
+
         switchPlayer()
     }
 
