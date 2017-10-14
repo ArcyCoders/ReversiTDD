@@ -13,6 +13,8 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
     let fieldsInDirectionCount: Int = 8
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    private var reversi: Reversi!
+    private var board: Board!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,10 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         collectionView.contentInset = .zero
         collectionView.delegate = self
         collectionView.dataSource = self
+
+        board = Board()
+        reversi = Reversi(withBoard: board, withFlankedFieldsFinder: FlankedFieldsFinder())
+        reversi.start()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,10 +45,10 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: fieldCellId, for: indexPath)
 
         if let cell = cell as? BoardFieldCell {
-            // TODO: - read from board
             if let column = Column(rawValue: indexPath.item),
-                let row = Row(rawValue: indexPath.section) {
-                cell.setup(withField: Field(column: column, row: row, disk: Disk(currentColor: .white)))
+               let row = Row(rawValue: indexPath.section),
+               let field = board.getField(column: column, row: row) {
+                    cell.setup(withField: field)
             }
         }
 
@@ -74,4 +80,3 @@ class ReversiViewController: UIViewController, UICollectionViewDataSource, UICol
         return CGSize(width: size, height: size)
     }
 }
-
