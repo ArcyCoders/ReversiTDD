@@ -26,7 +26,7 @@ public class BoardStringLoader {
                 if let disk = disk,
                    let column = Column(rawValue: columnIndex),
                    let row = Row(rawValue: rowIndex) {
-                    resultBoard.add(field: Field(column: column, row: row, disk: disk))
+                    resultBoard.set(field: Field(column: column, row: row, disk: disk))
                 }
             }
         }

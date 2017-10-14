@@ -81,30 +81,44 @@ public func < <T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Compar
 }
 
 public class Board: Equatable {
-    private var taken: [Field]
+    private var fields: [Field]
 
     public var takenFieldsCount: Int {
-        return taken.count
+        return fields.filter { !$0.isEmpty }.count
     }
 
-    public init(taken: [Field] = []) {
-        self.taken = taken
+    public init() {
+        fields = []
+
+        for column in Column.getValues() {
+            for row in Row.getValues() {
+                fields.append(Field(column: column, row: row, disk: nil))
+            }
+        }
     }
 
-    public func add(field: Field) {
-        taken.append(field)
+    convenience public init(taken: [Field] = []) {
+        self.init()
+
+        for takenField in taken {
+            set(field: takenField)
+        }
+    }
+
+    public func set(field: Field) {
+        fields.filter { $0.isAt(column: field.column, row: field.row) }.first?.disk = field.disk
     }
 
     public func getField(column: Column, row: Row) -> Field? {
-        return taken.filter { $0.row == row && $0.column == column }.first
+        return fields.filter { $0.row == row && $0.column == column }.first
     }
 
     public func getNumberOfFieldsTaken(ofColor color: Disk.Color? = nil) -> Int {
         if let color = color {
-            return taken.filter { $0.disk?.currentColor == color }.count
+            return fields.filter { $0.disk?.currentColor == color }.count
         }
 
-        return taken.count
+        return fields.count
     }
 
     public func getNextFieldInDirection(fromPreviousField previousField: Field, direction: Direction) -> Field? {
@@ -115,7 +129,7 @@ public class Board: Equatable {
     }
 
     public func getAllFields(containingDiskWithColor diskColor: Disk.Color?) -> [Field] {
-        return taken.filter { $0.disk?.currentColor == diskColor }
+        return fields.filter { $0.disk?.currentColor == diskColor }
     }
 
     public func getNeighbouringFields(forField field: Field) -> [Field] {
@@ -123,10 +137,12 @@ public class Board: Equatable {
     }
 
     public func clear() {
-        taken.removeAll()
+        for field in fields {
+            field.clear()
+        }
     }
 
     public static func ==(lhs: Board, rhs: Board) -> Bool {
-        return lhs.taken == rhs.taken
+        return lhs.fields == rhs.fields
     }
 }

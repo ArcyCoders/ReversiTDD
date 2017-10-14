@@ -21,17 +21,17 @@ public class Reversi {
 
     public func start() {
         board.clear()
-        board.add(field: Field(column: .d, row: ._4, disk: Disk(currentColor: .white)))
-        board.add(field: Field(column: .d, row: ._5, disk: Disk(currentColor: .black)))
-        board.add(field: Field(column: .e, row: ._4, disk: Disk(currentColor: .black)))
-        board.add(field: Field(column: .e, row: ._5, disk: Disk(currentColor: .white)))
+        board.set(field: Field(column: .d, row: ._4, disk: Disk(currentColor: .white)))
+        board.set(field: Field(column: .d, row: ._5, disk: Disk(currentColor: .black)))
+        board.set(field: Field(column: .e, row: ._4, disk: Disk(currentColor: .black)))
+        board.set(field: Field(column: .e, row: ._5, disk: Disk(currentColor: .white)))
 
         currentPlayer = .black
     }
 
     // TODO: handle invalid move
     public func move(to targetField: Field) {
-        board.add(field: targetField)
+        board.set(field: targetField)
 
         flankedFieldsFinder.getAllFlankedFields(byTargetField: targetField, onBoard: board).forEach { $0.disk?.turnOver() }
 

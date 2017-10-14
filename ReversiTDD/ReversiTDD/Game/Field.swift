@@ -17,10 +17,18 @@ public class Field: Equatable, Hashable {
 
     public var hashValue: Int { return "\(row)\(column)disk:\(disk?.hashValue ?? 0)".hashValue }
 
-    public init(column: Column, row: Row, disk: Disk) {
+    public init(column: Column, row: Row, disk: Disk?) {
         self.column = column
         self.row = row
         self.disk = disk
+    }
+
+    public func clear() {
+        disk = nil
+    }
+
+    public func isAt(column: Column, row: Row) -> Bool {
+        return self.column == column && self.row == row
     }
 
     public static func ==(lhs: Field, rhs: Field) -> Bool {

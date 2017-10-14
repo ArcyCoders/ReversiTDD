@@ -21,8 +21,8 @@ public class FlankedFieldsFinder {
         var isFlanked: Bool = false
 
         while let nextField = board.getNextFieldInDirection(fromPreviousField: currentField, direction: direction),
-              currentField.disk != nil,
-              nextField != currentField {
+              nextField != currentField,
+              !nextField.isEmpty {
             currentField = nextField
             if currentField.disk == targetField.disk {
                 isFlanked = true
